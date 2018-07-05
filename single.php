@@ -5,7 +5,7 @@ get_header();
 echo "<div class=\"container\">\r\n";
 echo "  <div class=\"row\">\r\n";
 
-echo "    <div class=\"" . ( ( is_active_sidebar( 'side_right' ) ) ? 'col-xs-12 col-sm-12 col-md-7 col-lg-8' : 'col-xs-12 col-sm-12 col-md-12 col-lg-12' ) . "\">\r\n";
+echo "    <div class=\"col-xs-12 col-sm-12 col-md col-lg\">\r\n";
 if ( have_posts() ) {
 	while ( have_posts() ) {
 		

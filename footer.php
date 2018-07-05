@@ -1,5 +1,6 @@
 <?php
 
+
 if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 
@@ -22,7 +23,7 @@ echo "          </div>\r\n"; // .row
 echo "        </div>\r\n"; // .container
 echo "      </div>\r\n"; // .links
 
-get_sidebar();
+if ( is_active_sidebar( 'side_basement' ) ) get_sidebar();
 
 if ( get_theme_mod( 'partners_section_flag', $default = false ) ) get_template_part( 'section', 'partners' );
 
@@ -30,13 +31,23 @@ echo "      <footer class=\"footer wrapper__item\" id=\"footer\">\r\n";
 echo "        <div class=\"container\">\r\n";
 echo "          <div class=\"row\">\r\n";
 echo "            <div class=\"col-xs-12 first-sm col-sm-3 col-md-4 col-lg-4\">\r\n";
-echo "              <p class=\"copyright\">2018 &copy; <a href=\"//pstu.edu\" title=\"Государственное высшее учебное заведение Приазовский государственный технический университет\">ГВУЗ ПГТУ</a></p>\r\n";
+printf(
+	"<p class=\"copyright\">%d &copy; <a href=\"//pstu.edu\" title=\"%s\">%s</a></p>\r\n",
+	date( 'Y' ),
+	__( 'Государственное высшее учебное заведение Приазовский государственный технический университет', 'pstu-next-theme' ),
+	__( 'ГВУЗ ПГТУ', 'pstu-next-theme' )
+);
 echo "            </div>\r\n";
 echo "            <div class=\"col-xs-12 first-xs col-sm-6 col-md-4 col-lg-4\">\r\n";
 get_template_part( 'part', 'social' );
 echo "            </div>\r\n";
 echo "            <div class=\"col-xs-12 col-sm-3 col-md-4 col-lg-4\">\r\n";
-echo "              <p class=\"developer\">Разработка: <a href=\"//cct.pstu.edu\" title=\"Центр компьютерных технологий Приазовского государственного технического университета\">ЦКТ ПГТУ</a></p>\r\n";
+printf(
+	"<p class=\"developer\">%s: <a href=\"//cct.pstu.edu\" title=\"%s\">%s</a></p>\r\n",
+	__( 'Разработка', 'pstu-next-theme' ),
+	__( 'Центр компьютерных технологий Приазовского государственного технического университета', 'pstu-next-theme' ),
+	__( 'ЦКТ ПГТУ', 'pstu-next-theme' )
+);
 echo "            </div>\r\n";
 echo "          </div>\r\n";
 echo "        </div>\r\n";
