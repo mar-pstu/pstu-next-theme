@@ -34,6 +34,22 @@ $wp_customize->add_control(
 ); /**/
 
 $wp_customize->add_setting(
+	'share_section_flag',
+	array(
+		'default'				=> true,
+		'transport'			=> 'reset'
+	)
+);
+$wp_customize->add_control(
+	'share_section_flag',
+	array(
+		'section'				=> 'pstu_next_theme_share',
+		'label'					=> __( 'Отображать секцию "поделиться" главной странице', 'pstu-next-theme' ),
+		'type'					=> 'checkbox',
+	)
+); /**/
+
+$wp_customize->add_setting(
 	'share_links[email]',
 	array(
 		'default'				=> true,

@@ -21,14 +21,15 @@ add_action( 'customize_register', function ( $wp_customize ) {
 
 
 
-	require_once PSTU_NEXT_THEME_DIR . 'include/customizer-main.php';
-	require_once PSTU_NEXT_THEME_DIR . 'include/customizer-share.php';
-	require_once PSTU_NEXT_THEME_DIR . 'include/customizer-socials.php';
-	require_once PSTU_NEXT_THEME_DIR . 'include/customizer-partners.php';
-	require_once PSTU_NEXT_THEME_DIR . 'include/customizer-news.php';
-	require_once PSTU_NEXT_THEME_DIR . 'include/customizer-people.php';
-	require_once PSTU_NEXT_THEME_DIR . 'include/customizer-current.php';
-	require_once PSTU_NEXT_THEME_DIR . 'include/customizer-projects.php';
+	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-main.php';
+	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-share.php';
+	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-socials.php';
+	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-sticky.php';
+	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-partners.php';
+	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-news.php';
+	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-people.php';
+	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-current.php';
+	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-projects.php';
 
 
 

@@ -44,7 +44,7 @@ if ( $news_category_id = get_translate_id( get_theme_mod( 'news_category_id', fa
           'post'    => $news_post->ID,
         ) );
 
-        echo "<div class=\"news__entry entry media\">\r\n";
+        echo "<div class=\"" . join( ' ', get_post_class( 'news__entry entry media', $news_post->ID ) ) . "\">\r\n";
         echo "  <div class=\"clearfix\">\r\n";
         if ( has_post_thumbnail( $news_post->ID ) ) {
           $news_post_thumbnail_url = get_the_post_thumbnail_url( $news_post->ID, 'thumbnail' );

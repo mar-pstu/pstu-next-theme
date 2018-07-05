@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
 get_header();
 
 get_template_part( 'section', 'jumbotron' );
-get_template_part( 'section', 'sticky' );
+if ( get_theme_mod( 'sticky_section_flag', false ) ) get_template_part( 'section', 'sticky' );
 
 echo "<div class=\"container\">\r\n";
 echo "  <div class=\"row\">\r\n";
@@ -34,10 +34,10 @@ if ( is_active_sidebar( 'home' ) ) {
 echo "  </div>\r\n"; // .row
 echo "</div>\r\n"; // .container
 
-get_template_part( 'section', 'share' );
+if ( get_theme_mod( 'share_section_flag', false ) ) get_template_part( 'section', 'share' );
 if ( get_theme_mod( 'people_section_flag', false ) ) get_template_part( 'section', 'people' );
 if ( get_theme_mod( 'current_section_flag', false ) ) get_template_part( 'section', 'current' );
-get_template_part( 'section', 'projects' );
+if ( get_theme_mod( 'projects_section_flag', false ) ) get_template_part( 'section', 'projects' );
 
 get_footer();
 

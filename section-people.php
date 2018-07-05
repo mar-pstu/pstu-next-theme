@@ -50,7 +50,7 @@ if ( $people_category_id = get_translate_id( get_theme_mod( 'people_category_id'
           'echo'    => false,
           'post'    => $person->ID,
         ) );
-        echo "<a class=\"slider-for__entry entry center-block\" href=\"" . get_the_permalink( $person->ID ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), $person_title_attribute ) . "\">\r\n";
+        echo "<a class=\"" . join( ' ', get_post_class( 'slider-for__entry entry center-block', $news_post->ID ) ) . "\" href=\"" . get_the_permalink( $person->ID ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), $person_title_attribute ) . "\">\r\n";
         echo "  <div class=\"thumbnail\"><img class=\"wp-post-image\" src=\"\" data-lazy=\"" . ( ( $person_thumbnail_url ) ? $person_thumbnail_url : PSTU_NEXT_THEME_URL . 'images/user-md.jpg' ) . "\" alt=\"" . $person_title_attribute . "\"></div>\r\n";
         echo "  <div class=\"title\"><h3>" . apply_filters( 'the_title', $person->post_title ) . "</h3></div>\r\n";
         if ( has_excerpt( $person->ID ) ) echo "  <div class=\"excerpt\">" . apply_filters( 'the_excerpt', $person->post_excerpt ) . "</div>\r\n";

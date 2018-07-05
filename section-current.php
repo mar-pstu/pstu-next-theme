@@ -29,7 +29,7 @@ if ( $current_category_id = get_translate_id( get_theme_mod( 'current_category_i
       echo "  <div class=\"container\">\r\n";
       echo "    <div class=\"row\">\r\n";
       echo "      <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\r\n";
-      if ( get_theme_mod( '', true ) ) {
+      if ( get_theme_mod( 'current_heading_flag', true ) ) {
         echo "        <div class=\"section__heading heading\">\r\n";
         echo "          <h2 class=\"title\">" . apply_filters( 'the_title', $current_category->name ) . "</h2>\r\n";
         if ( ! empty( trim( $current_category->description ) ) ) echo "          <div class=\"desctiption\">" . apply_filters( 'the_excerpt', $current_category->description ) . "</div>\r\n";
@@ -43,14 +43,14 @@ if ( $current_category_id = get_translate_id( get_theme_mod( 'current_category_i
       foreach ( $current_posts as $current_post ) {
         
         setup_postdata( $current_post );
-        $current_thumbnail_url = get_the_post_thumbnail_url( $news_post->ID, 'medium' );
+        $current_thumbnail_url = get_the_post_thumbnail_url( $current_post->ID, 'medium' );
         $current_title_attribute = the_title_attribute( array(
           'before'  => '',
           'adter'   => '',
           'echo'    => false,
-          'post'    => $person->ID,
+          'post'    => $current_post->ID,
         ) );
-        echo "<a class=\"current__entry flat__entry entry\" href=\"" . get_the_permalink( $current_post->ID ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), $current_title_attribute ) . "\">\r\n";
+        echo "<a class=\"" . join( ' ', get_post_class( 'current__entry flat__entry entry', $current_post->ID ) ) . "\" href=\"" . get_the_permalink( $current_post->ID ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), $current_title_attribute ) . "\">\r\n";
         echo "  <img class=\"wp-post-image\" src=\"#\" data-lazy=\"" . ( ( $current_thumbnail_url ) ? $current_thumbnail_url : PSTU_NEXT_THEME_URL . 'images/flat_default_thumbnail.jpg' ) . "\" alt=\"" . $current_title_attribute . "\">\r\n";
         echo "  <div class=\"title\"><h3>" . apply_filters( 'the_title', $current_post->post_title ) . "</h3></div>\r\n";
         if ( has_excerpt( $current_post->ID ) ) echo "  <div class=\"excerpt\">" . apply_filters( 'the_excerpt', $current_post->post_excerpt ) . "</div>\r\n";
