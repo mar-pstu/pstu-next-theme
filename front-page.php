@@ -1,5 +1,6 @@
 <?php
 
+
 if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 
@@ -19,7 +20,7 @@ echo "    </div>\r\n"; // .col-
 echo "  </div>\r\n"; // .row
 echo "</div>\r\n"; // .container
 
-get_template_part( 'section', 'action' );
+if ( get_theme_mod( 'action_section_flag', false ) ) get_template_part( 'section', 'action' );
 
 echo "<div class=\"container\">\r\n";
 echo "  <div class=\"row\">\r\n";

@@ -46,7 +46,20 @@ switch ( get_theme_mod( 'sticky_type', 'sticky' ) ) {
 
   case 'post':
   default:
-    //
+    $sticky_posts_array = get_option( 'sticky_posts', array() );
+    if ( ( $sticky_posts_array ) && ( ! empty( $sticky_posts_array ) ) ) {
+      $sticky_post = get_post( $sticky_posts_array[ 0 ], OBJECT );
+      if ( ( $sticky_post ) && ( ! empty( $sticky_post ) ) && ( ! is_wp_error( $sticky_post ) ) ) {
+        $entry = array(
+          'title'     => apply_filters( 'the_title', $sticky_post->post_title ),
+          'excerpt'   => ( has_excerpt( $sticky_post->ID ) ) ? apply_filters( 'the_excerpt', $sticky_post->post_excerpt ) : false,
+          'link'      => get_permalink( $sticky_post->ID ),
+          'thumbnail' => get_the_post_thumbnail_url( $sticky_post->ID, 'thumbnail' ),
+        );
+      }
+      unset( $sticky_post );
+    }
+    unset( $sticky_posts_array );
     break;
 
 } // switch
@@ -61,10 +74,10 @@ switch ( get_theme_mod( 'sticky_type', 'sticky' ) ) {
   echo "  <div class=\"sticky__entry entry\" style=\"background-color: " . $sticky_bg_color . "\">\r\n";
   echo "    <div class=\"container\">\r\n";
   echo "      <div class=\"row middle-xs\">\r\n";
-  if ( $entry[ 'thumbnail_url' ] ) {
+  if ( $entry[ 'thumbnail' ] ) {
     echo "        <div class=\"col-xs-12 col-sm-4 col-md-3 col-lg-2 text-center\">\r\n";
     echo "          <a href=\"" . $entry[ 'link' ] . "\">\r\n";
-    echo "            <img class=\"wp-post-image lazy\" src=\"#\" data-src=\"" . $entry[ 'thumbnail_url' ] . "\" alt=\"" . esc_attr( $entry[ 'title' ] ) . "\">\r\n";
+    echo "            <img class=\"wp-post-image lazy\" src=\"#\" data-src=\"" . $entry[ 'thumbnail' ] . "\" alt=\"" . esc_attr( $entry[ 'title' ] ) . "\">\r\n";
     echo "          </a>\r\n";
     echo "        </div>\r\n";
   }

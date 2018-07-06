@@ -19,8 +19,10 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		)
 	);
 
+} );
 
 
+	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-controls.php';
 	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-main.php';
 	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-share.php';
 	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-socials.php';
@@ -30,10 +32,11 @@ add_action( 'customize_register', function ( $wp_customize ) {
 	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-people.php';
 	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-current.php';
 	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-projects.php';
+	require_once PSTU_NEXT_THEME_DIR . 'includes/customizer-action.php';
 
 
 
-} );
+
 
 
 ?>

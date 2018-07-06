@@ -10,7 +10,7 @@ define( 'PSTU_NEXT_THEME_MINIFY_SCRIPT_SLUG', ( ( get_theme_mod( 'minify_scripts
 define( 'PSTU_NEXT_THEME_MODE_PSTU', get_theme_mod( 'mode_pstu_flag', true ) );
 
 require_once PSTU_NEXT_THEME_DIR . 'includes/library.php';
-require_once PSTU_NEXT_THEME_DIR . 'includes/customizer.php';
+if ( is_customize_preview() ) require_once PSTU_NEXT_THEME_DIR . 'includes/customizer.php';
 require_once PSTU_NEXT_THEME_DIR . 'includes/enqueue.php';
 
 

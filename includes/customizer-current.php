@@ -1,12 +1,16 @@
 <?php
 
 
-if ( ! defined( 'ABSPATH' ) ) { exit; };
-
-
 /**
 	*	Настройки слайдера "Актуальное"
 	*/
+
+
+if ( ! defined( 'ABSPATH' ) ) { exit; };
+
+
+add_action( 'customize_register', function ( $wp_customize ) {
+
 $wp_customize->add_section(
 	'pstu_next_theme_current',
 	array(
@@ -85,6 +89,8 @@ $wp_customize->add_control(
 		),
 	)
 ); /**/
+	
+} );
 
 
 ?>
