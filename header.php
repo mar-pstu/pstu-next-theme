@@ -63,7 +63,7 @@ if ( is_front_page() ) {
 }
 echo "                <p class=\"bloginfo-description\">" . get_bloginfo( 'description' ) . "</p>\r\n";
 echo "              </div>\r\n"; // .col-
-get_sidebar( 'header' );
+if ( is_active_sidebar( 'side_header' ) ) dynamic_sidebar( 'side_header' );
 echo "            </div>\r\n"; //. row
 echo "          </div>\r\n"; // .container
 echo "        </div>\r\n"; // .header__bloginfo

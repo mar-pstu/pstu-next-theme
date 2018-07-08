@@ -9,9 +9,24 @@ define( 'PSTU_NEXT_THEME_DIR', get_template_directory() . '/' );
 define( 'PSTU_NEXT_THEME_MINIFY_SCRIPT_SLUG', ( ( get_theme_mod( 'minify_scripts_flag', false ) ) ? '.min' : '' ) );
 define( 'PSTU_NEXT_THEME_MODE_PSTU', get_theme_mod( 'mode_pstu_flag', true ) );
 
-require_once PSTU_NEXT_THEME_DIR . 'includes/library.php';
-if ( is_customize_preview() ) require_once PSTU_NEXT_THEME_DIR . 'includes/customizer.php';
-require_once PSTU_NEXT_THEME_DIR . 'includes/enqueue.php';
+
+get_template_part( 'includes/library' );
+get_template_part( 'includes/enqueue', 'styles' );
+get_template_part( 'includes/enqueue', 'scripts' );
+if ( is_customize_preview() ) {
+	get_template_part( 'includes/customizer' );
+	get_template_part( 'includes/customizer', 'enqueue' );
+	get_template_part( 'includes/customizer', 'main' );
+	get_template_part( 'includes/customizer', 'share' );
+	get_template_part( 'includes/customizer', 'socials' );
+	get_template_part( 'includes/customizer', 'sticky' );
+	get_template_part( 'includes/customizer', 'partners' );
+	get_template_part( 'includes/customizer', 'news' );
+	get_template_part( 'includes/customizer', 'people' );
+	get_template_part( 'includes/customizer', 'current' );
+	get_template_part( 'includes/customizer', 'projects' );
+	get_template_part( 'includes/customizer', 'action' );
+}
 
 
 add_action( 'after_setup_theme', function () {
