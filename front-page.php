@@ -12,10 +12,10 @@ if ( get_theme_mod( 'sticky_section_flag', false ) ) get_template_part( 'include
 echo "<div class=\"container\">\r\n";
 echo "  <div class=\"row\">\r\n";
 echo "    <div class=\"col-xs-12 col-sm-12 col-md-7 col-lg-8\">\r\n";
-get_template_part( 'includes/section', 'flat' );
+if ( get_theme_mod( 'flat_section_flag', false ) ) get_template_part( 'includes/section', 'flat' );
 echo "    </div>\r\n"; // .col-
 echo "    <div class=\"col-xs-12 col-sm-12 col-md-5 col-lg-4\">\r\n";
-get_template_part( 'includes/section', 'events' );
+if ( get_theme_mod( 'events_section_flag', false ) ) get_template_part( 'includes/section', 'events' );
 echo "    </div>\r\n"; // .col-
 echo "  </div>\r\n"; // .row
 echo "</div>\r\n"; // .container

@@ -30,6 +30,7 @@ if ( is_customize_preview() ) {
 	get_template_part( 'includes/customizer', 'socials' );
 	get_template_part( 'includes/customizer', 'jumbotron' );
 	get_template_part( 'includes/customizer', 'flat' );
+	get_template_part( 'includes/customizer', 'events' );
 	get_template_part( 'includes/customizer', 'sticky' );
 	get_template_part( 'includes/customizer', 'partners' );
 	get_template_part( 'includes/customizer', 'news' );
