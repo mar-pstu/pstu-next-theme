@@ -2,7 +2,7 @@
 
 
 /**
-	*	Настройки секции "Action" главной страницы
+	*	Настройки секции "первый экран" главной страницы
 	*/
 
 
@@ -10,79 +10,45 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 
 
-add_action( 'customize_register', function ( $wp_customize ) {
+add_jumbotron( 'customize_register', function ( $wp_customize ) {
 
 	$wp_customize->add_section(
-		'pstu_next_theme_action',
+		'pstu_next_theme_jumbotron',
 		array(
-			'title'       	=> __( 'Секция "Action"', 'pstu-next-theme' ),
+			'title'       	=> __( 'Первый экран', 'pstu-next-theme' ),
 			'priority'    	=> 10,
-			'description' 	=> __( 'Ссылки на социальные сети и контакты. Список публикуется в шапке сайта и подвале.' , 'pstu-next-theme' ),
+			'description' 	=> __( 'Секция "Первый экран" главной страницы.' , 'pstu-next-theme' ),
 			'panel'       	=> 'pstu_next_theme_options'
 		)
 	); /**/
 
 	$wp_customize->add_setting(
-		'action_section_flag',
+		'jumbotron_section_flag',
 		array(
 			'default'				=> false,
 			'transport'			=> 'reset'
 		)
 	);
 	$wp_customize->add_control(
-		'action_section_flag',
+		'jumbotron_section_flag',
 		array(
-			'section'				=> 'pstu_next_theme_action',
+			'section'				=> 'pstu_next_theme_jumbotron',
 			'label'					=> __( 'Использовать секцию', 'pstu-next-theme' ),
 			'type'					=> 'checkbox',
 		)
 	); /**/
 
 	$wp_customize->add_setting(
-		'action_section_title',
+		'jumbotron_entry_number',
 		array(
-			'default'				=> '',
-			'transport'			=> 'reset',
-			'sanitize_callback' => 'wp_strip_all_tags',
-		)
-	);
-	$wp_customize->add_control(
-		'action_section_title',
-		array(
-			'section'				=> 'pstu_next_theme_action',
-			'label'					=> __( 'Заголовок', 'pstu-next-theme' ),
-			'type'					=> 'text',
-		)
-	); /**/
-
-	$wp_customize->add_setting(
-		'action_section_subtitle',
-		array(
-			'default'				=> '',
-			'transport'			=> 'reset',
-			'sanitize_callback' => 'force_balance_tags',
-		)
-	);
-	$wp_customize->add_control(
-		'action_section_subtitle',
-		array(
-			'section'				=> 'pstu_next_theme_action',
-			'label'					=> __( 'Подзаголовок', 'pstu-next-theme' ),
-			'type'					=> 'text',
-		)
-	); /**/
-
-	$wp_customize->add_setting(
-		'action_entry_number',
-		array(
-			'default'				=> '2',
+			'default'				=> '5',
 			'transport'			=> 'reset'
 		)
 	);
 	$wp_customize->add_control(
-		'action_entry_number',
+		'jumbotron_entry_number',
 		array(
-			'section'				=> 'pstu_next_theme_action',
+			'section'				=> 'pstu_next_theme_jumbotron',
 			'label'					=> __( 'Количество записей', 'pstu-next-theme' ),
 			'type'					=> 'number',
 			'input_attrs'		=> array(
@@ -93,16 +59,16 @@ add_action( 'customize_register', function ( $wp_customize ) {
 	); /**/
 
 	$wp_customize->add_setting(
-		'action_entry_type',
+		'jumbotron_entry_type',
 		array(
 			'default'				=> 'items',
 			'transport'			=> 'reset'
 		)
 	);
 	$wp_customize->add_control(
-		'action_entry_type',
+		'jumbotron_entry_type',
 		array(
-			'section'				=> 'pstu_next_theme_action',
+			'section'				=> 'pstu_next_theme_jumbotron',
 			'label'					=> __( 'Тип потов', 'pstu-next-theme' ),
 			'type'					=> 'radio',
 			'choices'				=> array(
@@ -114,16 +80,16 @@ add_action( 'customize_register', function ( $wp_customize ) {
 	); /**/
 
 	$wp_customize->add_setting(
-		'action_nav_menu_id',
+		'jumbotron_nav_menu_id',
 		array(
 			'default'				=> '',
 			'transport'			=> 'reset'
 		)
 	);
 	$wp_customize->add_control(
-		'action_nav_menu_id',
+		'jumbotron_nav_menu_id',
 		array(
-			'section'				=> 'pstu_next_theme_action',
+			'section'				=> 'pstu_next_theme_jumbotron',
 			'label'					=> __( 'Выбор категории', 'pstu-next-theme' ),
 			'type'					=> 'select',
 			'choices'				=> get_nav_menus_array(),
@@ -131,16 +97,16 @@ add_action( 'customize_register', function ( $wp_customize ) {
 	); /**/
 
 	$wp_customize->add_setting(
-		'action_category_id',
+		'jumbotron_category_id',
 		array(
 			'default'				=> '',
 			'transport'			=> 'reset'
 		)
 	);
 	$wp_customize->add_control(
-		'action_category_id',
+		'jumbotron_category_id',
 		array(
-			'section'				=> 'pstu_next_theme_action',
+			'section'				=> 'pstu_next_theme_jumbotron',
 			'label'					=> __( 'Выбор категории', 'pstu-next-theme' ),
 			'type'					=> 'select',
 			'choices'				=> get_category_array(),
@@ -148,16 +114,16 @@ add_action( 'customize_register', function ( $wp_customize ) {
 	); /**/
 
 	$wp_customize->add_setting(
-		'action_parent_page_id',
+		'jumbotron_parent_page_id',
 		array(
 			'default'				=> 'page',
 			'transport'			=> 'reset'
 		)
 	);
 	$wp_customize->add_control(
-		'action_parent_page_id',
+		'jumbotron_parent_page_id',
 		array(
-			'section'				=> 'pstu_next_theme_action',
+			'section'				=> 'pstu_next_theme_jumbotron',
 			'label'					=> __( 'Выбор родительской страницы', 'pstu-next-theme' ),
 			'type'					=> 'select',
 			'choices'				=> get_pages_array(),

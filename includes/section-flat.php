@@ -1,3 +1,23 @@
+<?php
+
+/**
+ *
+ */
+
+
+if ( ! defined( 'ABSPATH' ) ) { exit; };
+
+
+if ( ! get_theme_mod( 'flat_section_flag', false ) ) continue;
+
+$flat_entryes = array();
+$flat_entry_number = get_theme_mod( 'flat_entry_number', 5 );
+
+
+?>
+
+
+
 <!---->
 <!-- IMPORTANT start-->
 <section class="flat" id="flat">

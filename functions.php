@@ -14,11 +14,22 @@ get_template_part( 'includes/library' );
 get_template_part( 'includes/enqueue', 'styles' );
 get_template_part( 'includes/enqueue', 'scripts' );
 if ( is_customize_preview() ) {
-	get_template_part( 'includes/customizer' );
+	add_action( 'customize_register', function ( $wp_customize ) {
+		$wp_customize->add_panel(
+			'pstu_next_theme_options',
+			array(
+				'capability'		=> 'edit_theme_options',
+				'title'					=> __( 'Настройки темы "ПГТУ Next"', 'pstu-next-theme' ),
+				'priority'			=> 200
+			)
+		);
+	} );
 	get_template_part( 'includes/customizer', 'enqueue' );
 	get_template_part( 'includes/customizer', 'main' );
 	get_template_part( 'includes/customizer', 'share' );
 	get_template_part( 'includes/customizer', 'socials' );
+	get_template_part( 'includes/customizer', 'jumbotron' );
+	get_template_part( 'includes/customizer', 'flat' );
 	get_template_part( 'includes/customizer', 'sticky' );
 	get_template_part( 'includes/customizer', 'partners' );
 	get_template_part( 'includes/customizer', 'news' );
@@ -99,10 +110,13 @@ add_action( 'after_setup_theme', function () {
 	 *	Регистрация меню
 	 */
 	register_nav_menus( array(
-		'menu_main'					=> __( 'Главное меню', 				'pstu-next-theme' ),
-		'menu_second'				=> __( 'Дополнительное меню',	'pstu-next-theme' ),
-		'menu_fixed'				=> __( 'Фиксированное меню',	'pstu-next-theme' ),
-		'menu_footer'				=> __( 'Меню подвала',				'pstu-next-theme' ),
+		'menu_main'					=> __( 'Главное меню', 						'pstu-next-theme' ),
+		'menu_second'				=> __( 'Дополнительное меню',			'pstu-next-theme' ),
+		'menu_fixed'				=> __( 'Фиксированное меню',			'pstu-next-theme' ),
+		'menu_footer'				=> __( 'Меню подвала',						'pstu-next-theme' ),
+		'menu_jumbotron'		=> __( 'Секция "первый экран"',		'pstu-next-theme' ),
+		'menu_current'			=> __( 'Секция "Актуальное"',			'pstu-next-theme' ),
+		'menu_action'				=> __( 'Кнопки секции "Action"',	'pstu-next-theme' ),
 	) );
 
 
@@ -115,6 +129,12 @@ add_action( 'after_setup_theme', function () {
 		foreach ( get_theme_mod( 'socials', array( '' ) ) as $slug => $value ) {
 			if ( empty( $value ) ) continue;
 			pll_register_string( 'social_' . $slug, $value, 'pstu-next-theme', false );
+	  }
+
+	  // Перевод заголовков секции "Action" главной страницы
+	  foreach ( array( 'action_section_title', 'action_section_title' ) as $slug ) {
+	  	if ( empty( $value = get_theme_mod( $slug, '' ) ) ) continue;
+	  	pll_register_string( $slug, $value, 'pstu-next-theme', false );
 	  }
 
 	} // if function_exists 'pll_register_string'

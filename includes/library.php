@@ -59,12 +59,28 @@ if ( ! function_exists( 'get_category_array' ) ) {
 
 
 /**
+ *	Возвращает список меню
+ */
+if ( ! function_exists( 'get_nav_menus_array' ) ) {
+	function get_nav_menus_array() {
+		$nav_menus = wp_get_nav_menus();
+		$array = array( '' => '' );
+		foreach ( $nav_menus as $nav_menu ) {
+			$array[ $nav_menu->term_id ] = $nav_menu->name;
+		}
+		return $array;
+	}
+}
+
+
+
+/**
  *  Возвращает массив страниц
  */
 if ( ! function_exists( 'get_pages_array' ) ) {
 	function get_pages_array() {
 		$page = get_pages();
-		$array = array( '' => __( 'Не обрано', 'pstu-cct-theme' ) );
+		$array = array( '' => '' );
 		foreach ( $page as $item ) {
 			$array[ $item->ID ] = $item->post_title;
 		}
