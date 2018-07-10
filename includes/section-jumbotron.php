@@ -60,7 +60,7 @@ switch ( get_theme_mod( '', 'item' ) ) {
             'thumbnail' => ( ( has_post_thumbnail( $jumbotron_post->ID ) ) ? get_the_post_thumbnail_url( $jumbotron_post->ID, 'large' ) : $jumbotron_entry_bgi ),
           );
         } // foreach
-      } // if $jumbotron_pages
+      } // if $jumbotron_posts
       unset( $jumbotron_posts );
     }
     unset( $jumbotron_category_id );

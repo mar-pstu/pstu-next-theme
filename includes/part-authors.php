@@ -1,16 +1,24 @@
 <?php
 
 /**
- *	Информация об авторах и редакторах контента
+ *	Информация об авторах, редакторах и источнике контента
  */
+
 
 if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 
 echo "<ul class=\"text-right list-unstyled font-italic\">\r\n";
 printf( "<li>%s: %s</li>", __( 'Опубликовано', 'pstu-next-theme' ), get_the_author_link(), get_the_date( "Y.m.d", get_the_ID() ) );
-printf( "<li>%s: <a href="#">invitery</a> 21.06.2018</li>", __( 'Обновлено', 'pstu-next-theme' ), get_the_modified_date( "Y.m.d", get_the_ID() ) );
-printf( "<li>%s: Иванов И.И. <a href="#">ivanov_i_i@pstu.edu</a></li>", __( 'Ответственный', 'pstu-next-theme' ),  );
+if ( $modified_author_id = get_post_meta( get_the_ID(), '_edit_last', true) ) {
+	if ( $modified_author = get_userdata( $modified_author_id ) )	printf(
+		"<li>%s: <a href=\"%s\">%s</a> %s</li>",
+		__( 'Обновлено', 'pstu-next-theme' ),
+		$modified_author->user_url,
+		apply_filters( 'the_modified_author', $modified_author->display_name ),
+		get_the_modified_date( "Y.m.d", get_the_ID() )
+	);
+}
 echo "</ul>\r\n";
 
 

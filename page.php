@@ -15,14 +15,14 @@ if ( have_posts() ) {
 		
 		the_post();
 		echo "      <article class=\"entry-content\">\r\n";
-		get_template_part( 'part', 'info' );      
+		get_template_part( 'includes/part', 'info' );      
 		echo "        <div class=\"entry-content\">\r\n";
 		the_content();
 		echo "        </div>\r\n"; // .entry-content
 		get_template_part( 'part', 'authors' );
 		echo "      </article>\r\n";
-		get_template_part('part', 'pager' );
-		get_template_part( 'section', 'similar' );
+		get_template_part( 'includes/part', 'pager' );
+		get_template_part( 'includes/section', 'similar' );
 		if ( comments_open( get_the_ID() ) ) comments_template();
 
 	}

@@ -6,9 +6,9 @@ echo "<div class=\"container\">\r\n";
 echo "  <div class=\"row\">\r\n";
 echo "    <div class=\"" . ( ( is_active_sidebar( 'side_right' ) ) ? 'col-xs-12 col-sm-12 col-md-7 col-lg-8' : 'col-xs-12 col-sm-12 col-md-12 col-lg-12' ) . "\">\r\n";
 
-get_template_part( 'part', 'info' );
+get_template_part( 'includes/part', 'info' );
 
-get_template_part( 'loop', 'blog' );
+get_template_part( 'includes/loop', 'blog' );
 
 the_posts_pagination( array(
   'show_all'        => false, // показаны все страницы участвующие в пагинации
@@ -32,7 +32,7 @@ echo "    </div>\r\n"; // .col-
 echo "  </div>\r\n"; // .row
 echo "</div>\r\n"; // .container
 
-get_template_part( 'section', 'current' );
+get_template_part( 'includes/section', 'current' );
 
 get_footer();
 

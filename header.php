@@ -50,17 +50,18 @@ echo "        </div>\r\n"; // .header__top
 echo "        <div class=\"header__bloginfo bloginfo\">\r\n";
 echo "          <div class=\"container\">\r\n";
 echo "            <div class=\"row\">\r\n";
-echo "              <div class=\"col-xs-12 col-sm-3 col-md-2 col-lg-2 middle-xs\">\r\n";
-echo "                <a class=\"custom-logo-link\" title=\"" . esc_attr__( 'На главную', 'pstu-next-theme' ) . "\" href=\"" . ( ( function_exists( 'pll_home_url' ) ) ? pll_home_url() : get_home_url( get_current_blog_id() ) ) . "\">\r\n";
-echo "                  <img class=\"custom-logo\" src=\"images/pstu.png\" title=\"" . esc_attr( get_bloginfo( 'name' ) ) . "\">\r\n";
-echo "                </a>\r\n";
-echo "              </div>\r\n"; // .col-
-echo "              <div class=\"col-xs-12 col-sm-9 col-md col-lg middle-xs\">\r\n";
-if ( is_front_page() ) {
-  echo "                <h1 class=\"bloginfo-name\">" . get_bloginfo( 'name' ) . "</h1>\r\n";
-} else {
-  echo "                <div class=\"bloginfo-name\">" . get_bloginfo( 'name' ) . "</div>\r\n";
-}
+if ( has_custom_logo() ) echo "<div class=\"col-xs-12 col-sm-3 col-md-2 col-lg-2 middle-xs\">" . get_custom_logo() . "</div>\r\n";
+echo "              <div class=\"col-xs-12 col-sm col-md col-lg middle-xs\">\r\n";
+
+echo force_balance_tags( sprintf(
+  "%s<a href=\"%s\" title=\"%s - %s\">%s</a>",
+  ( ( is_front_page() ) ? "<h1 class=\"bloginfo-name\">" : "<div class=\"bloginfo-name\">" ),
+  get_home_url(),
+  __( 'На главную', 'pstu-next-theme' ),
+  get_bloginfo( 'name' ),
+  get_bloginfo( 'name' )
+) );
+
 echo "                <p class=\"bloginfo-description\">" . get_bloginfo( 'description' ) . "</p>\r\n";
 echo "              </div>\r\n"; // .col-
 if ( is_active_sidebar( 'side_header' ) ) dynamic_sidebar( 'side_header' );
@@ -72,15 +73,15 @@ echo "        <div class=\"header__nav nav\">\r\n";
 echo "          <div class=\"container\">\r\n";
 echo "            <div class=\"row\">\r\n";
 echo "              <div class=\"col-xs-10 col-sm-10 col-md-7 col-lg-2\">\r\n";
-echo "                <form class=\"searchform\" id=\"header-search\" action=\"\" method=\"post\">\r\n";
-echo "                  <input class=\"form-control\" type=\"search\" name=\"s\" placeholder=\"\">\r\n";
+echo "                <form class=\"searchform\" id=\"header-search\" action=\"" . home_url( '/' ) . "\" method=\"get\" role=\"search\">\r\n";
+echo "                  <input class=\"form-control\" type=\"search\" id=\"s\" name=\"s\" placeholder=\"\" value=\"" . get_search_query() . "\">\r\n";
 echo "                  <input class=\"submit\" type=\"submit\" value=\"" . esc_attr__( 'Поиск', 'pstu-next-theme' ) . "\">\r\n";
 echo "                </form>\r\n";
 echo "              </div>\r\n";
 echo "              <div class=\"col-xs-2 col-sm-2 col-md-5 col-lg-2 text-right\">\r\n";
-echo "                <a class=\"help-button\" id=\"help-button\" href=\"#help-modal\" role=\"button\" data-fancybox=\"\"><i class=\"icon icon-help\"></i></a>\r\n";
-if ( $pstu_help_content = get_theme_mod( 'pstu_help_content', false ) ) {
-  echo "                <a class=\"rss-button\" id=\"rss-button\" href=\"#\" role=\"button\"><i class=\"icon icon-rss\"></i></a>\r\n";
+echo "                <a class=\"rss-button\" id=\"rss-button\" href=\"#\" role=\"button\"><i class=\"icon icon-rss\"></i></a>\r\n";
+if ( ! empty( trim( $pstu_help_content = get_theme_mod( 'pstu_help_content', '' ) ) ) ) {
+  echo "                <a class=\"help-button\" id=\"help-button\" href=\"#help-modal\" role=\"button\" data-fancybox=\"\"><i class=\"icon icon-help\"></i></a>\r\n";
   echo "                <div style=\"display: none;\">\r\n";
   echo "                  <div class=\"help-modal\" id=\"help-modal\">\r\n";
   do_shortcode( $pstu_help_content );

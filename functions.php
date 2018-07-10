@@ -8,6 +8,7 @@ define( 'PSTU_NEXT_THEME_URL', get_template_directory_uri() . '/' );
 define( 'PSTU_NEXT_THEME_DIR', get_template_directory() . '/' );
 define( 'PSTU_NEXT_THEME_MINIFY_SCRIPT_SLUG', ( ( get_theme_mod( 'minify_scripts_flag', false ) ) ? '.min' : '' ) );
 define( 'PSTU_NEXT_THEME_MODE_PSTU', get_theme_mod( 'mode_pstu_flag', true ) );
+define( 'PSTU_NEXT_EVENTS_DATE_REG', "/^([0-9]{2}.[0-9]{2}.[0-9]{4})/" );
 
 
 get_template_part( 'includes/library' );

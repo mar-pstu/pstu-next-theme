@@ -20,7 +20,7 @@ if ( ! function_exists( 'pstu_get_month' ) ) {
 			'11' => __( 'Ноябрь', 'pstu-next-theme' ),
 			'12' => __( 'Декабрь', 'pstu-next-theme' ),
 		);
-		$result = $months[ $m ];
+		$result = ( array_key_exists( $m, $months ) ) ? $months[ $m ] : 'xxxxxx';
 		return $result;
 	}
 }
@@ -28,6 +28,43 @@ if ( ! function_exists( 'pstu_get_month' ) ) {
 if ( ! function_exists( 'pstu_the_month' ) ) {
 	function pstu_the_month( $m ) {
 		echo pstu_get_month( $m );
+	}
+}
+
+
+/**
+ *	Извлекает дату из строки
+ */
+if ( ! function_exists( 'pstu_next_get_event_date' ) ) {
+	function pstu_next_get_event_date( $title ) {
+		$result = array(
+			'day'     => 'XX',
+      'month'   => 'XXXXXX',
+      'year'    => 'XXXX',
+		);
+		preg_match( PSTU_NEXT_EVENTS_DATE_REG, $title, $matches );
+    if ( ! empty( $matches ) ) $result = array(
+      'day'     => date( "d", $matches[0] ),
+      'month'   => pstu_get_month( date( "m", $matches[0] ) ),
+      'year'    => date( "Y", $matches[0] ),
+    );
+    return $result;
+	}
+}
+
+
+/**
+ *	Возвращает блок с датой
+ */
+if ( ! function_exists( 'pstu_next_get_date_box' ) ) {
+	function pstu_next_get_date_box( $date ) {
+		$result = array();
+		$result[] = "<div class=\"date\">";
+    $result[] = "  <div class=\"date__day day\">" . $date[ 'day' ] . "</div>";
+    $result[] = "  <div class=\"date__month month\">" . pstu_get_month( date( "m", $date[ 'month' ] ) ) . "</div>";
+    $result[] = "  <div class=\"date__year year\">" . $date[ 'year' ] . "</div>";
+    $result[] = "</div>";
+    return implode( "\r\n" , $result );
 	}
 }
 
