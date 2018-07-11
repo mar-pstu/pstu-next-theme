@@ -4,7 +4,7 @@ get_header();
 
 echo "<div class=\"container\">\r\n";
 echo "  <div class=\"row\">\r\n";
-echo "    <div class=\"" . ( ( is_active_sidebar( 'side_right' ) ) ? 'col-xs-12 col-sm-12 col-md-7 col-lg-8' : 'col-xs-12 col-sm-12 col-md-12 col-lg-12' ) . "\">\r\n";
+echo "    <div class=\"col-xs-12 col-sm-12 col-md col-lg\">\r\n";
 
 get_template_part( 'includes/part', 'info' );
 
@@ -24,15 +24,16 @@ the_posts_pagination( array(
 
 
 echo "    </div>\r\n";
-echo "    <div class=\"col-xs-12 col-sm-12 col-md-5 col-lg-4\">\r\n";
 
-get_sidebar( 'right' );
-
-echo "    </div>\r\n"; // .col-
+if ( is_active_sidebar( 'side_right' ) ) {
+	echo "    <div class=\"col-xs-12 col-sm-12 col-md-5 col-lg-4\">\r\n";
+	get_sidebar( 'right' );
+	echo "    </div>\r\n"; // .col-
+}
 echo "  </div>\r\n"; // .row
 echo "</div>\r\n"; // .container
 
-get_template_part( 'includes/section', 'current' );
+if ( get_theme_mod( 'current_section_flag', false ) ) get_template_part( 'includes/section', 'current' );
 
 get_footer();
 

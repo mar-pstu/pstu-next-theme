@@ -22,6 +22,22 @@ add_action( 'customize_register', function ( $wp_customize ) {
 	); /**/
 
 	$wp_customize->add_setting(
+		'socials_flag',
+		array(
+			'default'				=> false,
+			'transport'			=> 'reset'
+		)
+	);
+	$wp_customize->add_control(
+		'socials_flag',
+		array(
+			'section'				=> 'pstu_next_theme_main',
+			'label'					=> __( 'Использовать блок', 'pstu-next-theme' ),
+			'type'					=> 'checkbox',
+		)
+	); /**/
+
+	$wp_customize->add_setting(
 		'socials[envelope]',
 		array(
 			'default'				=> '',

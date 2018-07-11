@@ -15,11 +15,13 @@ if ( have_posts() ) {
 		
 		the_post();
 		echo "      <article class=\"entry-content\">\r\n";
+		do_action( 'pstu_theme_article_start' );
 		get_template_part( 'includes/part', 'info' );      
 		echo "        <div class=\"entry-content\">\r\n";
 		the_content();
 		echo "        </div>\r\n"; // .entry-content
 		get_template_part( 'part', 'authors' );
+		do_action( 'pstu_theme_article_end' );
 		echo "      </article>\r\n";
 		get_template_part( 'includes/part', 'pager' );
 		get_template_part( 'includes/section', 'similar' );

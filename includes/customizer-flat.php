@@ -10,14 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 
 
-add_flat( 'customize_register', function ( $wp_customize ) {
+add_action( 'customize_register', function ( $wp_customize ) {
 
 	$wp_customize->add_section(
 		'pstu_next_theme_flat',
 		array(
-			'title'       	=> __( 'Первый экран', 'pstu-next-theme' ),
+			'title'       	=> __( 'Секция "Флат"', 'pstu-next-theme' ),
 			'priority'    	=> 10,
-			'description' 	=> __( 'Секция "Первый экран" главной страницы.' , 'pstu-next-theme' ),
+			'description' 	=> __( 'Секция главной страницы с флат иконками.' , 'pstu-next-theme' ),
 			'panel'       	=> 'pstu_next_theme_options'
 		)
 	); /**/

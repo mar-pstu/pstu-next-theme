@@ -135,7 +135,7 @@ add_action( 'after_setup_theme', function () {
 
 	  // Перевод заголовков секции "Action" главной страницы
 	  foreach ( array( 'action_section_title', 'action_section_title' ) as $slug ) {
-	  	if ( empty( $value = get_theme_mod( $slug, '' ) ) ) continue;
+	  	if ( empty( $value = wp_strip_all_tags( get_theme_mod( $slug, '' ) ) ) ) continue;
 	  	pll_register_string( $slug, $value, 'pstu-next-theme', false );
 	  }
 

@@ -100,6 +100,38 @@ add_action( 'customize_register', function ( $wp_customize ) {
 			'type'					=> 'checkbox',
 		)
 	); /**/
+
+	$wp_customize->add_setting(
+		'header_search_flag',
+		array(
+			'default'				=> false,
+			'transport'			=> 'reset'
+		)
+	);
+	$wp_customize->add_control(
+		'header_search_flag',
+		array(
+			'section'				=> 'pstu_next_theme_main',
+			'label'					=> __( 'Форма поиска в шапке', 'pstu-next-theme' ),
+			'type'					=> 'checkbox',
+		)
+	); /**/
+
+	$wp_customize->add_setting(
+		'header_help_content',
+		array(
+			'default'				=> false,
+			'transport'			=> 'reset'
+		)
+	);
+	$wp_customize->add_control(
+		'header_help_content',
+		array(
+			'section'				=> 'pstu_next_theme_main',
+			'label'					=> __( 'Содержимое справочного модального окна в шапке сайта', 'pstu-next-theme' ),
+			'type'					=> 'textarea',
+		)
+	); /**/
 	
 } );
 

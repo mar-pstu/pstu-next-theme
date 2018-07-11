@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 
 
-add_jumbotron( 'customize_register', function ( $wp_customize ) {
+add_action( 'customize_register', function ( $wp_customize ) {
 
 	$wp_customize->add_section(
 		'pstu_next_theme_jumbotron',
