@@ -20,7 +20,7 @@ if ( $news_category_id = get_translate_id( get_theme_mod( 'news_category_id', fa
       'orderby'           => 'date',
       'order'             => 'DESC',
       'post_type'         => 'post',
-      'suppress_filters'  => fasle,
+      'suppress_filters'  => false,
     ) );
 
     if ( ( $news_posts ) && ( ! empty( $news_posts ) ) && ( ! is_wp_error( $news_posts ) ) ) {

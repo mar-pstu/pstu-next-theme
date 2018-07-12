@@ -21,8 +21,8 @@ add_action( 'wp_head', function () {
  *	Подключение стилей к редактору
  */
 if ( is_admin() ) add_action( 'current_screen', function () {
-	add_editor_style( PSTU_NEXT_THEME_URL . 'styles/critical' . PSTU_NEXT_THEME_MINIFY_SCRIPT_SLUG . '.css' );
-	add_editor_style( PSTU_NEXT_THEME_URL . 'styles/main' . PSTU_NEXT_THEME_MINIFY_SCRIPT_SLUG . '.css' );
+	add_editor_style( PSTU_NEXT_THEME_URL . 'styles/critical' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' );
+	add_editor_style( PSTU_NEXT_THEME_URL . 'styles/main' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' );
 } );
 
 
@@ -39,7 +39,7 @@ add_action( 'wp_enqueue_scripts', function () {
 		'pstu-profcom-theme-main',
 		PSTU_NEXT_THEME_URL . 'styles/main.min.css',
 		array(),
-		filemtime( PSTU_NEXT_THEME_DIR . 'styles/main' . PSTU_NEXT_THEME_MINIFY_SCRIPT_SLUG . '.css' )
+		filemtime( PSTU_NEXT_THEME_DIR . 'styles/main' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
 	);
 
 	// стили блока "поделиться"
@@ -47,7 +47,7 @@ add_action( 'wp_enqueue_scripts', function () {
 		'rrssb',
 		PSTU_NEXT_THEME_URL . 'styles/rrssb.min.css',
 		array(),
-		filemtime( PSTU_NEXT_THEME_DIR . 'styles/rrssb' . PSTU_NEXT_THEME_MINIFY_SCRIPT_SLUG . '.css' )
+		filemtime( PSTU_NEXT_THEME_DIR . 'styles/rrssb' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
 	);
 
 
@@ -55,16 +55,16 @@ add_action( 'wp_enqueue_scripts', function () {
 		'fancybox',
 		PSTU_NEXT_THEME_URL . 'styles/fancybox.min.css',
 		array(),
-		filemtime( PSTU_NEXT_THEME_DIR . 'styles/fancybox' . PSTU_NEXT_THEME_MINIFY_SCRIPT_SLUG . '.css' )
+		filemtime( PSTU_NEXT_THEME_DIR . 'styles/fancybox' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
 	);
 	
 	
-		// стили слайдера slick
-	wp_register_style(
+	// стили слайдера slick
+	wp_enqueue_style(
 		'slick',
-		PSTU_NEXT_THEME_URL . 'styles/slick' . PSTU_NEXT_THEME_MINIFY_SCRIPT_SLUG . '.css',
+		PSTU_NEXT_THEME_URL . 'styles/slick' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css',
 		array(),
-		filemtime( PSTU_NEXT_THEME_DIR . 'styles/slick' . PSTU_NEXT_THEME_MINIFY_SCRIPT_SLUG . '.css' )
+		filemtime( PSTU_NEXT_THEME_DIR . 'styles/slick' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
 	);
 
 } );

@@ -43,11 +43,14 @@ if ( ! function_exists( 'pstu_next_get_event_date' ) ) {
       'year'    => 'XXXX',
 		);
 		preg_match( PSTU_NEXT_EVENTS_DATE_REG, $title, $matches );
-    if ( ! empty( $matches ) ) $result = array(
-      'day'     => date( "d", $matches[0] ),
-      'month'   => pstu_get_month( date( "m", $matches[0] ) ),
-      'year'    => date( "Y", $matches[0] ),
-    );
+    if ( ! empty( $matches ) ) {
+    	$events_entry_time = strtotime( $matches[0] );
+    	$result = array(
+	      'day'     => date( "d", $events_entry_time ),
+	      'month'   => pstu_get_month( date( "m", $events_entry_time ) ),
+	      'year'    => date( "Y", $events_entry_time ),
+	    );
+    }
     return $result;
 	}
 }

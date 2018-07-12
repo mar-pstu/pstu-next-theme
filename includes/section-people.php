@@ -20,7 +20,7 @@ if ( $people_category_id = get_translate_id( get_theme_mod( 'people_category_id'
       'orderby'           => 'date',
       'order'             => 'DESC',
       'post_type'         => 'post',
-      'suppress_filters'  => fasle,
+      'suppress_filters'  => false,
     ) );
 
     if ( ( $people ) && ( ! empty( $people ) ) && ( ! is_wp_error( $people ) ) ) {
@@ -43,15 +43,14 @@ if ( $people_category_id = get_translate_id( get_theme_mod( 'people_category_id'
       foreach ( $people as $person ) {
         
         setup_postdata( $person );
-        $person_thumbnail_url = get_the_post_thumbnail_url( $news_post->ID, 'thumbnail' );
         $person_title_attribute = the_title_attribute( array(
           'before'  => '',
           'adter'   => '',
           'echo'    => false,
           'post'    => $person->ID,
         ) );
-        echo "<a class=\"" . join( ' ', get_post_class( 'slider-for__entry entry center-block', $news_post->ID ) ) . "\" href=\"" . get_the_permalink( $person->ID ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), $person_title_attribute ) . "\">\r\n";
-        echo "  <div class=\"thumbnail\"><img class=\"wp-post-image\" src=\"\" data-lazy=\"" . ( ( $person_thumbnail_url ) ? $person_thumbnail_url : PSTU_NEXT_THEME_URL . 'images/user-md.jpg' ) . "\" alt=\"" . $person_title_attribute . "\"></div>\r\n";
+        echo "<a class=\"" . join( ' ', get_post_class( 'slider-for__entry entry center-block', $person->ID ) ) . "\" href=\"" . get_the_permalink( $person->ID ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), $person_title_attribute ) . "\">\r\n";
+        echo "  <div class=\"thumbnail\"><img class=\"wp-post-image\" src=\"#\" data-lazy=\"" . ( ( has_post_thumbnail( $person->ID ) ) ? get_the_post_thumbnail_url( $person->ID, 'thumbnail' ) : PSTU_NEXT_THEME_URL . 'images/user-md.jpg' ) . "\" alt=\"" . $person_title_attribute . "\"></div>\r\n";
         echo "  <div class=\"title\"><h3>" . apply_filters( 'the_title', $person->post_title ) . "</h3></div>\r\n";
         if ( has_excerpt( $person->ID ) ) echo "  <div class=\"excerpt\">" . apply_filters( 'the_excerpt', $person->post_excerpt ) . "</div>\r\n";
         echo "</a>\r\n";
@@ -68,7 +67,6 @@ if ( $people_category_id = get_translate_id( get_theme_mod( 'people_category_id'
       echo "</section>\r\n";
 
       unset( $person );
-      unset( $person_thumbnail_url );
       unset( $person_title_attribute );
 
     } // if $people

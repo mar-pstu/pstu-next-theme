@@ -1711,6 +1711,14 @@ table.table-warning th, table.table-warning td {
     background-color: #469411; }
     .btn-success:hover {
       background-color: #4ca213; }
+  .btn-warning {
+    background-color: #d87200; }
+    .btn-warning:hover {
+      background-color: #e77a00; }
+  .btn-danger {
+    background-color: #ff0000; }
+    .btn-danger:hover {
+      background-color: #ff0f0f; }
   .btn-link {
     color: #890000 !important;
     text-decoration: none;

@@ -33,7 +33,7 @@ if ( $projects_category_id = get_translate_id( get_theme_mod( 'projects_category
       echo "        <div class=\"section__body body\">\r\n";
       echo "          <button class=\"slider-arrow slider-prev\" id=\"projects-slider-arrow-prev\" title=\"" . esc_attr__( 'Листать назад', 'patu-next-theme' ) . "\">&larr;</button>\r\n";
       echo "          <button class=\"slider-arrow slider-next\" id=\"projects-slider-arrow-next\" title=\"" . esc_attr__( 'Листать вперёд', 'patu-next-theme' ) . "\">&rarr;</button>\r\n";
-      echo "          <div class=\"slider-for\" id=\"projects-slider-for\">\r\n";
+      echo "          <div class=\"slider\" id=\"projects-slider\">\r\n";
 
       foreach ( $projects as $project ) {
         
@@ -55,7 +55,7 @@ if ( $projects_category_id = get_translate_id( get_theme_mod( 'projects_category
         }
         echo "    <div class=\"col-xs-12 col-sm col-md col-lg\">\r\n";
         echo "      <div class=\"title\"><h3>" . apply_filters( 'the_title', $project->post_title ) . "</h3></div>\r\n";
-        if ( has_excerpt( $project->ID ) ) echo "      <div class=\"excerpt\">" . $ . "</div>\r\n";
+        if ( has_excerpt( $project->ID ) ) echo "      <div class=\"excerpt\">" . apply_filters( 'the_excerpt', $project->post_excerpt ) . "</div>\r\n";
         echo "      <p><a class=\"btn btn-success\" href=\"\">" . __( 'Подробней', 'pstu-next-theme' ) . "</a></p>\r\n";
         echo "    </div>\r\n"; // .col-
         echo "  </div>\r\n"; // .row
@@ -65,7 +65,7 @@ if ( $projects_category_id = get_translate_id( get_theme_mod( 'projects_category
 
       wp_reset_postdata();
 
-      echo "          </div>\r\n"; // #projects-slider-for
+      echo "          </div>\r\n"; // #projects-slider
       echo "        </div>\r\n"; // .section__body
       echo "      </div>\r\n"; // .col-
       echo "    </div>\r\n"; // .row
@@ -78,7 +78,7 @@ if ( $projects_category_id = get_translate_id( get_theme_mod( 'projects_category
 
     } // if $projects
 
-    unset( $projects )
+    unset( $projects );
 
   } // if $projects_category
 
