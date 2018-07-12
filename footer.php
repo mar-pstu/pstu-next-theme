@@ -6,13 +6,13 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 echo "      </main>\r\n";
 
-if ( has_nav_menu( 'menu_fixed' ) ) {
+if ( has_nav_menu( 'menu_footer' ) ) {
 	echo "      <div class=\"links\">\r\n";
 	echo "        <div class=\"container\">\r\n";
 	echo "          <div class=\"row\">\r\n";
 	echo "            <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\r\n";
 	wp_nav_menu( array( 
-	  'theme_location'    => 'menu_fixed',
+	  'theme_location'    => 'menu_footer',
 	  'fallback_cb'       => '__return_empty_string',
 	  'container'         => false,
 	  'menu_id'           => 'basement-nav-list',

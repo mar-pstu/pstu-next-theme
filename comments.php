@@ -84,7 +84,7 @@ $comments_args = array(
 		'callback'          => 'pstu_next_comment',
 		'end-callback'      => 'pstu_next_comment_close',
 		'type'              => 'all',
-		'reply_text'        => __( 'Ответить', 'pstu-next-theme' ),
+		'reply_text'        => '<i class="glyphicon glyphicon-share-alt"></i> ' . __( 'Ответить', 'pstu-next-theme' ),
 		'page'              => '',
 		'per_page'          => '',
 		'avatar_size'       => 32,

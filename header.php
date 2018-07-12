@@ -88,7 +88,7 @@ if ( get_theme_mod( 'header_search_flag', false ) ) {
   echo "              </div>\r\n";
 }
 echo "              <div class=\"col-xs-2 col-sm-2 col-md-5 col-lg-2 text-right\">\r\n";
-echo "                <a class=\"rss-button\" id=\"rss-button\" href=\"#\" role=\"button\"><i class=\"icon icon-rss\"></i></a>\r\n";
+echo "                <a class=\"rss-button\" id=\"rss-button\" href=\"" . get_home_url( ) . "/feed/\" role=\"button\"><i class=\"icon icon-rss\"></i></a>\r\n";
 if ( ! empty( trim( $pstu_header_help_modal_content = get_theme_mod( 'pstu_header_help_modal_content', '' ) ) ) ) {
 
   echo "                <a class=\"help-button\" id=\"help-button\" href=\"#help-modal\" role=\"button\" data-fancybox=\"\"><i class=\"icon icon-help\"></i></a>\r\n";

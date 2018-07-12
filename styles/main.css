@@ -76,14 +76,14 @@ b,
 strong {
   font-weight: bold; }
 
-h1 {
+h1, .header .bloginfo-name {
   font-size: 2.00em;
   line-height: 1.15em;
   margin: 0.25em 0;
   text-transform: uppercase;
   font-weight: normal; }
   @media only screen and (min-width: 48em) {
-    h1 {
+    h1, .header .bloginfo-name {
       font-size: 2.35em;
       line-height: 1.25em;
       margin: 0.67em 0; } }
@@ -116,9 +116,9 @@ h4 {
   font-weight: bold;
   font-variant: small-caps; }
 
-h1 a, h2 a, h3 a, h4 a {
+h1 a, .header .bloginfo-name a, h2 a, h3 a, h4 a {
   color: inherit; }
-  h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
+  h1 a:hover, .header .bloginfo-name a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
     color: inherit; }
 
 small {
@@ -2107,6 +2107,8 @@ form label {
   .pager .next {
     float: right;
     margin-left: 5px; }
+    .pager .next .title {
+      text-align: right; }
     .pager .next .arrow {
       float: right;
       border: 2px solid #0c426f;
@@ -2121,6 +2123,8 @@ form label {
   .pager .previous {
     float: left;
     padding-right: 5px; }
+    .pager .previous .title {
+      text-align: left; }
     .pager .previous .arrow {
       float: left;
       border: 2px solid #469411;
@@ -2405,6 +2409,19 @@ form label {
 .header .bloginfo {
   background-color: #eee; }
 
+.header .bloginfo-name a {
+  text-decoration: none; }
+  .header .bloginfo-name a:link {
+    color: #262626; }
+  .header .bloginfo-name a:visited {
+    color: #262626; }
+  .header .bloginfo-name a:active {
+    color: #262626; }
+  .header .bloginfo-name a:hover {
+    color: #262626; }
+  .header .bloginfo-name a:hover {
+    text-decoration: none; }
+
 .header .custom-logo-link {
   text-decoration: none;
   display: block; }
@@ -2605,7 +2622,6 @@ form label {
     -webkit-background-size: cover;
             background-size: cover;
     padding: 25px 0px;
-    background-color: #0c426f;
     text-shadow: 1px 1px 1px #262626; }
   .sticky__entry .wp-post-image {
     display: block;
