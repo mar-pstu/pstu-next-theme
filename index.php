@@ -6,9 +6,12 @@ echo "<div class=\"container\">\r\n";
 echo "  <div class=\"row\">\r\n";
 echo "    <div class=\"col-xs-12 col-sm-12 col-md col-lg\">\r\n";
 
-get_template_part( 'includes/part', 'info' );
-
-get_template_part( 'includes/loop', 'blog' );
+if ( is_search() ) {
+  get_template_part( 'includes/loop', 'search' );
+} else {
+  get_template_part( 'includes/part', 'info' );
+  get_template_part( 'includes/loop', 'blog' );
+}
 
 the_posts_pagination( array(
   'show_all'        => false, // показаны все страницы участвующие в пагинации

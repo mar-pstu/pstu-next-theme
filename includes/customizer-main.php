@@ -120,7 +120,7 @@ add_action( 'customize_register', function ( $wp_customize ) {
 	$wp_customize->add_setting(
 		'header_help_content',
 		array(
-			'default'				=> false,
+			'default'				=> '',
 			'transport'			=> 'reset'
 		)
 	);

@@ -4,21 +4,21 @@
 
 
 if ( ! function_exists( 'pstu_get_month' ) ) {
-	function pstu_get_month ( $m ) {
+	function pstu_get_month ( $m = 'xx' ) {
 		$result = '';
 		$months = array(
-			'01' => __( 'Январь', 'pstu-next-theme' ),
-			'02' => __( 'Февраль', 'pstu-next-theme' ),
-			'03' => __( 'Март', 'pstu-next-theme' ),
-			'04' => __( 'Апрель', 'pstu-next-theme' ),
-			'05' => __( 'Май', 'pstu-next-theme' ),
-			'06' => __( 'Июнь', 'pstu-next-theme' ),
-			'07' => __( 'Июль', 'pstu-next-theme' ),
-			'08' => __( 'Август', 'pstu-next-theme' ),
+			'01' => __( 'Январь', 	'pstu-next-theme' ),
+			'02' => __( 'Февраль', 	'pstu-next-theme' ),
+			'03' => __( 'Март', 		'pstu-next-theme' ),
+			'04' => __( 'Апрель', 	'pstu-next-theme' ),
+			'05' => __( 'Май', 			'pstu-next-theme' ),
+			'06' => __( 'Июнь', 		'pstu-next-theme' ),
+			'07' => __( 'Июль', 		'pstu-next-theme' ),
+			'08' => __( 'Август', 	'pstu-next-theme' ),
 			'09' => __( 'Сентябрь', 'pstu-next-theme' ),
-			'10' => __( 'Октябрь', 'pstu-next-theme' ),
-			'11' => __( 'Ноябрь', 'pstu-next-theme' ),
-			'12' => __( 'Декабрь', 'pstu-next-theme' ),
+			'10' => __( 'Октябрь', 	'pstu-next-theme' ),
+			'11' => __( 'Ноябрь', 	'pstu-next-theme' ),
+			'12' => __( 'Декабрь', 	'pstu-next-theme' ),
 		);
 		$result = ( array_key_exists( $m, $months ) ) ? $months[ $m ] : 'xxxxxx';
 		return $result;
@@ -30,7 +30,6 @@ if ( ! function_exists( 'pstu_the_month' ) ) {
 		echo pstu_get_month( $m );
 	}
 }
-
 
 /**
  *	Извлекает дату из строки
@@ -45,6 +44,9 @@ if ( ! function_exists( 'pstu_next_get_event_date' ) ) {
 		preg_match( PSTU_NEXT_EVENTS_DATE_REG, $title, $matches );
     if ( ! empty( $matches ) ) {
     	$events_entry_time = strtotime( $matches[0] );
+    	echo "<pre>";
+    	var_dump( pstu_get_month( date( "m", $events_entry_time ) ) );
+    	echo "</pre>";
     	$result = array(
 	      'day'     => date( "d", $events_entry_time ),
 	      'month'   => pstu_get_month( date( "m", $events_entry_time ) ),
@@ -64,7 +66,7 @@ if ( ! function_exists( 'pstu_next_get_date_box' ) ) {
 		$result = array();
 		$result[] = "<div class=\"date\">";
     $result[] = "  <div class=\"date__day day\">" . $date[ 'day' ] . "</div>";
-    $result[] = "  <div class=\"date__month month\">" . pstu_get_month( date( "m", $date[ 'month' ] ) ) . "</div>";
+    $result[] = "  <div class=\"date__month month\">" . $date[ 'month' ] . "</div>";
     $result[] = "  <div class=\"date__year year\">" . $date[ 'year' ] . "</div>";
     $result[] = "</div>";
     return implode( "\r\n" , $result );

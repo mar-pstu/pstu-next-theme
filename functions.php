@@ -40,6 +40,7 @@ if ( is_customize_preview() ) {
 	get_template_part( 'includes/customizer', 'current' );
 	get_template_part( 'includes/customizer', 'projects' );
 	get_template_part( 'includes/customizer', 'action' );
+	get_template_part( 'includes/customizer', '404' );
 }
 
 
@@ -150,6 +151,12 @@ add_action( 'after_setup_theme', function () {
 	  	if ( empty( $value = wp_strip_all_tags( get_theme_mod( $slug, '' ) ) ) ) continue;
 	  	pll_register_string( $slug, $value, 'pstu-next-theme', false );
 	  }
+
+	  // перевод строк страницы ошибки 404
+		foreach ( array( 'error404_title', 'error404_subtitle' ) as $slug ) {
+	  	if ( empty( $value = wp_strip_all_tags( get_theme_mod( $slug, '' ) ) ) ) continue;
+	  	pll_register_string( $slug, $value, 'pstu-next-theme', false );
+	  }	  
 
 	} // if function_exists 'pll_register_string'
 
