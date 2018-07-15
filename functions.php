@@ -40,6 +40,7 @@ if ( is_customize_preview() ) {
 	get_template_part( 'includes/customizer', 'current' );
 	get_template_part( 'includes/customizer', 'projects' );
 	get_template_part( 'includes/customizer', 'action' );
+	get_template_part( 'includes/customizer', 'similar' );
 	get_template_part( 'includes/customizer', '404' );
 }
 
@@ -129,9 +130,9 @@ add_action( 'after_setup_theme', function () {
 		'menu_second'				=> __( 'Дополнительное меню',			'pstu-next-theme' ),
 		'menu_fixed'				=> __( 'Фиксированное меню',			'pstu-next-theme' ),
 		'menu_footer'				=> __( 'Меню подвала',						'pstu-next-theme' ),
-		'menu_jumbotron'		=> __( 'Секция "первый экран"',		'pstu-next-theme' ),
-		'menu_current'			=> __( 'Секция "Актуальное"',			'pstu-next-theme' ),
-		'menu_action'				=> __( 'Кнопки секции "Action"',	'pstu-next-theme' ),
+		// 'menu_jumbotron'		=> __( 'Секция "первый экран"',		'pstu-next-theme' ),
+		// 'menu_current'			=> __( 'Секция "Актуальное"',			'pstu-next-theme' ),
+		// 'menu_action'				=> __( 'Кнопки секции "Action"',	'pstu-next-theme' ),
 	) );
 
 
@@ -146,17 +147,17 @@ add_action( 'after_setup_theme', function () {
 			pll_register_string( 'social_' . $slug, $value, 'pstu-next-theme', false );
 	  }
 
-	  // Перевод заголовков секции "Action" главной страницы
-	  foreach ( array( 'action_section_title', 'action_section_title' ) as $slug ) {
+	  // 
+	  foreach ( array(
+	  	'action_section_title',
+	  	'action_section_title',
+	  	'error404_title',
+	  	'error404_subtitle',
+	  	'similar_heading_title',
+	  ) as $slug ) {
 	  	if ( empty( $value = wp_strip_all_tags( get_theme_mod( $slug, '' ) ) ) ) continue;
 	  	pll_register_string( $slug, $value, 'pstu-next-theme', false );
-	  }
-
-	  // перевод строк страницы ошибки 404
-		foreach ( array( 'error404_title', 'error404_subtitle' ) as $slug ) {
-	  	if ( empty( $value = wp_strip_all_tags( get_theme_mod( $slug, '' ) ) ) ) continue;
-	  	pll_register_string( $slug, $value, 'pstu-next-theme', false );
-	  }	  
+	  }  
 
 	} // if function_exists 'pll_register_string'
 

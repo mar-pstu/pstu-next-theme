@@ -28,7 +28,7 @@ switch ( get_theme_mod( 'action_entry_type', 'item' ) ) {
 
   case 'page':
     case 'page':
-      if ( $action_parent_page_id = get_translate_id( get_theme_mod( 'action_parent_page_id', false ) ), 'page' ) {
+      if ( $action_parent_page_id = get_translate_id( get_theme_mod( 'action_parent_page_id', false ), 'page' ) ) {
         $action_pages = get_pages( array(
           'number'        => $action_entry_number,
           'child_of'      => $action_parent_page_id,

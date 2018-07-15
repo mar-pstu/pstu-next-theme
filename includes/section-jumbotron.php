@@ -12,12 +12,12 @@ if ( ! get_theme_mod( 'jumbotron_section_flag', false ) ) continue;
 
 $jumbotron_entryes = array();
 $jumbotron_entry_number = get_theme_mod( 'jumbotron_entry_number', 5 );
-$jumbotron_entry_bgi = ( $jumbotron_entry_bgi = get_theme_mod( 'jumbotron_entry_bgi', false ) ) ? $jumbotron_entry_bgi : PSTU_NEXT_THEME . 'images/jumbotron-entry-bgi.jpg';
+$jumbotron_entry_bgi = ( $jumbotron_entry_bgi = get_theme_mod( 'jumbotron_entry_bgi', false ) ) ? $jumbotron_entry_bgi : PSTU_NEXT_THEME_URL . 'images/jumbotron-entry-bgi.jpg';
 
-switch ( get_theme_mod( '', 'item' ) ) {
+switch ( get_theme_mod( 'jumbotron_entry_type', 'item' ) ) {
 
   case 'page':
-    if ( $jumbotron_parent_page_id = get_translate_id( get_theme_mod( 'jumbotron_parent_page_id', false ) ), 'page' ) {
+    if ( $jumbotron_parent_page_id = get_translate_id( get_theme_mod( 'jumbotron_parent_page_id', false ), 'page' ) ) {
       $jumbotron_pages = get_pages( array(
         'number'        => $jumbotron_entry_number,
         'child_of'      => $jumbotron_parent_page_id,
@@ -87,6 +87,7 @@ switch ( get_theme_mod( '', 'item' ) ) {
 
 } // switch
 
+
 if ( ( $jumbotron_entryes ) && ( ! empty( $jumbotron_entryes ) ) ) {
 
   echo "<div class=\"jumbotron\" id=\"jumbotron\">\r\n";
@@ -98,7 +99,7 @@ if ( ( $jumbotron_entryes ) && ( ! empty( $jumbotron_entryes ) ) ) {
     echo "  <div class=\"container\">\r\n";
     echo "    <div class=\"row\">\r\n";
     echo "      <div class=\"col-xs-12 col-sm-9 col-md-8 col-lg-8\">\r\n";
-    echo "        <img class=\"wp-post-image\" src=\"\" data-lazy=\"" . $jumbotron_entry[ 'link' ] . "\" alt=\"" . esc_attr( $jumbotron_entry[ 'title' ] ) . "\">\r\n";
+    echo "        <img class=\"wp-post-image\" src=\"\" data-lazy=\"" . $jumbotron_entry[ 'thumbnail' ] . "\" alt=\"" . esc_attr( $jumbotron_entry[ 'title' ] ) . "\">\r\n";
     echo "        <div class=\"overlay\">\r\n";
     echo "          <h3 class=\"title\">" . $jumbotron_entry[ 'title' ] . "</h3>\r\n";
     if ( ! empty( $jumbotron_entry[ 'excerpt' ] ) ) echo "          <div class=\"excerpt\">" . $jumbotron_entry[ 'excerpt' ] . "</div>\r\n";

@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 get_header();
 
-get_template_part( 'section', 'jumbotron' );
+get_template_part( 'includes/section', 'jumbotron' );
 if ( get_theme_mod( 'sticky_section_flag', false ) ) get_template_part( 'includes/section', 'sticky' );
 
 echo "<div class=\"container\">\r\n";

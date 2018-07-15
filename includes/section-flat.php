@@ -72,7 +72,7 @@ switch ( get_theme_mod( 'flat_entry_type', 'item' ) ) {
         foreach ( (array) $flat_nav_menu_items as $key => $menu_item ){
           $flat_entryes[] = array(
             'title'     => apply_filters( 'the_title', $menu_item->title ),
-            'excerpt'   => $menu_item->description,
+            'excerpt'   => ( empty( trim( $menu_item->description ) ) ) ? '' : apply_filters( 'the_excerpt', $menu_item->description ),
             'link'      => $menu_item->url,
             'thumbnail' => ( ( has_post_thumbnail( $menu_item->object_id ) ) ? get_the_post_thumbnail_url( $menu_item->object_id, 'large' ) : $flat_entry_bgi ),
           );
@@ -93,10 +93,10 @@ if ( ( $flat_entryes ) && ( ! empty( $flat_entryes ) ) ) {
   foreach ( $flat_entryes as $flat_entry ) {
     
     $result[] = "<div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6\">";
-    $result[] = "  <a class=\"flat__entry entry\" href=\"#\" title=\"\">";
-    $result[] = "    <img class=\"wp-post-image lazy\" src=\"#\" data-src=\"images/flat_thumbnail_sm_01.jpg\"/>";
-    $result[] = "    <div class=\"title\"><h3></h3></div>";
-    $result[] = "    <div class=\"excerpt\"></div>";
+    $result[] = "  <a class=\"flat__entry entry\" href=\"" . $flat_entry[ 'link' ] . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), esc_attr( $flat_entry[ 'title' ] ) ) . "\">";
+    $result[] = "    <img class=\"wp-post-image lazy\" src=\"#\" data-src=\"" . $flat_entry[ 'thumbnail' ] . "\"/>";
+    $result[] = "    <div class=\"title\"><h3>" . $flat_entryes[ 'title' ] . "</h3></div>";
+    if ( ! empty( trim( $flat_entryes[ 'excerpt' ] ) ) ) $result[] = "    <div class=\"excerpt\"></div>";
     $result[] = "  </a>";
     $result[] = "</div>"; //col-
 

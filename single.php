@@ -20,7 +20,7 @@ if ( have_posts() ) {
 		do_action( 'pstu_theme_article_end' );
 		echo "      </article>\r\n";
 		get_template_part( 'includes/part', 'pager' );
-		get_template_part( 'includes/section', 'similar' );
+		if ( get_theme_mod( 'similar_section_flag', false ) ) get_template_part( 'includes/section', 'similar' );
 		if ( comments_open( get_the_ID() ) ) comments_template();
 
 	}

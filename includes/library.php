@@ -44,9 +44,6 @@ if ( ! function_exists( 'pstu_next_get_event_date' ) ) {
 		preg_match( PSTU_NEXT_EVENTS_DATE_REG, $title, $matches );
     if ( ! empty( $matches ) ) {
     	$events_entry_time = strtotime( $matches[0] );
-    	echo "<pre>";
-    	var_dump( pstu_get_month( date( "m", $events_entry_time ) ) );
-    	echo "</pre>";
     	$result = array(
 	      'day'     => date( "d", $events_entry_time ),
 	      'month'   => pstu_get_month( date( "m", $events_entry_time ) ),
@@ -316,6 +313,61 @@ if ( ! function_exists( 'the_pstu_media_pages' ) ) {
 		echo get_pstu_media_pages( $page_id );
 	}
 }
+
+
+/**
+ *  Возаращает информацию о странице для плагина rrssb
+ */
+if ( ! function_exists( 'get_pstu_rrssb_page_info' ) ) {
+	function get_pstu_rrssb_page_info () {
+		$default_image =  ( has_custom_logo() ) ? has_custom_logo() : get_header_image();
+		$default_image = ( empty( $default_image ) ) ? PSTU_NEXT_THEME_URL . 'images/post_thumbnail.jpg' : $default_image;
+		if ( is_home()  && is_front_page() ) {
+			$result = array(
+				'title'         => get_bloginfo( 'name' ),
+				'url'           => home_url(),
+				'description'   => get_bloginfo( 'description' ),
+				'emailBody'     => '',
+				'image'					=> $default_image,
+			);
+		} elseif ( is_page() || is_single() ) {
+			$result = array(
+				'title'         => wp_get_document_title(),
+				'url'           => get_permalink( get_the_ID() ),
+				'description'   => get_the_excerpt( get_the_ID() ),
+				'emailBody'     => get_the_content( $more_link_text = null, $strip_teaser = false ),
+				'image'					=> ( has_post_thumbnail( get_the_ID() ) ) ? get_the_post_thumbnail_url( get_the_ID(), 'medium' ) : $default_image,
+			);
+		} elseif ( is_archive() ) {
+			$result = array(
+				'title'         => get_the_archive_title(),
+				'url'           => get_post_type_archive_link( get_query_var( 'post_type' ) ),
+				'description'   => get_the_archive_description(),
+				'emailBody'     => '',
+				'image'					=> $default_image,
+			);
+		} elseif ( is_search() ) {
+			$result = array(
+				'title'         => get_the_archive_title(),
+				'url'           => get_post_type_archive_link( get_query_var( 'post_type' ) ),
+				'description'   => get_the_archive_description(),
+				'emailBody'     => '',
+				'image'					=> $default_image,
+			);
+		} else {
+			$result = array(
+				'title'         => wp_get_document_title(),
+				'url'           => home_url(),
+				'description'   => get_bloginfo( 'description' ),
+				'emailBody'     => '',
+				'image'					=> $default_image,
+			);
+		}
+		return $result;
+	}
+}
+
+
 
 
 ?>

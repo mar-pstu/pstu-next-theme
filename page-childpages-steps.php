@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Template Name: Subpage STEPS
+ */
+
 
 if ( ! defined( 'ABSPATH' ) ) { exit; };
 
@@ -43,5 +47,7 @@ echo "</div>\r\n"; // .container
 if ( get_theme_mod( 'current_section_flag', false ) ) get_template_part( 'section', 'current' );
 
 get_footer();
+
+
 
 ?>
