@@ -84,7 +84,7 @@ add_action( 'customize_register', function ( $wp_customize ) {
 			'label'					=> __( 'Количество слайдов', 'pstu-next-theme' ),
 			'type'					=> 'number',
 			'input_attrs'		=> array(
-				'min'						=> '1',
+				'min'						=> '3',
 				'max'						=> '20',
 			),
 		)

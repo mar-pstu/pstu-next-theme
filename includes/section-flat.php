@@ -10,12 +10,29 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 $result = array();
 $flat_entryes = array();
+$flat_entry_bgi = array(
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_01.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_02.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_03.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_04.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_05.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_06.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_07.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_08.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_09.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_10.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_11.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_12.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_13.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_14.jpg',
+  PSTU_NEXT_THEME_URL . 'images/flat_entry_thumbnail_15.jpg',
+);
 $flat_entry_number = get_theme_mod( 'flat_entry_number', 5 );
 
 switch ( get_theme_mod( 'flat_entry_type', 'item' ) ) {
 
   case 'page':
-    if ( $flat_parent_page_id = get_translate_id( get_theme_mod( 'flat_parent_page_id', false ) ), 'page' ) {
+    if ( $flat_parent_page_id = get_translate_id( get_theme_mod( 'flat_parent_page_id', false ), 'page' ) ) {
       $flat_pages = get_pages( array(
         'number'        => $flat_entry_number,
         'child_of'      => $flat_parent_page_id,
@@ -30,7 +47,7 @@ switch ( get_theme_mod( 'flat_entry_type', 'item' ) ) {
             'title'     => apply_filters( 'the_title', $flat_page->post_title ),
             'excerpt'   => ( has_excerpt( $flat_page->ID ) ? apply_filters( 'the_excerpt', $flat_page->post_excerpt ) : '' ),
             'link'      => get_permalink( $flat_page->ID ),
-            'thumbnail' => ( ( has_post_thumbnail( $flat_page->ID ) ) ? get_the_post_thumbnail_url( $flat_page->ID, 'large' ) : $flat_entry_bgi ),
+            'thumbnail' => ( ( has_post_thumbnail( $flat_page->ID ) ) ? get_the_post_thumbnail_url( $flat_page->ID, 'medium' ) : $flat_entry_bgi[ mt_rand( 0, 14 ) ] ),
           );
         } // foreach
         wp_reset_postdata();
@@ -55,7 +72,7 @@ switch ( get_theme_mod( 'flat_entry_type', 'item' ) ) {
             'title'     => apply_filters( 'the_title', $flat_post->post_title ),
             'excerpt'   => ( has_excerpt( $flat_page->ID ) ? apply_filters( 'the_excerpt', $flat_page->post_excerpt ) : '' ),
             'link'      => get_permalink( $flat_post->ID ),
-            'thumbnail' => ( ( has_post_thumbnail( $flat_post->ID ) ) ? get_the_post_thumbnail_url( $flat_post->ID, 'large' ) : $flat_entry_bgi ),
+            'thumbnail' => ( ( has_post_thumbnail( $flat_post->ID ) ) ? get_the_post_thumbnail_url( $flat_post->ID, 'medium' ) : $flat_entry_bgi[ mt_rand( 0, 14 ) ] ),
           );
         } // foreach
       } // if $flat_pages
@@ -74,7 +91,7 @@ switch ( get_theme_mod( 'flat_entry_type', 'item' ) ) {
             'title'     => apply_filters( 'the_title', $menu_item->title ),
             'excerpt'   => ( empty( trim( $menu_item->description ) ) ) ? '' : apply_filters( 'the_excerpt', $menu_item->description ),
             'link'      => $menu_item->url,
-            'thumbnail' => ( ( has_post_thumbnail( $menu_item->object_id ) ) ? get_the_post_thumbnail_url( $menu_item->object_id, 'large' ) : $flat_entry_bgi ),
+            'thumbnail' => ( ( has_post_thumbnail( $menu_item->object_id ) ) ? get_the_post_thumbnail_url( $menu_item->object_id, 'medium' ) : $flat_entry_bgi[ mt_rand( 0, 14 ) ] ),
           );
         } // foreach
       } // if $flat_nav_menu_items
@@ -87,16 +104,16 @@ switch ( get_theme_mod( 'flat_entry_type', 'item' ) ) {
 
 if ( ( $flat_entryes ) && ( ! empty( $flat_entryes ) ) ) {
 
-  $result[] "<section class=\"flat\" id=\"flat\">";
-  $result[] "  <div class=\"row\">";
+  $result[] = "<section class=\"flat\" id=\"flat\">";
+  $result[] = "  <div class=\"row\">";
 
   foreach ( $flat_entryes as $flat_entry ) {
     
     $result[] = "<div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6\">";
     $result[] = "  <a class=\"flat__entry entry\" href=\"" . $flat_entry[ 'link' ] . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), esc_attr( $flat_entry[ 'title' ] ) ) . "\">";
     $result[] = "    <img class=\"wp-post-image lazy\" src=\"#\" data-src=\"" . $flat_entry[ 'thumbnail' ] . "\"/>";
-    $result[] = "    <div class=\"title\"><h3>" . $flat_entryes[ 'title' ] . "</h3></div>";
-    if ( ! empty( trim( $flat_entryes[ 'excerpt' ] ) ) ) $result[] = "    <div class=\"excerpt\"></div>";
+    $result[] = "    <div class=\"title\"><h3>" . $flat_entry[ 'title' ] . "</h3></div>";
+    if ( ! empty( trim( $flat_entry[ 'excerpt' ] ) ) ) $result[] = "    <div class=\"excerpt\"></div>";
     $result[] = "  </a>";
     $result[] = "</div>"; //col-
 

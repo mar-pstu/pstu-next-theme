@@ -39,6 +39,25 @@ add_action( 'customize_register', function ( $wp_customize ) {
 	); /**/
 
 	$wp_customize->add_setting(
+		'action_section_logo',
+		array(
+			'default'				=> PSTU_NEXT_THEME_URL . 'images/action_bgi.jpg',
+			'transport'			=> 'reset'
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'action_section_logo',
+			array(
+				'label'    => 'Фон секции',
+				'settings' => 'action_section_logo',
+				'section'  => 'pstu_next_theme_action'
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
 		'action_section_title',
 		array(
 			'default'				=> '',
@@ -68,7 +87,7 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		array(
 			'section'				=> 'pstu_next_theme_action',
 			'label'					=> __( 'Подзаголовок', 'pstu-next-theme' ),
-			'type'					=> 'text',
+			'type'					=> 'textarea',
 		)
 	); /**/
 
@@ -95,7 +114,7 @@ add_action( 'customize_register', function ( $wp_customize ) {
 	$wp_customize->add_setting(
 		'action_entry_type',
 		array(
-			'default'				=> 'items',
+			'default'				=> 'item',
 			'transport'			=> 'reset'
 		)
 	);
@@ -106,7 +125,7 @@ add_action( 'customize_register', function ( $wp_customize ) {
 			'label'					=> __( 'Тип потов', 'pstu-next-theme' ),
 			'type'					=> 'radio',
 			'choices'				=> array(
-				'item'					=> __( 'пенкты меню',							'pstu-next-theme' ),
+				'item'					=> __( 'пункты меню',							'pstu-next-theme' ),
 				'page'					=> __( 'постоянные страницы',			'pstu-next-theme' ),
 				'post'					=> __( 'записи (посты)',					'pstu-next-theme' ),
 			),
@@ -124,7 +143,7 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		'action_nav_menu_id',
 		array(
 			'section'				=> 'pstu_next_theme_action',
-			'label'					=> __( 'Выбор категории', 'pstu-next-theme' ),
+			'label'					=> __( 'Выбор меню', 'pstu-next-theme' ),
 			'type'					=> 'select',
 			'choices'				=> get_nav_menus_array(),
 		)

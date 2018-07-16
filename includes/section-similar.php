@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 $similar_posts_number = get_theme_mod( 'similar_posts_number', 5 );
 
+$similar_entryes = array();
+
 switch ( get_theme_mod( 'similar_section_type', 'category' ) ) {
 
   case 'tag':
@@ -71,7 +73,7 @@ if ( ( $similar_entryes ) && ( ! empty( $similar_entryes ) ) && ( ! is_wp_error(
     if ( has_post_thumbnail( $similar_entry->ID ) ) {
       echo "  <div class=\"media-left pull-left\">\r\n";
       echo "    <a href=\"" . get_the_permalink( $similar_entry->ID ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), $similar_entry_title_attribute ) . "\">\r\n";
-      echo "      <img class=\"media-object\" src=\"#\" data-lazy=\"" .  . "\" alt=\"" . $similar_entry_title_attribute . "\">\r\n";
+      echo "      <img class=\"media-object\" src=\"#\" data-lazy=\"" . get_the_post_thumbnail_url( $similar_entry->ID, 'thumbnail' ) . "\" alt=\"" . $similar_entry_title_attribute . "\">\r\n";
       echo "      <div class=\"small text-center posted hide-sm\">" . $similar_entry_date . "</div>\r\n";
       echo "    </a>\r\n";
       echo "  </div>\r\n"; // .media-left

@@ -9,7 +9,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 
-echo "<section class=\"action lazy\" id=\"action\" data-src=\"images/action_bgi.jpg\">\r\n";
+echo "<section class=\"action lazy\" id=\"action\" data-src=\"" . get_theme_mod( 'action_section_logo', PSTU_NEXT_THEME_URL . 'images/action_bgi.jpg' ) . "\">\r\n";
 echo "  <div class=\"container\">\r\n";
 echo "    <div class=\"row middle-xs\">\r\n";
 echo "      <div class=\"col-xs-12 col-sm col-md col-lg\">\r\n";
@@ -95,7 +95,7 @@ if ( ( $action_entryes ) && ( ! empty( $action_entryes ) ) ) {
   echo "        <div class=\"action__btns btns\">\r\n";
 
   foreach ( $action_entryes as $action_entry ) {
-    echo "<p><a class=\"btn btn-success btn-md\" href=\"" . $action_entry[ 'link' ] . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), esc_attr( $action_entry[ 'title' ] ) ) . "\">" . $action_entry[ 'title' ] . "</a></p>\r\n";
+    echo "<p><a class=\"btn btn-success btn-md btn-block\" href=\"" . $action_entry[ 'link' ] . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), esc_attr( $action_entry[ 'title' ] ) ) . "\">" . $action_entry[ 'title' ] . "</a></p>\r\n";
   }
 
   echo "        </div>\r\n"; // .action__btns

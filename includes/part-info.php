@@ -8,7 +8,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 
-if ( is_single() ) {
+if ( is_singular() ) {
 	$info = array(
 		'title'			=> apply_filters( 'the_title', get_the_title( get_the_ID() ) ),
 		'excerpt'		=> apply_filters( 'the_excerpt', get_the_excerpt( get_the_ID() ) ),

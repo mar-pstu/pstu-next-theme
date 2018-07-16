@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
 if ( ! function_exists( 'pstu_next_comment' ) ) {
 	function pstu_next_comment( $comment, $args, $depth ) {
 		$GLOBALS['comment'] = $comment;
+
 		$result = array();
 		$result[] = "<div class=\"media comment\" id=\"comment-" . $comment->comment_ID . "\">";
 		$result[] = "	<div class=\"media-left pull-left\">";

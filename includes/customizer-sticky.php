@@ -89,7 +89,7 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		array(
 			'section'				=> 'pstu_next_theme_sticky',
 			'label'					=> __( 'Выбор типа поста', 'pstu-next-theme' ),
-			'type'					=> 'select',
+			'type'					=> 'radio',
 			'choices'				=> array(
 				'post'					=> __( 'Закреплённый пост', 'pstu-next-theme' ),
 				'category'			=> __( 'Категория', 'pstu-next-theme' ),

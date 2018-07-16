@@ -8,11 +8,25 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 
-if ( ! get_theme_mod( 'jumbotron_section_flag', false ) ) continue;
-
 $jumbotron_entryes = array();
 $jumbotron_entry_number = get_theme_mod( 'jumbotron_entry_number', 5 );
-$jumbotron_entry_bgi = ( $jumbotron_entry_bgi = get_theme_mod( 'jumbotron_entry_bgi', false ) ) ? $jumbotron_entry_bgi : PSTU_NEXT_THEME_URL . 'images/jumbotron-entry-bgi.jpg';
+$jumbotron_entry_bgi = array(
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_01.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_02.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_03.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_04.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_05.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_06.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_07.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_08.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_09.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_10.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_11.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_12.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_13.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_14.jpg',
+  PSTU_NEXT_THEME_URL . 'images/jumbotron_entry_thumbnail_15.jpg',
+);
 
 switch ( get_theme_mod( 'jumbotron_entry_type', 'item' ) ) {
 
@@ -32,7 +46,7 @@ switch ( get_theme_mod( 'jumbotron_entry_type', 'item' ) ) {
             'title'     => apply_filters( 'the_title', $jumbotron_page->post_title ),
             'excerpt'   => ( has_excerpt( $jumbotron_page->ID ) ? apply_filters( 'the_excerpt', $jumbotron_page->post_excerpt ) : '' ),
             'link'      => get_permalink( $jumbotron_page->ID ),
-            'thumbnail' => ( ( has_post_thumbnail( $jumbotron_page->ID ) ) ? get_the_post_thumbnail_url( $jumbotron_page->ID, 'large' ) : $jumbotron_entry_bgi ),
+            'thumbnail' => ( ( has_post_thumbnail( $jumbotron_page->ID ) ) ? get_the_post_thumbnail_url( $jumbotron_page->ID, 'large' ) : $jumbotron_entry_bgi[ mt_rand( 0, 16 ) ] ),
           );
         } // foreach
         wp_reset_postdata();
@@ -57,7 +71,7 @@ switch ( get_theme_mod( 'jumbotron_entry_type', 'item' ) ) {
             'title'     => apply_filters( 'the_title', $jumbotron_post->post_title ),
             'excerpt'   => ( has_excerpt( $jumbotron_page->ID ) ? apply_filters( 'the_excerpt', $jumbotron_page->post_excerpt ) : '' ),
             'link'      => get_permalink( $jumbotron_post->ID ),
-            'thumbnail' => ( ( has_post_thumbnail( $jumbotron_post->ID ) ) ? get_the_post_thumbnail_url( $jumbotron_post->ID, 'large' ) : $jumbotron_entry_bgi ),
+            'thumbnail' => ( ( has_post_thumbnail( $jumbotron_post->ID ) ) ? get_the_post_thumbnail_url( $jumbotron_post->ID, 'large' ) : $jumbotron_entry_bgi[ mt_rand( 0, 16 ) ] ),
           );
         } // foreach
       } // if $jumbotron_posts
@@ -76,7 +90,7 @@ switch ( get_theme_mod( 'jumbotron_entry_type', 'item' ) ) {
             'title'     => apply_filters( 'the_title', $menu_item->title ),
             'excerpt'   => $menu_item->description,
             'link'      => $menu_item->url,
-            'thumbnail' => ( ( has_post_thumbnail( $menu_item->object_id ) ) ? get_the_post_thumbnail_url( $menu_item->object_id, 'large' ) : $jumbotron_entry_bgi ),
+            'thumbnail' => ( ( has_post_thumbnail( $menu_item->object_id ) ) ? get_the_post_thumbnail_url( $menu_item->object_id, 'large' ) : $jumbotron_entry_bgi[ mt_rand( 0, 16 ) ] ),
           );
         } // foreach
       } // if $jumbotron_nav_menu_items
