@@ -375,23 +375,23 @@ dl dt {
   color: #d87200 !important; }
 
 .bg-primary {
-  background-color: #88c2f2;
+  background-color: #88c2f2 !important;
   padding: 2px 3px; }
 
 .bg-success {
-  background-color: #cbf6ae;
+  background-color: #cbf6ae !important;
   padding: 2px 3px; }
 
 .bg-info {
-  background-color: #a4f8ff;
+  background-color: #a4f8ff !important;
   padding: 2px 3px; }
 
 .bg-danger {
-  background-color: #ffcccc;
+  background-color: #ffcccc !important;
   padding: 2px 3px; }
 
 .bg-warning {
-  background-color: #ffd5a5;
+  background-color: #ffd5a5 !important;
   padding: 2px 3px; }
 
 .display-inline {
@@ -2038,6 +2038,12 @@ table.table-warning th, table.table-warning td {
     font-size: 20px;
     color: #0c426f; }
 
+form input[type=text],
+form input[type=email],
+form input[type=search],
+form input[type=url],
+form input[type=password],
+form textarea,
 form .form-control {
   display: block;
   width: 100%;
@@ -2048,15 +2054,51 @@ form .form-control {
   -o-transition: border-color 200ms;
   -moz-transition: border-color 200ms;
   transition: border-color 200ms; }
-  form .form-control:hover, form .form-control:active, form .form-control:focus {
+  form input[type=text]:hover, form input[type=text]:active, form input[type=text]:focus,
+  form input[type=email]:hover,
+  form input[type=email]:active,
+  form input[type=email]:focus,
+  form input[type=search]:hover,
+  form input[type=search]:active,
+  form input[type=search]:focus,
+  form input[type=url]:hover,
+  form input[type=url]:active,
+  form input[type=url]:focus,
+  form input[type=password]:hover,
+  form input[type=password]:active,
+  form input[type=password]:focus,
+  form textarea:hover,
+  form textarea:active,
+  form textarea:focus,
+  form .form-control:hover,
+  form .form-control:active,
+  form .form-control:focus {
     border: 1px solid #0c426f; }
+  form input[type=text]:invalid,
+  form input[type=email]:invalid,
+  form input[type=search]:invalid,
+  form input[type=url]:invalid,
+  form input[type=password]:invalid,
+  form textarea:invalid,
   form .form-control:invalid {
     border: 1px solid #ff0000;
     -webkit-box-shadow: none;
             box-shadow: none; }
+  form input[type=text]--md,
+  form input[type=email]--md,
+  form input[type=search]--md,
+  form input[type=url]--md,
+  form input[type=password]--md,
+  form textarea--md,
   form .form-control--md {
     padding: 7px 15px;
     font-size: 1.25em; }
+  form input[type=text]--lg,
+  form input[type=email]--lg,
+  form input[type=search]--lg,
+  form input[type=url]--lg,
+  form input[type=password]--lg,
+  form textarea--lg,
   form .form-control--lg {
     padding: 13px 19px;
     font-size: 1.75em; }
@@ -2348,7 +2390,7 @@ form label {
   margin: 0px; }
   .widget .menu > li:before {
     background-image: url(../images/icon.png);
-    background-position: -118px 0px;
+    background-position: 0px -118px;
     width: 14px;
     height: 11px;
     border: 0px;
@@ -2405,7 +2447,7 @@ form label {
       opacity: 1; }
 
 .header__top {
-  background-color: #0c426f;
+  background-color: #115d9d;
   text-align: center; }
   .header__top li {
     z-index: 100; }
@@ -2415,18 +2457,20 @@ form label {
     text-align: left; }
 
 .header .bloginfo {
-  background-color: #eee; }
+  background-color: #0c426f;
+  color: #fff; }
 
 .header .bloginfo-name a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: #fff; }
   .header .bloginfo-name a:link {
-    color: #262626; }
+    color: #fff; }
   .header .bloginfo-name a:visited {
-    color: #262626; }
+    color: #fff; }
   .header .bloginfo-name a:active {
-    color: #262626; }
+    color: #fff; }
   .header .bloginfo-name a:hover {
-    color: #262626; }
+    color: #fff; }
   .header .bloginfo-name a:hover {
     text-decoration: none; }
 
@@ -2440,17 +2484,19 @@ form label {
   display: block;
   max-height: 150px;
   width: auto;
-  height: auto; }
+  height: auto;
+  margin: 5px 0px; }
 
 .header .widget {
   border-left: 3px solid #0098a4;
   padding: 5px 10px;
   -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5) inset;
           box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5) inset;
-  background-color: #fff; }
+  background-color: #fff;
+  color: #262626; }
 
 .header__nav {
-  background-color: #0c426f; }
+  background-color: #115d9d; }
   .header__nav li {
     z-index: 99; }
   .header__nav a {
@@ -2562,6 +2608,12 @@ form label {
     display: none; }
   .jumbotron__entry p {
     margin: 15px 0px; }
+  .jumbotron__entry .overlay {
+    border: 1px solid #888;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 15px;
+    -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5), 0px 0px 5px rgba(0, 0, 0, 0.5) inset;
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5), 0px 0px 5px rgba(0, 0, 0, 0.5) inset; }
 
 .error404__logo {
   display: block;
@@ -3162,27 +3214,39 @@ section.current {
 
 .icon-csv {
   background-image: url(../images/icon.png);
-  background-position: 0px -94px;
+  background-position: -24px -94px;
   width: 24px;
   height: 24px; }
 
+.icon-delete {
+  background-image: url(../images/icon.png);
+  background-position: -118px -13px;
+  width: 13px;
+  height: 13px; }
+
 .icon-doc {
   background-image: url(../images/icon.png);
-  background-position: -24px -70px;
+  background-position: -48px -70px;
   width: 24px;
   height: 24px; }
 
 .icon-down-arrow {
   background-image: url(../images/icon.png);
-  background-position: -118px -23px;
+  background-position: -118px -26px;
   width: 12px;
   height: 12px; }
 
 .icon-dwg {
   background-image: url(../images/icon.png);
-  background-position: -70px 0px;
+  background-position: -70px -24px;
   width: 24px;
   height: 24px; }
+
+.icon-edit {
+  background-image: url(../images/icon.png);
+  background-position: -118px 0px;
+  width: 13px;
+  height: 13px; }
 
 .icon-help {
   background-image: url(../images/icon.png);
@@ -3192,7 +3256,7 @@ section.current {
 
 .icon-item-arrow {
   background-image: url(../images/icon.png);
-  background-position: -118px 0px;
+  background-position: 0px -118px;
   width: 14px;
   height: 11px; }
 
@@ -3210,25 +3274,25 @@ section.current {
 
 .icon-mp3 {
   background-image: url(../images/icon.png);
-  background-position: -94px 0px;
+  background-position: -94px -48px;
   width: 24px;
   height: 24px; }
 
 .icon-odt {
   background-image: url(../images/icon.png);
-  background-position: -94px -24px;
+  background-position: 0px -94px;
   width: 24px;
   height: 24px; }
 
 .icon-pdf {
   background-image: url(../images/icon.png);
-  background-position: -94px -48px;
+  background-position: -72px -94px;
   width: 24px;
   height: 24px; }
 
 .icon-psd {
   background-image: url(../images/icon.png);
-  background-position: -72px -94px;
+  background-position: -48px -94px;
   width: 24px;
   height: 24px; }
 
@@ -3240,7 +3304,7 @@ section.current {
 
 .icon-rar {
   background-image: url(../images/icon.png);
-  background-position: -48px -94px;
+  background-position: -94px -24px;
   width: 24px;
   height: 24px; }
 
@@ -3252,13 +3316,13 @@ section.current {
 
 .icon-rtf {
   background-image: url(../images/icon.png);
-  background-position: -24px -94px;
+  background-position: -94px 0px;
   width: 24px;
   height: 24px; }
 
 .icon-share {
   background-image: url(../images/icon.png);
-  background-position: -118px -35px;
+  background-position: -118px -50px;
   width: 8px;
   height: 16px; }
 
@@ -3270,7 +3334,7 @@ section.current {
 
 .icon-tag {
   background-image: url(../images/icon.png);
-  background-position: -118px -11px;
+  background-position: -118px -38px;
   width: 12px;
   height: 12px; }
 
@@ -3288,13 +3352,13 @@ section.current {
 
 .icon-txt {
   background-image: url(../images/icon.png);
-  background-position: -70px -24px;
+  background-position: -70px 0px;
   width: 24px;
   height: 24px; }
 
 .icon-xls {
   background-image: url(../images/icon.png);
-  background-position: -48px -70px;
+  background-position: -24px -70px;
   width: 24px;
   height: 24px; }
 

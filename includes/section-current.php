@@ -20,7 +20,7 @@ if ( $current_category_id = get_translate_id( get_theme_mod( 'current_category_i
       'orderby'           => 'date',
       'order'             => 'DESC',
       'post_type'         => 'post',
-      'suppress_filters'  => fasle,
+      'suppress_filters'  => false,
     ) );
 
     if ( ( $current_posts ) && ( ! empty( $current_posts ) ) && ( ! is_wp_error( $current_posts ) ) ) {

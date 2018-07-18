@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
 if ( is_singular() ) {
 	$info = array(
 		'title'			=> apply_filters( 'the_title', get_the_title( get_the_ID() ) ),
-		'excerpt'		=> apply_filters( 'the_excerpt', get_the_excerpt( get_the_ID() ) ),
+		'excerpt'		=> ( has_excerpt( get_the_ID() ) ) ? apply_filters( 'the_excerpt', get_the_excerpt( get_the_ID() ) ) : '',
 		'permalink'	=> wp_get_shortlink( get_the_ID(), 'post', true ),
 	);
 } elseif ( is_archive() ) {
@@ -55,11 +55,18 @@ echo "  </div>\r\n"; // .clearfix
 
 
 echo "  <div class=\"clearfix\">\r\n";
-
 get_template_part( 'part', 'share' );
+echo "  </div>\r\n"; // .clearfix
 
-echo "  </div>\r\n";
-echo "</div>\r\n";
+if ( is_singular() ) {
+	echo "  <div class=\"text-right\" style=\"margin: 10px 0px\">\r\n";
+	if( current_user_can( 'delete_posts' ) ) echo "<a class=\"btn btn-danger btn-xs\" href=\"". get_delete_post_link( get_the_ID() ) ."\" title=\"" . esc_attr__( 'Удалить', 'pstu-next-theme' ) . "\">" . __( 'Удалить', 'pstu-next-theme' ) . " <i class=\"icon icon-delete\"></i></a>";
+	if ( current_user_can( 'edit_post', get_the_ID() ) ) echo "<a class=\"btn btn-warning btn-xs\" href=\"" . get_edit_post_link( get_the_ID() ) . "\" title=\"" . esc_attr__( 'Редактировать', 'pstu-next-theme' ) . "\">" . __( 'Редактировать', 'pstu-next-theme' ) . " <i class=\"icon icon-edit\"></i></a>\r\n";
+	echo "  </div>\r\n"; // .clearfix
+}
+
+
+echo "</div>\r\n"; // .info
 
 unset( $info );
 

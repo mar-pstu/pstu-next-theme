@@ -56,7 +56,7 @@ if ( has_nav_menu( 'menu_second' ) ) {
 
 echo "        <div class=\"header__bloginfo bloginfo\">\r\n";
 echo "          <div class=\"container\">\r\n";
-echo "            <div class=\"row\">\r\n";
+echo "            <div class=\"row middle-xs\">\r\n";
 if ( has_custom_logo() ) echo "<div class=\"col-xs-12 col-sm-3 col-md-2 col-lg-2 middle-xs\">" . get_custom_logo() . "</div>\r\n";
 echo "              <div class=\"col-xs-12 col-sm col-md col-lg middle-xs\">\r\n";
 
