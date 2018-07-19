@@ -6,12 +6,27 @@ echo "<div class=\"container\">\r\n";
 echo "  <div class=\"row\">\r\n";
 echo "    <div class=\"col-xs-12 col-sm-12 col-md col-lg\">\r\n";
 
+
 if ( is_search() ) {
   get_template_part( 'includes/loop', 'search' );
 } else {
+
   get_template_part( 'includes/part', 'info' );
-  get_template_part( 'includes/loop', 'blog' );
+
+  if ( ( get_theme_mod( 'events_category_flag', false ) ) && ( $events_category_id = get_translate_id( get_theme_mod( 'events_category_id', false ), 'category' ) ) ) {
+    if ( is_category( $events_category_id ) ) get_template_part( 'includes/loop', 'events' );
+  } else {
+    get_template_part( 'includes/loop', 'blog' );
+  }
+
+  if ( ( get_theme_mod( 'documents_category_flag', false ) ) && ( $documents_category_id = get_translate_id( get_theme_mod( 'documents_category_id', false ), 'category' ) ) ) {
+    if ( is_category( $documents_category_id ) ) get_template_part( 'includes/loop', 'documents' );
+  } else {
+    get_template_part( 'includes/loop', 'blog' );
+  }
+
 }
+
 
 the_posts_pagination( array(
   'show_all'        => false, // показаны все страницы участвующие в пагинации

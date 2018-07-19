@@ -37,11 +37,13 @@ if ( $events_category_id = get_translate_id( get_theme_mod( 'events_category_id'
     wp_reset_postdata();
 
     if ( ! empty( $result ) ) {
-      $result[] = "<div class=\"col-xs-12 col-sm-3 col-md-12 col-lg-12\">";
-      $result[] = "  <p class=\"text-center small\">";
-      $result[] = "    <a href=\"\">" . __( 'Смотреть ешё', 'pstu-next-theme' ) . "</a>";
-      $result[] = "  </p>";
-      $result[] = "</div>"; // .col-
+      if ( ! empty( $events_category_link = get_category_link( $events_category_id ) ) ) {
+        $result[] = "<div class=\"col-xs-12 col-sm-3 col-md-12 col-lg-12\">";
+        $result[] = "  <p class=\"text-center small\">";
+        $result[] = "    <a href=\"" . $events_category_link . "\">" . __( 'Смотреть ешё', 'pstu-next-theme' ) . "</a>";
+        $result[] = "  </p>";
+        $result[] = "</div>"; // .col-
+      }
       echo "<section class=\"events\" id=\"events\"><div class=\"row\">" .  implode( "\r\n" , $result ) . "</div></section>";
     }
 
@@ -49,6 +51,7 @@ if ( $events_category_id = get_translate_id( get_theme_mod( 'events_category_id'
     unset( $events_entryes );
     unset( $events_entry_date );
     unset( $events_category_id );
+    unset( $events_category_link );
 
   } // if $events_entryes
 

@@ -157,30 +157,24 @@ if ( ! function_exists( 'the_pages_select' ) ) {
  *  Ф-ции для установки и вывода количество просмотров
  */
 if ( ! function_exists( 'get_post_views' ) ) {
-	function get_post_views($postID){
+	function get_post_views( $postID ){
 		$count_key = 'post_views_count';
-		$count = get_post_meta($postID, $count_key, true);
-		if($count==''){
-			delete_post_meta($postID, $count_key);
-			add_post_meta($postID, $count_key, '1');
-			return "1";
+		$count = get_post_meta( $postID, $count_key, true );
+		if( empty( $count ) ) {
+			update_post_meta( $postID, $count_key, '1' );
+			$count = "1";
 		}
 		return $count;
 	}
 }
 
-if ( !function_exists( 'set_post_views' ) ) {
-	function set_post_views($postID) {
+if ( ! function_exists( 'set_post_views' ) ) {
+	function set_post_views( $postID ) {
 		$count_key = 'post_views_count';
-		$count = get_post_meta($postID, $count_key, true);
-		if($count==''){
-			$count = 1;
-			delete_post_meta($postID, $count_key);
-			add_post_meta($postID, $count_key, '1');
-		}else{
-			$count++;
-			update_post_meta($postID, $count_key, $count);
-		}
+		$count = get_post_views( $postID );
+		if( empty( $count ) ) $count = 0;
+		$count++;
+		update_post_meta( $postID, $count_key, $count );
 	}
 }
 

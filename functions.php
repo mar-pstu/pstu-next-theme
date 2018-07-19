@@ -33,6 +33,7 @@ if ( is_customize_preview() ) {
 	get_template_part( 'includes/customizer', 'jumbotron' );
 	get_template_part( 'includes/customizer', 'flat' );
 	get_template_part( 'includes/customizer', 'events' );
+	get_template_part( 'includes/customizer', 'documents' );
 	get_template_part( 'includes/customizer', 'sticky' );
 	get_template_part( 'includes/customizer', 'partners' );
 	get_template_part( 'includes/customizer', 'news' );
@@ -90,20 +91,6 @@ add_action( 'after_setup_theme', function () {
 		}
 		return $items;
 	} );
-
-	// отдельный шаблон для вывода категории
-	if ( get_theme_mod( 'events_category_flag', false ) ) {
-		add_filter( 'template_include', function ( $template_path ) {
-			$result = $template_path;
-			if ( $events_category_id = get_translate_id( get_theme_mod( 'events_category_id', false ), 'category' ) ) {
-				if ( is_object_in_term( get_the_ID(), 'category', $events_category_id ) ) $result = locate_template( 'category-events.php' );
-			}
-			return $result;
-		} );
-		add_action( 'pre_get_posts', function () {
-			
-		} );
-	}
 
 	// замена стандартного кода вывода галереи wp
 	if ( get_theme_mod( 'gallery_huk_flag', false ) ) add_filter( 'post_gallery', function ( $output, $attr ) {

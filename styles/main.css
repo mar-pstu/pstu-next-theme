@@ -2390,7 +2390,7 @@ form label {
   margin: 0px; }
   .widget .menu > li:before {
     background-image: url(../images/icon.png);
-    background-position: 0px -118px;
+    background-position: -118px -40px;
     width: 14px;
     height: 11px;
     border: 0px;
@@ -3214,13 +3214,13 @@ section.current {
 
 .icon-csv {
   background-image: url(../images/icon.png);
-  background-position: -24px -94px;
+  background-position: -48px -94px;
   width: 24px;
   height: 24px; }
 
 .icon-delete {
   background-image: url(../images/icon.png);
-  background-position: -118px -13px;
+  background-position: -118px -27px;
   width: 13px;
   height: 13px; }
 
@@ -3232,7 +3232,7 @@ section.current {
 
 .icon-down-arrow {
   background-image: url(../images/icon.png);
-  background-position: -118px -26px;
+  background-position: -118px -63px;
   width: 12px;
   height: 12px; }
 
@@ -3244,25 +3244,31 @@ section.current {
 
 .icon-edit {
   background-image: url(../images/icon.png);
-  background-position: -118px 0px;
+  background-position: -118px -14px;
   width: 13px;
   height: 13px; }
 
+.icon-eye {
+  background-image: url(../images/icon.png);
+  background-position: -96px -94px;
+  width: 16px;
+  height: 16px; }
+
 .icon-help {
   background-image: url(../images/icon.png);
-  background-position: -70px -48px;
+  background-position: -94px -72px;
   width: 20px;
   height: 20px; }
 
 .icon-item-arrow {
   background-image: url(../images/icon.png);
-  background-position: 0px -118px;
+  background-position: -118px -40px;
   width: 14px;
   height: 11px; }
 
 .icon-more-arrow {
   background-image: url(../images/icon.png);
-  background-position: -96px -94px;
+  background-position: -118px 0px;
   width: 14px;
   height: 14px; }
 
@@ -3274,13 +3280,13 @@ section.current {
 
 .icon-mp3 {
   background-image: url(../images/icon.png);
-  background-position: -94px -48px;
+  background-position: 0px -94px;
   width: 24px;
   height: 24px; }
 
 .icon-odt {
   background-image: url(../images/icon.png);
-  background-position: 0px -94px;
+  background-position: -24px -94px;
   width: 24px;
   height: 24px; }
 
@@ -3292,7 +3298,7 @@ section.current {
 
 .icon-psd {
   background-image: url(../images/icon.png);
-  background-position: -48px -94px;
+  background-position: -94px -48px;
   width: 24px;
   height: 24px; }
 
@@ -3310,7 +3316,7 @@ section.current {
 
 .icon-rss {
   background-image: url(../images/icon.png);
-  background-position: -94px -72px;
+  background-position: -70px -48px;
   width: 20px;
   height: 20px; }
 
@@ -3322,7 +3328,7 @@ section.current {
 
 .icon-share {
   background-image: url(../images/icon.png);
-  background-position: -118px -50px;
+  background-position: -118px -75px;
   width: 8px;
   height: 16px; }
 
@@ -3334,7 +3340,7 @@ section.current {
 
 .icon-tag {
   background-image: url(../images/icon.png);
-  background-position: -118px -38px;
+  background-position: -118px -51px;
   width: 12px;
   height: 12px; }
 

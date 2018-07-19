@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 $result = array();
 
-$prev_post = get_previous_post();
+$prev_post = get_adjacent_post( true, '', true, 'category' );
 if ( ( $prev_post ) && ( ! is_wp_error( $prev_post ) ) && ( ! empty( $prev_post ) ) ) {
 	$result[] = "<a class=\"next pager__item item\" href=\"" . get_permalink( $prev_post ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), esc_attr( $prev_post->post_title ) ) . "\">";
 	$result[] = "  <div class=\"arrow\"><i class=\"icon icon-two-right-arrows\"></i></div>";
@@ -18,7 +18,7 @@ if ( ( $prev_post ) && ( ! is_wp_error( $prev_post ) ) && ( ! empty( $prev_post 
 	$result[] = "</a>";
 }
 
-$next_post = get_next_post();
+$next_post = get_adjacent_post( true, '', false, 'category' );
 if ( ( $next_post ) && ( ! is_wp_error( $next_post ) ) && ( ! empty( $next_post ) ) ) {
 	$result[] = "<a class=\"previous pager__item item\" href=\"" . get_permalink( $next_post ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), esc_attr( $next_post->post_title ) ) . "\">";
 	$result[] = "  <div class=\"arrow\"><i class=\"icon icon-two-left-arrows\"></i></div>";
