@@ -55,13 +55,13 @@ if ( $projects_category_id = get_translate_id( get_theme_mod( 'projects_category
 				echo "  <div class=\"row\">\r\n";
 				if ( $project_thumbnail_url ) {
 					echo "    <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6\">\r\n";
-					echo "      <img class=\"center-block wp-post-image\" src=\"#\" data-lazy=\"" . $project_thumbnail_url . "\" alt=\"" . $project_title_attribute . "\">\r\n";
+					echo "      <a href=\"" . get_permalink( $project->ID ) . "\"><img class=\"center-block wp-post-image\" src=\"#\" data-lazy=\"" . $project_thumbnail_url . "\" alt=\"" . $project_title_attribute . "\"></a>\r\n";
 					echo "    </div>\r\n"; // .col-
 				}
 				echo "    <div class=\"col-xs-12 col-sm col-md col-lg\">\r\n";
 				echo "      <div class=\"title\"><h3>" . apply_filters( 'the_title', $project->post_title ) . "</h3></div>\r\n";
 				if ( has_excerpt( $project->ID ) ) echo "      <div class=\"excerpt\">" . apply_filters( 'the_excerpt', $project->post_excerpt ) . "</div>\r\n";
-				echo "      <p><a class=\"btn btn-success\" href=\"\">" . __( 'Подробней', 'pstu-next-theme' ) . "</a></p>\r\n";
+				echo "      <p><a class=\"btn btn-success\" href=\"" . get_permalink( $project->ID ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), $project_title_attribute ) . "\">" . __( 'Подробней', 'pstu-next-theme' ) . "</a></p>\r\n";
 				echo "    </div>\r\n"; // .col-
 				echo "  </div>\r\n"; // .row
 				echo "</div>\r\n"; // .entry

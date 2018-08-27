@@ -9,6 +9,7 @@ define( 'PSTU_NEXT_THEME_DIR', get_template_directory() . '/' );
 define( 'PSTU_NEXT_THEME_MINIFY_SCRIPTS_SLUG', ( ( get_theme_mod( 'minify_scripts_flag', false ) ) ? '.min' : '' ) );
 define( 'PSTU_NEXT_THEME_MINIFY_STYLES_SLUG', ( ( get_theme_mod( 'minify_styles_flag', false ) ) ? '.min' : '' ) );
 define( 'PSTU_NEXT_THEME_MODE_PSTU', get_theme_mod( 'mode_pstu_flag', true ) );
+define( 'PSTU_NEXT_THEME_POST_VIEWS_META', 'post_views_count' );
 define( 'PSTU_NEXT_EVENTS_DATE_REG', "/^([0-9]{2}.[0-9]{2}.[0-9]{4})/" );
 
 
@@ -148,7 +149,7 @@ add_action( 'after_setup_theme', function () {
 	  // 
 	  foreach ( array(
 	  	'action_section_title',
-	  	'action_section_title',
+	  	'action_section_subtitle',
 	  	'error404_title',
 	  	'error404_subtitle',
 	  	'similar_heading_title',

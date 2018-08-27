@@ -49,10 +49,10 @@ echo "  </div>\r\n"; // .clearfix
 
 if ( is_singular() ) {
 	echo "  <div class=\"text-right\" style=\"margin: 10px 0px\">\r\n";
-	if( current_user_can( 'delete_posts', get_the_ID() ) ) echo "<a class=\"btn btn-danger btn-xs\" href=\"". get_delete_post_link( get_the_ID() ) ."\" title=\"" . esc_attr__( 'Удалить', 'pstu-next-theme' ) . "\">" . __( 'Удалить', 'pstu-next-theme' ) . " <i class=\"icon icon-delete\"></i></a>";
-	if ( current_user_can( 'edit_post', get_the_ID() ) ) echo "<a class=\"btn btn-warning btn-xs\" href=\"" . get_edit_post_link( get_the_ID() ) . "\" title=\"" . esc_attr__( 'Редактировать', 'pstu-next-theme' ) . "\">" . __( 'Редактировать', 'pstu-next-theme' ) . " <i class=\"icon icon-edit\"></i></a>\r\n";
-	set_post_views( get_the_ID() );
-	echo "    <i class=\"icon icon-eye\"></i> " . get_post_views( get_the_ID() );
+	$post_views = get_post_meta( get_the_ID(), PSTU_NEXT_THEME_POST_VIEWS_META, true );
+	$post_views = ( empty( $post_views ) ) ? 1 : ( int ) $post_views + 1;
+	update_post_meta( get_the_ID(), PSTU_NEXT_THEME_POST_VIEWS_META, $post_views );
+	echo "    <i class=\"icon icon-eye\"></i> " . $post_views;
 	echo "  </div>\r\n"; // .clearfix
 }
 

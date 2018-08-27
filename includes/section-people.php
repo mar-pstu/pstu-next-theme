@@ -23,7 +23,7 @@ if ( $people_category_id = get_translate_id( get_theme_mod( 'people_category_id'
       'suppress_filters'  => false,
     ) );
 
-    if ( ( $people ) && ( ! empty( $people ) ) && ( ! is_wp_error( $people ) ) ) {
+    if ( ( $people ) && ( ! empty( $people ) ) && ( ! is_wp_error( $people ) ) && ( count( $people ) > 3 ) ) {
 
       echo "<section class=\"people section\" id=\"people\">\r\n";
       echo "  <div class=\"container\">\r\n";

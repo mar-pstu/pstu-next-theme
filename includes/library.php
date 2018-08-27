@@ -1,36 +1,6 @@
 <?php
 
 
-
-
-if ( ! function_exists( 'pstu_get_month' ) ) {
-	function pstu_get_month ( $m = 'xx' ) {
-		$result = '';
-		$months = array(
-			'01' => __( 'Январь', 	'pstu-next-theme' ),
-			'02' => __( 'Февраль', 	'pstu-next-theme' ),
-			'03' => __( 'Март', 		'pstu-next-theme' ),
-			'04' => __( 'Апрель', 	'pstu-next-theme' ),
-			'05' => __( 'Май', 			'pstu-next-theme' ),
-			'06' => __( 'Июнь', 		'pstu-next-theme' ),
-			'07' => __( 'Июль', 		'pstu-next-theme' ),
-			'08' => __( 'Август', 	'pstu-next-theme' ),
-			'09' => __( 'Сентябрь', 'pstu-next-theme' ),
-			'10' => __( 'Октябрь', 	'pstu-next-theme' ),
-			'11' => __( 'Ноябрь', 	'pstu-next-theme' ),
-			'12' => __( 'Декабрь', 	'pstu-next-theme' ),
-		);
-		$result = ( array_key_exists( $m, $months ) ) ? $months[ $m ] : 'xxxxxx';
-		return $result;
-	}
-}
-
-if ( ! function_exists( 'pstu_the_month' ) ) {
-	function pstu_the_month( $m ) {
-		echo pstu_get_month( $m );
-	}
-}
-
 /**
  *	Извлекает дату из строки
  */
@@ -40,14 +10,16 @@ if ( ! function_exists( 'pstu_next_get_event_date' ) ) {
 			'day'     => 'XX',
       'month'   => 'XXXXXX',
       'year'    => 'XXXX',
+      'date'		=> false,
 		);
 		preg_match( PSTU_NEXT_EVENTS_DATE_REG, $title, $matches );
     if ( ! empty( $matches ) ) {
     	$events_entry_time = strtotime( $matches[0] );
     	$result = array(
-	      'day'     => date( "d", $events_entry_time ),
-	      'month'   => pstu_get_month( date( "m", $events_entry_time ) ),
-	      'year'    => date( "Y", $events_entry_time ),
+	      'day'     => date_i18n( "j", $events_entry_time ),
+	      'month'   => date_i18n( "F", $events_entry_time ),
+	      'year'    => date_i18n( "Y", $events_entry_time ),
+	      'date'		=> $events_entry_time,
 	    );
     }
     return $result;
@@ -151,32 +123,6 @@ if ( ! function_exists( 'the_pages_select' ) ) {
 	}
 }
 
-
-
-/*
- *  Ф-ции для установки и вывода количество просмотров
- */
-if ( ! function_exists( 'get_post_views' ) ) {
-	function get_post_views( $postID ){
-		$count_key = 'post_views_count';
-		$count = get_post_meta( $postID, $count_key, true );
-		if( empty( $count ) ) {
-			update_post_meta( $postID, $count_key, '1' );
-			$count = "1";
-		}
-		return $count;
-	}
-}
-
-if ( ! function_exists( 'set_post_views' ) ) {
-	function set_post_views( $postID ) {
-		$count_key = 'post_views_count';
-		$count = get_post_views( $postID );
-		if( empty( $count ) ) $count = 0;
-		$count++;
-		update_post_meta( $postID, $count_key, $count );
-	}
-}
 
 
 /*
@@ -360,8 +306,6 @@ if ( ! function_exists( 'get_pstu_rrssb_page_info' ) ) {
 		return $result;
 	}
 }
-
-
 
 
 ?>
