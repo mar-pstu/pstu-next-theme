@@ -16,6 +16,12 @@ define( 'PSTU_NEXT_EVENTS_DATE_REG', "/^([0-9]{2}.[0-9]{2}.[0-9]{4})/" );
 get_template_part( 'includes/library' );
 get_template_part( 'includes/enqueue', 'styles' );
 get_template_part( 'includes/enqueue', 'scripts' );
+
+if ( is_admin() ) {
+	get_template_part( 'includes/metabox', 'bgi' );
+	get_template_part( 'includes/metabox', 'cathedra' );
+}
+
 if ( is_customize_preview() ) {
 	add_action( 'customize_register', function ( $wp_customize ) {
 		$wp_customize->add_panel(
@@ -85,6 +91,7 @@ add_action( 'after_setup_theme', function () {
 		'video-active-callback'  => false, // с 4.7
 	) );
 	add_theme_support( 'automatic-feed-links' );
+	add_image_size( 'thumbnail-3x2', 600, 400, true ); // размер миниатюры 3x2 с жестким кадрированием
 	add_filter( 'widget_text', 'do_shortcode' );
 	add_filter( 'wp_nav_menu_objects', function ( $items ) {
 		foreach( $items as $item ) {
@@ -154,7 +161,8 @@ add_action( 'after_setup_theme', function () {
 	  	'error404_subtitle',
 	  	'similar_heading_title',
 	  ) as $slug ) {
-	  	if ( empty( $value = wp_strip_all_tags( get_theme_mod( $slug, '' ) ) ) ) continue;
+	  	$value = wp_strip_all_tags( get_theme_mod( $slug, '' ) );
+	  	if ( empty( $value ) ) continue;
 	  	pll_register_string( $slug, $value, 'pstu-next-theme', false );
 	  }  
 

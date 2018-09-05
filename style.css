@@ -56,11 +56,9 @@ a img.aligncenter {
 }
 
 .wp-caption {
-	background: #fff;
-	border: 1px solid #f0f0f0;
 	max-width: 96%; /* Image does not overflow the content area */
-	padding: 5px 3px 10px;
-	text-align: center;
+	padding: 5px;
+	margin: 10px;	
 }
 
 .wp-caption.alignnone {
@@ -85,10 +83,13 @@ a img.aligncenter {
 }
 
 .wp-caption p.wp-caption-text {
-	font-size: 11px;
+	font-size: 0.9em;
 	line-height: 17px;
 	margin: 0;
 	padding: 0 4px 5px;
+	text-align: center;
+	font-style: italic;
+	color: #555;
 }
 
 /* Text meant only for screen readers. */

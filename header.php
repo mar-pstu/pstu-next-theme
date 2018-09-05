@@ -89,8 +89,7 @@ if ( get_theme_mod( 'header_search_flag', false ) ) {
 }
 echo "              <div class=\"col-xs-2 col-sm-2 col-md-5 col-lg-2 text-right\">\r\n";
 echo "                <a class=\"rss-button\" id=\"rss-button\" href=\"" . get_home_url( ) . "/feed/\" role=\"button\"><i class=\"icon icon-rss\"></i></a>\r\n";
-if ( ! empty( trim( $pstu_header_help_modal_content = get_theme_mod( 'pstu_header_help_modal_content', '' ) ) ) ) {
-
+if ( ! empty( trim( $pstu_header_help_modal_content = get_theme_mod( 'header_help_content', '' ) ) ) ) {
   echo "                <a class=\"help-button\" id=\"help-button\" href=\"#help-modal\" role=\"button\" data-fancybox=\"\"><i class=\"icon icon-help\"></i></a>\r\n";
   echo "                <div style=\"display: none;\">\r\n";
   echo "                  <div class=\"help-modal\" id=\"help-modal\">\r\n";
@@ -117,6 +116,11 @@ echo "          </div>\r\n"; // .container
 echo "        </div>\r\n"; // .header__nav
 
 echo "      </header>\r\n";
-echo "      <main class=\"wrapper__item wrapper__item--main main\" id=\"main\">\r\n";
+echo "      <main class=\"wrapper__item wrapper__item--main main\" style=\"position: relative;\" id=\"main\">\r\n";
+
+if ( is_singular( array( 'page', 'post' ) ) )
+  if ( $main_bgi_id = get_post_meta( get_the_ID(), 'pstu_bgi', true ) )
+    if ( $main_bgi_src = wp_get_attachment_image_url( $main_bgi_id, ( wp_is_mobile() ? 'medium' : 'large' ) ) )
+      echo "<div class=\"main-bgi lazy\" data-src=\"" . $main_bgi_src . "\"></div>";
 
 ?>

@@ -162,19 +162,18 @@ if ( !function_exists( 'the_breadcrumb' ) ) {
  */
 if ( ! function_exists( 'get_translate_id' ) ) {
 	function get_translate_id( $id, $type = 'post' ) {
-		$result = $id;
-		$translate = false;
 		if ( defined( 'POLYLANG_FILE' ) ) {
 			switch ( $type ) {
+				case 'category':
+					$translate = ( function_exists( 'pll_get_term' ) ) ? pll_get_term( $id, pll_current_language( 'slug' ) ) : $translate;
+					break;
 				case 'post':
 				case 'page':
-					$translate = ( function_exists( 'pll_get_post' ) ) ? pll_get_post( $id ) : $translate;
-					break;
-				case 'category':
-					$translate = ( function_exists( 'pll_get_term' ) ) ? pll_get_term( $id ) : $translate;
+				default:
+					$translate = ( function_exists( 'pll_get_post' ) ) ? pll_get_post( $id, pll_current_language( 'slug' ) ) : $translate;
 					break;
 			} // switch
-			$result = ( $translate ) ? $translate : $result;
+			$result = ( $translate ) ? $translate : false;
 		} // if defined
 		return $result;
 	}
@@ -255,57 +254,63 @@ if ( ! function_exists( 'the_pstu_media_pages' ) ) {
 }
 
 
+
 /**
- *  Возаращает информацию о странице для плагина rrssb
+ *	Случайний рисунок
  */
-if ( ! function_exists( 'get_pstu_rrssb_page_info' ) ) {
-	function get_pstu_rrssb_page_info () {
-		$default_image =  ( has_custom_logo() ) ? has_custom_logo() : get_header_image();
-		$default_image = ( empty( $default_image ) ) ? PSTU_NEXT_THEME_URL . 'images/post_thumbnail.jpg' : $default_image;
-		if ( is_home()  && is_front_page() ) {
-			$result = array(
-				'title'         => get_bloginfo( 'name' ),
-				'url'           => home_url(),
-				'description'   => get_bloginfo( 'description' ),
-				'emailBody'     => '',
-				'image'					=> $default_image,
-			);
-		} elseif ( is_page() || is_single() ) {
-			$result = array(
-				'title'         => wp_get_document_title(),
-				'url'           => get_permalink( get_the_ID() ),
-				'description'   => get_the_excerpt( get_the_ID() ),
-				'emailBody'     => get_the_content( $more_link_text = null, $strip_teaser = false ),
-				'image'					=> ( has_post_thumbnail( get_the_ID() ) ) ? get_the_post_thumbnail_url( get_the_ID(), 'medium' ) : $default_image,
-			);
-		} elseif ( is_archive() ) {
-			$result = array(
-				'title'         => get_the_archive_title(),
-				'url'           => get_post_type_archive_link( get_query_var( 'post_type' ) ),
-				'description'   => get_the_archive_description(),
-				'emailBody'     => '',
-				'image'					=> $default_image,
-			);
-		} elseif ( is_search() ) {
-			$result = array(
-				'title'         => get_the_archive_title(),
-				'url'           => get_post_type_archive_link( get_query_var( 'post_type' ) ),
-				'description'   => get_the_archive_description(),
-				'emailBody'     => '',
-				'image'					=> $default_image,
-			);
-		} else {
-			$result = array(
-				'title'         => wp_get_document_title(),
-				'url'           => home_url(),
-				'description'   => get_bloginfo( 'description' ),
-				'emailBody'     => '',
-				'image'					=> $default_image,
-			);
-		}
-		return $result;
+if ( ! function_exists( 'get_rand_img_src' ) ) {
+	function get_rand_img_src ( $size = 'md' ) {
+		$rand = mt_rand( 0, 14 ) + 1;
+		return PSTU_NEXT_THEME_URL . 'images/rand/' . $size . '_' . str_pad( (string)$rand, 2, '0', STR_PAD_LEFT ) . '.jpg';
 	}
 }
+
+
+
+/**
+ *	Список категорий поста
+ */
+if ( ! function_exists( 'get_pstu_term_list' ) ) {
+	function get_pstu_term_list ( $args ) {
+		$args = wp_parse_args( $args, array(
+			'id'			=> get_the_ID(),
+			'term'		=> 'category',
+			'list'		=> array(),
+			'icon'		=> array(),
+			'exclude'	=> array(),
+		) );
+		$result = array();
+		if ( has_term( '', $args[ 'term' ], $args[ 'id' ] ) ) {
+			$terms = get_the_terms( $args[ 'id' ], $args[ 'term' ] );
+			if ( ( $terms ) && ( ! empty( $terms ) ) && ( ! is_wp_error( $terms ) ) ) {
+				$result[] = sprintf(
+					'<ul %1$s >',
+					( empty( $args[ 'list' ] ) ) ? '' : 'class="' . esc_attr( implode( ' ', $args[ 'list' ] ) ) . '"'
+				);
+				foreach ( $terms as $term )
+					if ( ! in_array( (int)$term->term_id, $args[ 'exclude' ] ) ) $result[] = sprintf(
+						'<li>%1$s<a href="%2$s" title="%3$s">%4$s</a></li>',
+						( empty( $args[ 'icon' ] ) ) ? '' : '<i class="' . esc_attr( implode( ' ', $args[ 'icon' ] ) ) . '"></i>',
+						get_term_link( (int)$term->term_id, $term->taxonomy ),
+						esc_attr( $term->name ),
+						$term->name
+					);
+				$result[] = sprintf( '</ul>' );
+			}
+		}
+		return ( empty( $result ) ) ? '' : implode( "\r\n" , $result );
+	}
+}
+
+if ( ! function_exists( 'the_pstu_term_list' ) ) {
+	function the_pstu_term_list ( $args ) {
+		echo get_pstu_term_list( $args );
+	}
+}
+
+
+
+
 
 
 ?>

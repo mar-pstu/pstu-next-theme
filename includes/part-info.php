@@ -37,14 +37,14 @@ if ( is_singular() ) {
 echo "<div class=\"main__info info\">\r\n";
 if ( get_theme_mod( 'qr_code_url', true ) ) {
 	if ( ( ! empty( $info[ 'permalink' ] ) ) && ( ! is_wp_error( $info[ 'permalink' ] ) ) ) echo "  <img class=\"lazy qr-code\" src=\"#\" data-src=\"http://chart.apis.google.com/chart?choe=UTF-8&amp;chld=L&amp;cht=qr&amp;chs=100x100&amp;chl=" . $info[ 'permalink' ] . "\">\r\n";
-} 
+}
 if ( ! empty( $info[ 'title' ] ) ) echo "  <h1 class=\"title\">" . $info[ 'title' ] . "</h1>\r\n";
 if ( ! empty( $info[ 'excerpt' ] ) ) echo "  <div class=\"lead\">" . $info[ 'excerpt' ] . "</div>\r\n";
 
 the_breadcrumb();
 
 echo "  <div class=\"clearfix\">\r\n";
-get_template_part( 'part', 'share' );
+if ( get_theme_mod( 'share_section_flag', false ) ) echo "<ul class=\"share__jssocials jssocials\" id=\"shareIcons\"></ul>\r\n";
 echo "  </div>\r\n"; // .clearfix
 
 if ( is_singular() ) {
