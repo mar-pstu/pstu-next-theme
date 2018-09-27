@@ -45,6 +45,8 @@ if ( have_posts() ) {
 
 	} // while have_posts
 
+
+
 } // if have_posts
 
 

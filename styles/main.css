@@ -2400,7 +2400,7 @@ form label {
   margin: 0px; }
   .widget .menu > li:before {
     background-image: url(../images/icon.png);
-    background-position: -118px -56px;
+    background-position: -118px -72px;
     width: 14px;
     height: 11px;
     border: 0px;
@@ -2684,32 +2684,32 @@ form label {
 .info__tags .icon, .info__tags .to-top-btn:before {
   vertical-align: middle; }
 
-.sticky {
+section.sticky {
   -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.75) inset;
           box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.75) inset; }
-  .sticky .entry {
+  section.sticky .entry {
     background-position: center center;
     -webkit-background-size: cover;
             background-size: cover;
     padding: 25px 0px;
     text-shadow: 1px 1px 1px #262626; }
-  .sticky__entry .wp-post-image {
+  section.sticky__entry .wp-post-image {
     display: block;
     margin: 0px auto;
     -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
             box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
-  .sticky__entry .title {
+  section.sticky__entry .title {
     font-weight: normal;
     font-size: 26px;
     line-height: 32px;
     margin: 15px 0px; }
-    .sticky__entry .title a {
+    section.sticky__entry .title a {
       text-decoration: none; }
-      .sticky__entry .title a:hover {
+      section.sticky__entry .title a:hover {
         text-decoration: none; }
-  .sticky__entry .excerpt {
+  section.sticky__entry .excerpt {
     margin: 15px 0px; }
-    .sticky__entry .excerpt p {
+    section.sticky__entry .excerpt p {
       margin: 0px; }
 
 /**
@@ -2824,6 +2824,11 @@ form label {
   margin: 25px 0px; }
   .news .entry {
     margin-bottom: 25px; }
+  .news .sticky {
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
+    padding: 15px;
+    background-color: #f7fffd; }
   .news__entry .media-left {
     display: block;
     float: none; }
@@ -3241,19 +3246,19 @@ section.current {
 
 .icon-delete {
   background-image: url(../images/icon.png);
-  background-position: -118px -43px;
+  background-position: -118px -59px;
   width: 13px;
   height: 13px; }
 
 .icon-doc {
   background-image: url(../images/icon.png);
-  background-position: -48px -94px;
+  background-position: -72px -94px;
   width: 24px;
   height: 24px; }
 
 .icon-down-arrow {
   background-image: url(../images/icon.png);
-  background-position: -118px -79px;
+  background-position: -118px -95px;
   width: 12px;
   height: 12px; }
 
@@ -3265,43 +3270,49 @@ section.current {
 
 .icon-edit {
   background-image: url(../images/icon.png);
-  background-position: -118px -30px;
+  background-position: -118px -46px;
   width: 13px;
   height: 13px; }
 
 .icon-eye {
   background-image: url(../images/icon.png);
-  background-position: -72px -70px;
+  background-position: -118px -16px;
   width: 16px;
   height: 16px; }
 
 .icon-help {
   background-image: url(../images/icon.png);
-  background-position: -94px -72px;
+  background-position: -70px -48px;
   width: 20px;
   height: 20px; }
 
 .icon-item-arrow {
   background-image: url(../images/icon.png);
-  background-position: -118px -56px;
+  background-position: -118px -72px;
   width: 14px;
   height: 11px; }
 
+.icon-language {
+  background-image: url(../images/icon.png);
+  background-position: -94px -72px;
+  width: 22px;
+  height: 22px; }
+
 .icon-more-arrow {
   background-image: url(../images/icon.png);
-  background-position: -118px -16px;
+  background-position: -118px -32px;
   width: 14px;
   height: 14px; }
 
 .icon-more {
   background-image: url(../images/icon.png);
-  background-position: -72px -86px;
+  background-position: -96px -110px;
   width: 22px;
   height: 6px; }
 
 .icon-mp3 {
   background-image: url(../images/icon.png);
-  background-position: -24px -94px;
+  background-position: -48px -94px;
   width: 24px;
   height: 24px; }
 
@@ -3313,7 +3324,7 @@ section.current {
 
 .icon-pdf {
   background-image: url(../images/icon.png);
-  background-position: -72px -94px;
+  background-position: -24px -94px;
   width: 24px;
   height: 24px; }
 
@@ -3337,7 +3348,7 @@ section.current {
 
 .icon-rss {
   background-image: url(../images/icon.png);
-  background-position: -70px -48px;
+  background-position: -72px -70px;
   width: 20px;
   height: 20px; }
 
@@ -3349,7 +3360,7 @@ section.current {
 
 .icon-share {
   background-image: url(../images/icon.png);
-  background-position: -118px -91px;
+  background-position: 0px -118px;
   width: 8px;
   height: 16px; }
 
@@ -3361,7 +3372,7 @@ section.current {
 
 .icon-tag {
   background-image: url(../images/icon.png);
-  background-position: -118px -67px;
+  background-position: -118px -83px;
   width: 12px;
   height: 12px; }
 

@@ -141,7 +141,7 @@ function pstu_meta_cathedra_save($postID) {
   if( isset( $_POST[ 'pstu_mb_cathedra_zkaf' ] ) ) { update_post_meta($postID, '_pstu_mb_cathedra_zkaf', $_POST[ 'pstu_mb_cathedra_zkaf' ]); }
   if( isset( $_POST[ 'pstu_mb_cathedra_zkaf_foto' ] ) ) { update_post_meta($postID, '_pstu_mb_cathedra_zkaf_foto', $_POST[ 'pstu_mb_cathedra_zkaf_foto' ]); }
   if( isset( $_POST[ 'pstu_mb_cathedra_contacts' ] ) ) { update_post_meta($postID, '_pstu_mb_cathedra_contacts', $_POST[ 'pstu_mb_cathedra_contacts' ]); }
-  if( isset( $_POST[ 'pstu_mb_cathedra_accordio' ] ) ) { update_post_meta($postID, '_pstu_mb_cathedra_accordio', $_POST[ 'pstu_mb_cathedra_accordio' ]); }
+  // if( isset( $_POST[ 'pstu_mb_cathedra_accordio' ] ) ) { update_post_meta($postID, '_pstu_mb_cathedra_accordio', $_POST[ 'pstu_mb_cathedra_accordio' ]); }
 }
 add_action('save_post', 'pstu_meta_cathedra_save');
 

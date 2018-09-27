@@ -61,17 +61,17 @@ if ( have_posts() ) {
 					$result[] = "</ul>";
 				}
 				$edit_link = sprintf(
-					'<a class="btn btn-warning" href="%1$s" title="%2$s"><i class=\"icon icon-edit\"></i> %2$s</a>',
+					'<p class="text-right"><a class="btn btn-warning" href="%1$s" title="%2$s"><i class=\"icon icon-edit\"></i> %2$s</a></p>',
 					get_edit_post_link( $childs_entry->ID ),
 					esc_attr__( 'Редактировать', 'pstu-next-theme' )
 				);
-				$result[] = sprintf(
-					'<p class="text-right">%4$s<a class="btn btn-success" href="%1$s" title="%2$s - %3$s">%2$s</a></p>',
-					get_permalink( $childs_entry->ID ),
-					esc_attr__( 'Подробней', 'pstu-next-theme' ),
-					esc_attr( $childs_entry->post_title ),
-					( current_user_can( 'edit_post', $childs_entry->ID ) ) ? $edit_link . ' ' : ''
-				);
+				// $result[] = sprintf(
+				// 	'<p class="text-right">%4$s<a class="btn btn-success" href="%1$s" title="%2$s - %3$s">%2$s</a></p>',
+				// 	get_permalink( $childs_entry->ID ),
+				// 	esc_attr__( 'Подробней', 'pstu-next-theme' ),
+				// 	esc_attr( $childs_entry->post_title ),
+				// 	( current_user_can( 'edit_post', $childs_entry->ID ) ) ? $edit_link . ' ' : ''
+				// );
 				$result[] = "  </div>"; // .media-body
 				$result[] = "</div>"; // .media
 			}

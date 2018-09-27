@@ -48,7 +48,14 @@ if ( get_theme_mod( 'share_section_flag', false ) ) echo "<ul class=\"share__jss
 echo "  </div>\r\n"; // .clearfix
 
 if ( is_singular() ) {
-	echo "  <div class=\"text-right\" style=\"margin: 10px 0px\">\r\n";
+	echo "  <div class=\"text-right clearfix\" style=\"margin: 10px 0px\">\r\n";
+	the_pstu_languages( array(
+		'before' 	=> sprintf(
+			'<div class=" pull-left"><i class="icon icon-language"></i>&nbsp;%1$s: </div><ul class="list-unstyled list-inline alignleft">',
+				__( 'Переводы', 'pstu-next-theme' )
+		),
+		'after'		=> "</ul>",
+	) );
 	$post_views = get_post_meta( get_the_ID(), PSTU_NEXT_THEME_POST_VIEWS_META, true );
 	$post_views = ( empty( $post_views ) ) ? 1 : ( int ) $post_views + 1;
 	update_post_meta( get_the_ID(), PSTU_NEXT_THEME_POST_VIEWS_META, $post_views );

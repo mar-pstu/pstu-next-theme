@@ -48,7 +48,7 @@ switch ( get_theme_mod( 'sticky_type', 'sticky' ) ) {
   default:
     $sticky_posts_array = get_option( 'sticky_posts', array() );
     if ( ( $sticky_posts_array ) && ( ! empty( $sticky_posts_array ) ) ) {
-      $sticky_post = get_post( $sticky_posts_array[ 0 ], OBJECT );
+      $sticky_post = get_post( $sticky_posts_array[ count( $sticky_posts_array ) - 1 ], OBJECT );
       if ( ( $sticky_post ) && ( ! empty( $sticky_post ) ) && ( ! is_wp_error( $sticky_post ) ) ) {
         $sticky_entry = array(
           'title'     => apply_filters( 'the_title', $sticky_post->post_title ),

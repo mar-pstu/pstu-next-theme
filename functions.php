@@ -99,6 +99,9 @@ add_action( 'after_setup_theme', function () {
 		}
 		return $items;
 	} );
+	
+	// remove_filter( 'the_content', 'wpautop' );
+	// add_filter( 'the_content', 'wpautop', 12);
 
 	// замена стандартного кода вывода галереи wp
 	if ( get_theme_mod( 'gallery_huk_flag', false ) ) add_filter( 'post_gallery', function ( $output, $attr ) {
@@ -115,13 +118,15 @@ add_action( 'after_setup_theme', function () {
 
 		if( ! $pictures ) return;
 
-		$result = "<div class=\"gallery gallery--blocksit\" data-block-element=\"a\">\r\n";
+		$result = "<iframe class=\"gallery-frame\" name=\"frame\" width=\"100%\" height=\"100%\" style=\"position: absolute; z-index:-1; border:0px;\"></iframe>";
+		$result .= "<div class=\"gallery gallery--blocksit\" data-block-element=\"a\" data-block-columns=\"" . ( ( isset( $attr[ 'columns' ] ) ) ? $attr[ 'columns' ] : 3 ) . "\">\r\n";
 		foreach( $pictures as $pic ){
-			$src = $pic->guid;
+			$src = wp_get_attachment_image_url( $pic->ID, 'medium', false );
+			if ( ! $src ) continue;
 			$t = esc_attr( $pic->post_title );
 			$title = ( $t && false === strpos($src, $t)  ) ? $t : '';
-			$result .= "<a class=\"gallery__item item\" title=\"" . $title . "\" data-fancybox=\"gallery-" . implode( '', $ids_arr ) ."\" href=\"" . $src . "\">\r\n";
-			$result .= "  <img class=\"lazy\" src=\"#\" alt=\"". $title . "\" data-src=\"" . $src . "\" width=\"100%\">\r\n";
+			$result .= "<a class=\"gallery__item item\" title=\"" . $title . "\" data-fancybox=\"gallery-" . implode( '', $ids_arr ) ."\" href=\"" . $pic->guid . "\">";
+			$result .= "  <img class=\"lazy\" src=\"#\" alt=\"". $title . "\" data-src=\"" . $src . "\" width=\"100%\">";
 			$result .= "</a>\r\n";
 		} // foreach
 		$result .= '</div>'; // .gallery
