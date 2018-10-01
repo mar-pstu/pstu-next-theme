@@ -29,7 +29,7 @@ if ( have_posts() ) {
 	echo "</div>"; // .search__list
 
 } else {
-	echo "<p class=\"lead\">" . __( 'К сожадению ничего не найдено', 'pstu-next-theme' ) . "</p>";
+	echo "<p class=\"lead\">" . __( 'К сожалению ничего не найдено', 'pstu-next-theme' ) . "</p>";
 }
 
 

@@ -53,7 +53,7 @@ if ( ! function_exists( 'get_category_array' ) ) {
 			'hide_empty'        =>  false,
 		);
 		$categories = get_categories( $categories_args );
-		$array = array( '' => __( 'Не обрано', 'pstu-profcom-theme' ) );
+		$array = array( '' => '' );
 		foreach ($categories as $item) {
 			if ( $ppl_lang ) {
 				if ( $ppl_lang == pll_get_term_language( $item->term_id ) ) {
@@ -136,7 +136,7 @@ if ( !function_exists( 'the_breadcrumb' ) ) {
 			if (!is_front_page()) {
 				echo '<a href="';
 				echo home_url();
-				echo '">'.__( 'Главная', 'pstu-profcom-theme' );
+				echo '">'.__( 'Главная', 'pstu-next-theme' );
 				echo "</a> » ";
 				if ( is_category() || is_single() ) {
 					the_category(' ');
@@ -149,7 +149,7 @@ if ( !function_exists( 'the_breadcrumb' ) ) {
 				}
 			}
 			else {
-					echo __( 'Домашняя страница', 'pstu-profcom-theme' );
+					echo __( 'Домашняя страница', 'pstu-next-theme' );
 			}
 		}
 	}

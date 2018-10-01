@@ -38,7 +38,7 @@ if ( has_nav_menu( 'menu_second' ) ) {
   echo "            <div class=\"row\">\r\n";
   echo "              <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\r\n";
   echo "                <nav class=\"nav\">\r\n";
-  echo "                  <button class=\"nav__burger burger\" id=\"top-nav-burger\" title=\"" . esc_attr__( 'Открыть верхнее меню', 'pstu-next-theme' ) . "\">" . __( 'Верхнее меню', 'pstu-next-theme' ) . "</button>\r\n";
+  echo "                  <button class=\"nav__burger burger\" id=\"top-nav-burger\" title=\"" . esc_attr__( 'Открыть дополнительное меню', 'pstu-next-theme' ) . "\">" . __( 'Дополнительное меню', 'pstu-next-theme' ) . "</button>\r\n";
   wp_nav_menu( array( 
     'theme_location'    => 'menu_second',
     'fallback_cb'       => '__return_empty_string',

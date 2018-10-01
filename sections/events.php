@@ -44,7 +44,7 @@ if ( $events_category_id = get_translate_id( get_theme_mod( 'events_category_id'
       if ( ! empty( $events_category_link = get_category_link( $events_category_id ) ) ) {
         $result[] = "<div class=\"col-xs-12 col-sm-3 col-md-12 col-lg-12\">";
         $result[] = "  <p class=\"text-center small\">";
-        $result[] = "    <a href=\"" . $events_category_link . "\">" . __( 'Смотреть ешё', 'pstu-next-theme' ) . "</a>";
+        $result[] = "    <a href=\"" . $events_category_link . "\">" . __( 'Смотреть ещё', 'pstu-next-theme' ) . "</a>";
         $result[] = "  </p>";
         $result[] = "</div>"; // .col-
       }

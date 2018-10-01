@@ -118,8 +118,9 @@ add_action( 'after_setup_theme', function () {
 
 		if( ! $pictures ) return;
 
-		$result = "<iframe class=\"gallery-frame\" name=\"frame\" width=\"100%\" height=\"100%\" style=\"position: absolute; z-index:-1; border:0px;\"></iframe>";
-		$result .= "<div class=\"gallery gallery--blocksit\" data-block-element=\"a\" data-block-columns=\"" . ( ( isset( $attr[ 'columns' ] ) ) ? $attr[ 'columns' ] : 3 ) . "\">\r\n";
+		$result = "<div style=\"position: relative;\">";
+		$result .= "  <iframe class=\"gallery-frame\" name=\"frame\" width=\"100%\" height=\"100%\" style=\"position: absolute; z-index:-1; border:0px;\"></iframe>";
+		$result .= "  <div class=\"gallery gallery--blocksit\" data-block-element=\"a\" data-block-columns=\"" . ( ( isset( $attr[ 'columns' ] ) ) ? $attr[ 'columns' ] : 3 ) . "\">\r\n";
 		foreach( $pictures as $pic ){
 			$src = wp_get_attachment_image_url( $pic->ID, 'medium', false );
 			if ( ! $src ) continue;
@@ -129,7 +130,8 @@ add_action( 'after_setup_theme', function () {
 			$result .= "  <img class=\"lazy\" src=\"#\" alt=\"". $title . "\" data-src=\"" . $src . "\" width=\"100%\">";
 			$result .= "</a>\r\n";
 		} // foreach
-		$result .= '</div>'; // .gallery
+		$result .= '  </div>'; // .gallery
+		$result .= "</div>";
 
 		return $result;
 
@@ -184,7 +186,7 @@ add_action( 'widgets_init', function () {
 	register_sidebar( array(
 		'name'						=> __( 'Сайдбар шапки', 'pstu-next-theme' ),
 		'id'							=> 'side_header',
-		'description'			=> __( '', 'pstu-next-theme' ),
+		'description'			=> '',
 		'class'						=> '',
 		'before_widget'		=> '<div class="col-xs-12 col-sm col-md-3 col-lg-3 small"><div id="%1$s" class="widget %2$s">',
 		'after_widget'		=> '</div></div>',
@@ -195,7 +197,7 @@ add_action( 'widgets_init', function () {
 	register_sidebar( array(
 		'name'						=> __( 'Правая колонка', 'pstu-next-theme' ),
 		'id'							=> 'side_right',
-		'description'			=> __( '', 'pstu-next-theme' ),
+		'description'			=> '',
 		'class'						=> '',
 		'before_widget'		=> '<div class="col-xs-12 col-sm-6 col-md-12 col-lg-12"><div id="%1$s" class="widget %2$s">',
 		'after_widget'		=> '</div></div>',
@@ -206,7 +208,7 @@ add_action( 'widgets_init', function () {
 	register_sidebar( array(
 		'name'						=> __( 'Сайдбар подвала', 'pstu-next-theme' ),
 		'id'							=> 'side_basement',
-		'description'			=> __( '', 'pstu-next-theme' ),
+		'description'			=> '',
 		'class'						=> '',
 		'before_widget'		=> '<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3"><div id="%1$s" class="widget %2$s">',
 		'after_widget'		=> '</div></div>',
@@ -217,7 +219,7 @@ add_action( 'widgets_init', function () {
 	register_sidebar( array(
 		'name'						=> __( 'Сайдбар главной страницы', 'pstu-next-theme' ),
 		'id'							=> 'side_home',
-		'description'			=> __( '', 'pstu-next-theme' ),
+		'description'			=> '',
 		'class'						=> '',
 		'before_widget'		=> '<div class="col-xs-12 col-sm-4 col-md-12 col-lg-12"><div id="%1$s" class="widget %2$s">',
 		'after_widget'		=> '</div></div>',

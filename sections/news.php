@@ -57,8 +57,9 @@ if ( $news_category_id = get_translate_id( get_theme_mod( 'news_category_id', fa
         echo "    <div class=\"media-body\">\r\n";
         echo "      <h3 class=\"media-heading\"><a href=\"" . get_the_permalink( $news_post->ID ) . "\">" . apply_filters( 'the_title', $news_post->post_title ) . "</a></h3>\r\n";
         echo "      <div class=\"excerpt\">" . apply_filters( 'the_excerpt', ( empty( trim( $news_post->post_excerpt ) ) ) ? wp_trim_words( wp_strip_all_tags( strip_shortcodes( $news_post->post_content ) ), 20 ) : apply_filters( 'the_excerpt', $news_post->post_excerpt ) ) . "</div>\r\n";
-        echo "      <div class=\"text-right\">\r\n";
-        echo "        <a class=\"btn btn-success\" href=\"" . get_the_permalink( $news_post->ID ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), $news_post_title_attribute ) . "\">\r\n";
+        echo "      <div class=\"clearfix\" style=\"margin-top: 5px;\">\r\n";
+        echo "        <div class=\"small pull-left font-bold\">" . date( 'Y.m.d H:i', strtotime( $news_post->post_date ) ) . "</div>\r\n";
+        echo "        <a class=\"btn btn-success pull-right\" href=\"" . get_the_permalink( $news_post->ID ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), $news_post_title_attribute ) . "\">\r\n";
         echo __( 'Подробней', 'pstu-next-theme' ) . " <i class=\"icon icon-more\"></i>\r\n";
         echo "        </a>\r\n";
         echo "      </div>\r\n"; // .text-right

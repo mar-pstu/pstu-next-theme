@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 if ( is_singular() ) {
 	$info = array(
-		'title'			=> apply_filters( 'the_title', get_the_title( get_the_ID() ) ),
+		'title'			=> esc_html( get_the_title( get_the_ID() ) ),
 		'excerpt'		=> ( has_excerpt( get_the_ID() ) ) ? apply_filters( 'the_excerpt', get_the_excerpt( get_the_ID() ) ) : '',
 		'permalink'	=> wp_get_shortlink( get_the_ID(), 'post', true ),
 	);

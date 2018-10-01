@@ -98,7 +98,7 @@ function pstu_mb_cathedra_showup($post, $box) {
         <td><?php echo ( $i + 1 ); ?></td>
         <td><input class="display--block" id="mb_sp_cathedra_modal_<?php echo $i; ?>_input" type="text" name="pstu_mb_cathedra_accordio[<?php echo $i; ?>][0]" value="<?php echo $accordio[$i][0]; ?>"></td>
         <td>
-          <div><a class="button button-block" data-target="#mb_sp_cathedra_modal_<?php echo $i; ?>" data-toggle="modal"><span class="dashicons dashicons-edit" style="line-height: inherit;"></span> <?php _e( 'Редагувати', 'pstu-theme' ) ?></a></div>
+          <div><a class="button button-block" data-target="#mb_sp_cathedra_modal_<?php echo $i; ?>" data-toggle="modal"><span class="dashicons dashicons-edit" style="line-height: inherit;"></span> <?php _e( 'Редактировать', 'pstu-theme' ) ?></a></div>
             <div id="mb_sp_cathedra_modal_<?php echo $i; ?>" class="modal fade in">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">

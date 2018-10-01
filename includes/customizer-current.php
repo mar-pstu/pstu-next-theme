@@ -16,7 +16,7 @@ $wp_customize->add_section(
 	array(
 		'title'       	=> __( 'Слайдер "Актуальное"', 'pstu-next-theme' ),
 		'priority'    	=> 10,
-		'description' 	=> __( 'Настройки слайдера "Актуальное". Слайдер выводится на главной и на врутрених страницах сайта.' , 'pstu-next-theme' ),
+		'description' 	=> __( 'Настройки слайдера "Актуальное". Слайдер выводится на главной и на врутренних страницах сайта.' , 'pstu-next-theme' ),
 		'panel'       	=> 'pstu_next_theme_options'
 	)
 ); /**/
