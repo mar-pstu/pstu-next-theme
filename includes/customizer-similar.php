@@ -14,9 +14,9 @@ add_action( 'customize_register', function ( $wp_customize ) {
 	$wp_customize->add_section(
 		'pstu_next_theme_similar',
 		array(
-			'title'       	=> __( 'Слайдер "Проекты"', 'pstu-next-theme' ),
+			'title'       	=> __( 'Похожие записи', 'pstu-next-theme' ),
 			'priority'    	=> 10,
-			'description' 	=> __( 'Настройки слайдера "Проекты". Слайдер только на главной странице.' , 'pstu-next-theme' ),
+			'description' 	=> '',
 			'panel'       	=> 'pstu_next_theme_options'
 		)
 	); /**/

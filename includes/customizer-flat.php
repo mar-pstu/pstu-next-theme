@@ -53,7 +53,7 @@ add_action( 'customize_register', function ( $wp_customize ) {
 			'type'					=> 'number',
 			'input_attrs'		=> array(
 				'min'						=> '1',
-				'max'						=> '10',
+				'max'						=> '20',
 			),
 		)
 	); /**/

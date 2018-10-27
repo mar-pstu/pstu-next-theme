@@ -23,6 +23,7 @@ add_action( 'wp_head', function () {
 if ( is_admin() ) add_action( 'current_screen', function () {
 	add_editor_style( PSTU_NEXT_THEME_URL . 'styles/critical' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' );
 	add_editor_style( PSTU_NEXT_THEME_URL . 'styles/main' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' );
+	add_editor_style( PSTU_NEXT_THEME_URL . 'style.css' );
 } );
 
 
@@ -34,6 +35,33 @@ if ( is_admin() ) add_action( 'current_screen', function () {
  */
 add_action( 'wp_enqueue_scripts', function () {
 
+	wp_register_style(
+		'jssocials',
+		PSTU_NEXT_THEME_URL . 'styles/jssocials.min.css',
+		array(),
+		filemtime( PSTU_NEXT_THEME_DIR . 'styles/jssocials' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
+	);
+	wp_register_style(
+		'jssocials-theme-flat',
+		PSTU_NEXT_THEME_URL . 'styles/jssocials-theme-flat.css',
+		array( 'jssocials' ),
+		filemtime( PSTU_NEXT_THEME_DIR . 'styles/jssocials-theme-flat' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
+	);
+	wp_register_style(
+		'fancybox',
+		PSTU_NEXT_THEME_URL . 'styles/fancybox.min.css',
+		array(),
+		filemtime( PSTU_NEXT_THEME_DIR . 'styles/fancybox' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
+	);
+
+	// wp стили темы
+	wp_enqueue_style(
+		'pstu-profcom-theme-wp',
+		PSTU_NEXT_THEME_URL . 'style.css',
+		array(),
+		filemtime( PSTU_NEXT_THEME_DIR . 'style.css' )
+	);
+
 	// основные стили темы
 	wp_enqueue_style(
 		'pstu-profcom-theme-main',
@@ -43,20 +71,14 @@ add_action( 'wp_enqueue_scripts', function () {
 	);
 
 	// стили блока "поделиться"
-	wp_enqueue_style(
-		'rrssb',
-		PSTU_NEXT_THEME_URL . 'styles/rrssb.min.css',
-		array(),
-		filemtime( PSTU_NEXT_THEME_DIR . 'styles/rrssb' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
-	);
+	if ( get_theme_mod( 'share_section_flag', false ) ) {
+		wp_enqueue_style( 'jssocials' );
+		wp_enqueue_style( 'jssocials-theme-flat' );
+	}
 
+	if ( get_theme_mod( 'img_fancybox_flag', false ) ) wp_enqueue_style( 'fancybox' );
+	if ( ! empty( trim( get_theme_mod( 'header_help_content', '' ) ) ) ) wp_enqueue_style( 'fancybox' );
 
-	wp_enqueue_style(
-		'fancybox',
-		PSTU_NEXT_THEME_URL . 'styles/fancybox.min.css',
-		array(),
-		filemtime( PSTU_NEXT_THEME_DIR . 'styles/fancybox' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
-	);
 	
 	
 	// стили слайдера slick

@@ -27,7 +27,7 @@ if ( has_nav_menu( 'menu_footer' ) ) {
 
 if ( is_active_sidebar( 'side_basement' ) ) get_sidebar();
 
-if ( get_theme_mod( 'partners_section_flag', false ) ) get_template_part( 'includes/section', 'partners' );
+if ( get_theme_mod( 'partners_section_flag', false ) ) get_template_part( 'sections/partners' );
 
 echo "      <footer class=\"footer wrapper__item\" id=\"footer\">\r\n";
 echo "        <div class=\"container\">\r\n";

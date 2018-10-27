@@ -1,0 +1,635 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-10-01 15:44+0300\n"
+"PO-Revision-Date: 2018-10-01 15:48+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: comments.php:16 comments.php:22
+msgid "Аноним"
+msgstr ""
+
+#: comments.php:24
+msgid "Ваш комментарий ожидает модерацию"
+msgstr "Your comment is awaiting moderation"
+
+#: comments.php:27
+#, php-format
+msgid "%s %s"
+msgstr ""
+
+#: comments.php:29 includes/loop-blog.php:39 includes/loop-documents.php:30
+#: includes/loop-events.php:38 includes/loop-search.php:22
+#: includes/metabox-cathedra.php:101 page-childpages-media.php:66
+#: sections/similar.php:87
+msgid "Редактировать"
+msgstr "Edit"
+
+#: comments.php:34
+msgid "Войдите, чтобы ответить"
+msgstr "Login to reply"
+
+#: comments.php:61
+msgid "Оставьте комментарий"
+msgstr "Leave a comment"
+
+#: comments.php:62
+#, php-format
+msgid "Оставьте комментарий к %s"
+msgstr ""
+
+#: comments.php:65
+msgid "Cancel reply"
+msgstr ""
+
+#: comments.php:66
+msgid "Post Comment"
+msgstr ""
+
+#: comments.php:78
+msgid "Ответить"
+msgstr "Reply"
+
+#: comments.php:93
+msgid "Комментарии"
+msgstr "Comments"
+
+#: comments.php:94
+msgid "всего"
+msgstr ""
+
+#: footer.php:39
+msgid ""
+"Государственное высшее учебное заведение Приазовский государственный "
+"технический университет"
+msgstr ""
+
+#: footer.php:40
+msgid "ГВУЗ ПГТУ"
+msgstr ""
+
+#: footer.php:51
+msgid "Разработка"
+msgstr "Development"
+
+#: footer.php:52
+msgid ""
+"Центр компьютерных технологий Приазовского государственного технического "
+"университета"
+msgstr ""
+
+#: footer.php:53
+msgid "ЦКТ ПГТУ"
+msgstr ""
+
+#: functions.php:31
+msgid "Настройки темы \"ПГТУ Next\""
+msgstr ""
+
+#: functions.php:145 header.php:103 includes/header.php:103
+msgid "Главное меню"
+msgstr ""
+
+#: functions.php:146 header.php:41
+msgid "Дополнительное меню"
+msgstr ""
+
+#: functions.php:147
+msgid "Фиксированное меню"
+msgstr ""
+
+#: functions.php:148
+msgid "Меню подвала"
+msgstr ""
+
+#: functions.php:187
+msgid "Сайдбар шапки"
+msgstr ""
+
+#: functions.php:198
+msgid "Правая колонка"
+msgstr ""
+
+#: functions.php:209
+msgid "Сайдбар подвала"
+msgstr ""
+
+#: functions.php:220
+msgid "Сайдбар главной страницы"
+msgstr ""
+
+#: header.php:41
+msgid "Открыть дополнительное меню"
+msgstr ""
+
+#: header.php:67 includes/header.php:67
+msgid "На главную"
+msgstr "To main"
+
+#: header.php:86 includes/header.php:86
+msgid "Поиск"
+msgstr "Search"
+
+#: header.php:103 includes/header.php:103
+msgid "Открыть главное меню"
+msgstr "Open the main menu"
+
+#: includes/customizer-404.php:17
+msgid "404"
+msgstr "404"
+
+#: includes/customizer-404.php:19
+msgid "Настройки страницы \"Ошибка 404\""
+msgstr "Page 404 Error Settings"
+
+#: includes/customizer-404.php:27
+msgid "Ошибка 404"
+msgstr "Error 404"
+
+#: includes/customizer-404.php:36 includes/customizer-action.php:72
+#: includes/customizer-share.php:53
+msgid "Заголовок"
+msgstr "Header"
+
+#: includes/customizer-404.php:53 includes/customizer-action.php:89
+msgid "Подзаголовок"
+msgstr "Subtitle"
+
+#: includes/customizer-action.php:18
+msgid "Секция \"Action\""
+msgstr ""
+
+#: includes/customizer-action.php:20 includes/customizer-socials.php:19
+msgid ""
+"Ссылки на социальные сети и контакты. Список публикуется в шапке сайта и "
+"подвале."
+msgstr ""
+
+#: includes/customizer-action.php:36 includes/customizer-current.php:35
+#: includes/customizer-events.php:36 includes/customizer-flat.php:36
+#: includes/customizer-jumbotron.php:36 includes/customizer-news.php:35
+#: includes/customizer-partners.php:35 includes/customizer-people.php:35
+#: includes/customizer-projects.php:35 includes/customizer-share.php:36
+#: includes/customizer-similar.php:35 includes/customizer-sticky.php:35
+msgid "Использовать секцию"
+msgstr ""
+
+#: includes/customizer-action.php:105 includes/customizer-flat.php:52
+#: includes/customizer-jumbotron.php:52
+msgid "Количество записей"
+msgstr ""
+
+#: includes/customizer-action.php:125 includes/customizer-flat.php:72
+#: includes/customizer-jumbotron.php:72
+msgid "Тип потов"
+msgstr ""
+
+#: includes/customizer-action.php:128 includes/customizer-flat.php:75
+#: includes/customizer-jumbotron.php:75
+msgid "пункты меню"
+msgstr ""
+
+#: includes/customizer-action.php:129 includes/customizer-flat.php:76
+#: includes/customizer-jumbotron.php:76
+msgid "постоянные страницы"
+msgstr ""
+
+#: includes/customizer-action.php:130 includes/customizer-flat.php:77
+#: includes/customizer-jumbotron.php:77
+msgid "записи (посты)"
+msgstr ""
+
+#: includes/customizer-action.php:146 includes/customizer-flat.php:93
+#: includes/customizer-jumbotron.php:93
+msgid "Выбор меню"
+msgstr ""
+
+#: includes/customizer-action.php:163 includes/customizer-current.php:51
+#: includes/customizer-documents.php:52 includes/customizer-events.php:88
+#: includes/customizer-flat.php:110 includes/customizer-jumbotron.php:110
+#: includes/customizer-news.php:51 includes/customizer-partners.php:52
+#: includes/customizer-people.php:51 includes/customizer-projects.php:51
+#: includes/customizer-sticky.php:112
+msgid "Выбор категории"
+msgstr ""
+
+#: includes/customizer-action.php:180 includes/customizer-flat.php:127
+#: includes/customizer-jumbotron.php:127
+msgid "Выбор родительской страницы"
+msgstr ""
+
+#: includes/customizer-current.php:17
+msgid "Слайдер \"Актуальное\""
+msgstr ""
+
+#: includes/customizer-current.php:19
+msgid ""
+"Настройки слайдера \"Актуальное\". Слайдер выводится на главной и на "
+"врутренних страницах сайта."
+msgstr ""
+
+#: includes/customizer-current.php:68 includes/customizer-people.php:68
+#: includes/customizer-projects.php:68 includes/customizer-similar.php:71
+msgid "Выводить заголовок слайдера"
+msgstr ""
+
+#: includes/customizer-current.php:84 includes/customizer-news.php:84
+#: includes/customizer-partners.php:69 includes/customizer-people.php:84
+#: includes/customizer-projects.php:84 includes/customizer-similar.php:103
+msgid "Количество слайдов"
+msgstr ""
+
+#: includes/customizer-documents.php:18
+msgid "Документы"
+msgstr ""
+
+#: includes/customizer-documents.php:20
+msgid "Настройки вывода категории \"Документы\"."
+msgstr ""
+
+#: includes/customizer-documents.php:36 includes/customizer-events.php:52
+msgid "Использовать отдельный шаблон для вывода категории"
+msgstr ""
+
+#: includes/customizer-events.php:18
+msgid "Анонсы"
+msgstr ""
+
+#: includes/customizer-events.php:20
+msgid "Настройки секции главной страницы и вывода категории с \"Анонсами\"."
+msgstr ""
+
+#: includes/customizer-events.php:68
+msgid "Количество записей в секции"
+msgstr ""
+
+#: includes/customizer-flat.php:18
+msgid "Секция \"Флат\""
+msgstr ""
+
+#: includes/customizer-flat.php:20
+msgid "Секция главной страницы с флат иконками."
+msgstr ""
+
+#: includes/customizer-jumbotron.php:18
+msgid "Первый экран"
+msgstr ""
+
+#: includes/customizer-jumbotron.php:20
+msgid "Секция \"Первый экран\" главной страницы."
+msgstr ""
+
+#: includes/customizer-main.php:17
+msgid "Основные настройки"
+msgstr ""
+
+#: includes/customizer-main.php:19
+msgid "Подключение скриптов, галерея ..."
+msgstr ""
+
+#: includes/customizer-main.php:35
+msgid "Минифицировать скрипты"
+msgstr ""
+
+#: includes/customizer-main.php:51
+msgid "Минифицировать стили"
+msgstr ""
+
+#: includes/customizer-main.php:67
+msgid "Замена скрипта галереи"
+msgstr ""
+
+#: includes/customizer-main.php:83
+msgid "QR-код URL страницы"
+msgstr ""
+
+#: includes/customizer-main.php:99
+msgid "Fancybox"
+msgstr ""
+
+#: includes/customizer-main.php:115
+msgid "Форма поиска в шапке"
+msgstr ""
+
+#: includes/customizer-main.php:131
+msgid "Содержимое справочного модального окна в шапке сайта"
+msgstr ""
+
+#: includes/customizer-news.php:17
+msgid "Блок \"Новости\""
+msgstr ""
+
+#: includes/customizer-news.php:19
+msgid "Настройки блока новостей главной страницы"
+msgstr ""
+
+#: includes/customizer-news.php:68
+msgid "Выводить заголовок секции"
+msgstr ""
+
+#: includes/customizer-partners.php:17
+msgid "Блок \"Партнёры\""
+msgstr ""
+
+#: includes/customizer-partners.php:19
+msgid "Настройки слайдера \"Партнёры\" в подвале сайта"
+msgstr ""
+
+#: includes/customizer-people.php:17
+msgid "Слайдер \"Люди\""
+msgstr ""
+
+#: includes/customizer-people.php:19
+msgid "Настройки слайдера \"Люди\" главной страницы"
+msgstr ""
+
+#: includes/customizer-projects.php:17
+msgid "Слайдер \"Проекты\""
+msgstr ""
+
+#: includes/customizer-projects.php:19
+msgid "Настройки слайдера \"Проекты\". Слайдер только на главной странице."
+msgstr ""
+
+#: includes/customizer-share.php:18
+msgid "Секция \"Поделиться\""
+msgstr ""
+
+#: includes/customizer-share.php:20
+msgid ""
+"Настройки секции главной страницы \"Поделиться\" и блока с иконками на "
+"постоянных страницах и постах"
+msgstr ""
+
+#: includes/customizer-share.php:70 includes/metabox-bgi.php:54
+msgid "Фоновое изображение"
+msgstr ""
+
+#: includes/customizer-similar.php:17 includes/customizer-similar.php:79
+#: sections/similar.php:55
+msgid "Похожие записи"
+msgstr ""
+
+#: includes/customizer-similar.php:51
+msgid "Критерий выбора"
+msgstr ""
+
+#: includes/customizer-similar.php:54
+msgid "категория"
+msgstr ""
+
+#: includes/customizer-similar.php:55
+msgid "метка"
+msgstr ""
+
+#: includes/customizer-similar.php:87
+msgid "Текст заголовка"
+msgstr ""
+
+#: includes/customizer-socials.php:17
+msgid "Контакты"
+msgstr ""
+
+#: includes/customizer-socials.php:35
+msgid "Использовать блок"
+msgstr ""
+
+#: includes/customizer-socials.php:51
+msgid "Электронная почта"
+msgstr ""
+
+#: includes/customizer-socials.php:67
+msgid "Facebook"
+msgstr "Facebook"
+
+#: includes/customizer-socials.php:83
+msgid "Google Plus"
+msgstr "Google Plus"
+
+#: includes/customizer-socials.php:99
+msgid "Instagram"
+msgstr "Instagram"
+
+#: includes/customizer-socials.php:115
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: includes/customizer-socials.php:131
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: includes/customizer-socials.php:147
+msgid "Twitter"
+msgstr "Twitter"
+
+#: includes/customizer-socials.php:163
+msgid "Вконтакте"
+msgstr ""
+
+#: includes/customizer-socials.php:179
+msgid "Номер телефона"
+msgstr ""
+
+#: includes/customizer-sticky.php:17 includes/customizer-sticky.php:94
+msgid "Закреплённый пост"
+msgstr ""
+
+#: includes/customizer-sticky.php:19
+msgid "Настройки секции главной страницы с \"закреплённым постом\"."
+msgstr ""
+
+#: includes/customizer-sticky.php:54
+msgid "Цвет текста"
+msgstr ""
+
+#: includes/customizer-sticky.php:74
+msgid "Цвет фона"
+msgstr ""
+
+#: includes/customizer-sticky.php:91
+msgid "Выбор типа поста"
+msgstr ""
+
+#: includes/customizer-sticky.php:95
+msgid "Категория"
+msgstr ""
+
+#: includes/customizer-sticky.php:96
+msgid "Страница"
+msgstr "Page"
+
+#: includes/customizer-sticky.php:129
+msgid "Выбор страницы"
+msgstr ""
+
+#: includes/enqueue-scripts.php:67
+msgid "Наверх"
+msgstr "Back to top"
+
+#: includes/header.php:41
+msgid "Открыть верхнее меню"
+msgstr "Open the top menu"
+
+#: includes/header.php:41
+msgid "Верхнее меню"
+msgstr "Top Menu"
+
+#: includes/library.php:139
+msgid "Главная"
+msgstr "Home"
+
+#: includes/library.php:152
+msgid "Домашняя страница"
+msgstr "Homepage"
+
+#: includes/loop-blog.php:38 includes/loop-documents.php:29
+#: includes/loop-events.php:37 includes/loop-search.php:21
+#: includes/metabox-bgi.php:127 sections/similar.php:86
+msgid "Удалить"
+msgstr ""
+
+#: includes/loop-blog.php:40 includes/loop-documents.php:31
+#: includes/loop-events.php:39 includes/loop-search.php:23
+#: includes/part-pager.php:15 includes/part-pager.php:23
+#: page-childpages-flat.php:37 page-childpages-list.php:38
+#: page-childpages-media.php:37 page-childpages-media.php:43
+#: page-childpages-media.php:56 sections/action.php:98 sections/current.php:53
+#: sections/current.php:67 sections/events.php:33 sections/flat.php:105
+#: sections/jumbotron.php:107 sections/news.php:52 sections/news.php:62
+#: sections/news.php:63 sections/partners.php:30 sections/people.php:52
+#: sections/projects.php:64 sections/similar.php:75 sections/similar.php:88
+#: sections/sticky.php:85 sections/sticky.php:89
+msgid "Подробней"
+msgstr "More detailed"
+
+#: includes/loop-search.php:32
+msgid "К сожалению ничего не найдено"
+msgstr ""
+
+#: includes/metabox-bgi.php:128
+msgid "Установить"
+msgstr ""
+
+#: includes/metabox-cathedra.php:19
+msgid "Прізвище"
+msgstr ""
+
+#: includes/metabox-cathedra.php:20
+msgid "Імє'я"
+msgstr ""
+
+#: includes/metabox-cathedra.php:21
+msgid "По батькові"
+msgstr ""
+
+#: includes/metabox-cathedra.php:22
+msgid "Посада"
+msgstr ""
+
+#: includes/metabox-cathedra.php:23
+msgid "Звання"
+msgstr ""
+
+#: includes/metabox-cathedra.php:44
+msgid "Історична довідка"
+msgstr ""
+
+#: includes/metabox-cathedra.php:45
+msgid "Напрями роботи"
+msgstr ""
+
+#: includes/metabox-cathedra.php:46
+msgid "Міжнародні зв'язки"
+msgstr ""
+
+#: includes/metabox-cathedra.php:47
+msgid "Науково педагогічна діяльність"
+msgstr ""
+
+#: includes/metabox-cathedra.php:48
+msgid "Конкурентноспроможність випускників"
+msgstr ""
+
+#: includes/metabox-cathedra.php:49
+msgid "Виховна робота"
+msgstr ""
+
+#: includes/metabox-cathedra.php:72
+msgid "Опції блоку виводяться тільки при використанні шаблону сторінки"
+msgstr ""
+
+#: includes/metabox-cathedra.php:72
+msgid "Кафедра"
+msgstr ""
+
+#: includes/metabox-cathedra.php:74
+msgid "Завкафедрой"
+msgstr ""
+
+#: includes/metabox-cathedra.php:86
+msgid "Контакти"
+msgstr ""
+
+#: includes/metabox-cathedra.php:95
+msgid "\"Гармошка\" під описом:"
+msgstr ""
+
+#: includes/part-authors.php:12
+msgid "Опубликовано"
+msgstr ""
+
+#: includes/part-authors.php:16
+msgid "Обновлено"
+msgstr ""
+
+#: includes/part-info.php:25
+msgid "Результаты поиска"
+msgstr ""
+
+#: includes/part-info.php:55
+msgid "Переводы"
+msgstr ""
+
+#: index.php:33
+msgid "Предыдущая страница"
+msgstr ""
+
+#: index.php:34
+msgid "Следующая страница"
+msgstr ""
+
+#: index.php:37
+msgid "Навигация по постам"
+msgstr ""
+
+#: searchform.php:15
+msgid "Найти"
+msgstr "To find"
+
+#: sections/current.php:39 sections/jumbotron.php:121 sections/partners.php:52
+#: sections/people.php:39 sections/projects.php:39 sections/similar.php:61
+msgid "Листать назад"
+msgstr "Swipe back"
+
+#: sections/current.php:40 sections/jumbotron.php:122 sections/partners.php:53
+#: sections/people.php:40 sections/projects.php:40 sections/similar.php:62
+msgid "Листать вперёд"
+msgstr "Forward forward"
+
+#: sections/current.php:67 sections/events.php:47 sections/news.php:77
+msgid "Смотреть ещё"
+msgstr "View more"
+
+#: single.php:29 single.php:32 single.php:33
+msgid "Перейти"
+msgstr "Go to"
