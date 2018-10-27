@@ -58,6 +58,8 @@ jQuery( document ).ready( function () {
 		jQuery( '#people-slider' ).slick( {
 			slidesToShow: 3,
 			slidesToScroll: 1,
+			autoplay: true,
+			autoplaySpeed: 4000,
 			speed: 400,
 			arrows: true,
 			prevArrow: jQuery( '#people-slider-arrow-prev' ),

@@ -46,7 +46,7 @@ if ( $people_category_id = get_translate_id( get_theme_mod( 'people_category_id'
         if ( ( $categories ) && ( ! empty( $categories ) ) && ( ! is_wp_error( $categories ) ) ) {
           echo "<ul class=\"list-instyled list-inline\">";
           foreach ( $categories as $category ) printf(
-            '<li><a class="btn btn-xs btn-success" href="%1$s" title="%2$s - %4$s">%3$s</a></li>',
+            '<li><a class="btn btn-xs btn-primary" href="%1$s" title="%2$s - %4$s"><i class="icon icon-people"></i> %3$s</a></li>',
             get_term_link( $category->term_id, 'category' ),
             esc_attr__( 'Подробней', 'pstu-next-theme' ),
             apply_filters( 'single_term_title', $category->name ),
