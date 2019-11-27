@@ -99,6 +99,3 @@ if ( ( $similar_entryes ) && ( ! empty( $similar_entryes ) ) && ( ! is_wp_error(
   echo "</section>";
 
 } // if $similar_entryes
-
-
-?>

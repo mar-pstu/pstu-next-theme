@@ -3,8 +3,8 @@
 
 .jssocials-shares * {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box; }
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
 
 .jssocials-share {
   display: inline-block;
@@ -61,5 +61,7 @@ img.jssocials-share-logo {
 .jssocials-share-count {
   line-height: 1.5em;
   vertical-align: middle; }
+
+/*# sourceMappingURL=jssocials.css.map */
 
 /*# sourceMappingURL=jssocials.css.map */

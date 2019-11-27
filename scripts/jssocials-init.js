@@ -1,4 +1,4 @@
-jQuery( "#shareIcons" ).jsSocials( {
+jQuery( ".jssocials" ).jsSocials( {
 	showLabel: false,
 	showCount: true,
 	shares: [
@@ -13,14 +13,6 @@ jQuery( "#shareIcons" ).jsSocials( {
 		{
 			share: "facebook",
 			logo: pstuNextThemeTranslate.themeUrl+"images/share/facebook.svg"
-		},
-		{
-			share: "googleplus",
-			logo: pstuNextThemeTranslate.themeUrl+"images/share/googleplus.svg"
-		},
-		{
-			share: "linkedin",
-			logo: pstuNextThemeTranslate.themeUrl+"images/share/linkedin.svg"
 		},
 		{
 			share: "pinterest",

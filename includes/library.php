@@ -1,46 +1,24 @@
 <?php
 
 
-/**
- *	Извлекает дату из строки
- */
-if ( ! function_exists( 'pstu_next_get_event_date' ) ) {
-	function pstu_next_get_event_date( $title ) {
-		$result = array(
-			'day'     => 'XX',
-			'month'   => 'XXXXXX',
-			'year'    => 'XXXX',
-			'date'		=> false,
-		);
-		preg_match( PSTU_NEXT_EVENTS_DATE_REG, $title, $matches );
-		if ( ! empty( $matches ) ) {
-			$events_entry_time = strtotime( $matches[0] );
-			$result = array(
-				'day'     => date_i18n( "j", $events_entry_time ),
-				'month'   => date_i18n( "F", $events_entry_time ),
-				'year'    => date_i18n( "Y", $events_entry_time ),
-				'date'		=> $events_entry_time,
-			);
-		}
-		return $result;
-	}
-}
+
+if ( ! defined( 'ABSPATH' ) ) { exit; };
+
 
 
 /**
- *	Возвращает блок с датой
+ *
+ *
+ *
+ *
  */
-if ( ! function_exists( 'pstu_next_get_date_box' ) ) {
-	function pstu_next_get_date_box( $date ) {
-		$result = array();
-		$result[] = "<div class=\"date\">";
-		$result[] = "  <div class=\"date__day day\">" . $date[ 'day' ] . "</div>";
-		$result[] = "  <div class=\"date__month month\">" . $date[ 'month' ] . "</div>";
-		$result[] = "  <div class=\"date__year year\">" . $date[ 'year' ] . "</div>";
-		$result[] = "</div>";
-		return implode( "\r\n" , $result );
+if ( ! function_exists( 'pstu_get_cat_description' ) ) {
+	function pstu_get_cat_description( $term_id, $before = '', $after = '' ) {
+		$description = category_description( $term_id );
+		return ( empty( trim( $description ) ) ) ? '' : $description = $before . strip_tags( $description ) . $after;
 	}
 }
+
 
 
 /*
@@ -67,21 +45,6 @@ if ( ! function_exists( 'get_category_array' ) ) {
 	}
 }
 
-
-
-/**
- *	Возвращает список меню
- */
-if ( ! function_exists( 'get_nav_menus_array' ) ) {
-	function get_nav_menus_array() {
-		$nav_menus = wp_get_nav_menus();
-		$array = array( '' => '' );
-		foreach ( $nav_menus as $nav_menu ) {
-			$array[ $nav_menu->term_id ] = $nav_menu->name;
-		}
-		return $array;
-	}
-}
 
 
 
@@ -130,10 +93,11 @@ if ( ! function_exists( 'the_pages_select' ) ) {
  */
 if ( !function_exists( 'the_breadcrumb' ) ) {
 	function the_breadcrumb() {
-		if ( function_exists( 'bcn_display' ) ) {
-			bcn_display();
+		echo '<div id="breadcrumbs" class="breadcrumbs">';
+		if ( function_exists( 'yoast_breadcrumb' ) ) {
+			yoast_breadcrumb();
 		} else {
-			if (!is_front_page()) {
+			if ( ! is_front_page() ) {
 				echo '<a href="';
 				echo home_url();
 				echo '">'.__( 'Главная', 'pstu-next-theme' );
@@ -152,6 +116,7 @@ if ( !function_exists( 'the_breadcrumb' ) ) {
 					echo __( 'Домашняя страница', 'pstu-next-theme' );
 			}
 		}
+		echo '</div>';
 	}
 }
 
@@ -162,6 +127,7 @@ if ( !function_exists( 'the_breadcrumb' ) ) {
  */
 if ( ! function_exists( 'get_translate_id' ) ) {
 	function get_translate_id( $id, $type = 'post' ) {
+		$result = false;
 		if ( defined( 'POLYLANG_FILE' ) ) {
 			switch ( $type ) {
 				case 'category':
@@ -318,19 +284,19 @@ if ( ! function_exists( 'get_pstu_languages' ) ) {
 	function get_pstu_languages( $args = array() ) {
 		if ( ( is_singular() ) && ( function_exists( 'pll_the_languages' ) ) ) {
 			$args = wp_parse_args( $args, array(
-				'before'										=> "<ul>",
-				'after'											=> "</ul>",
-				'dropdown' 									=> 0,				//displays a list if set to 0, a dropdown list if set to 1 (default: 0)
-				'show_names' 								=> 0,				//displays language names if set to 1 (default: 1)
-				'display_names_as' 					=> 'name',	//either ‘name’ or ‘slug’ (default: ‘name’)
-				'show_flags' 								=> 1,	//displays flags if set to 1 (default: 0)
-				'hide_if_empty' 						=> 1,	//hides languages with no posts (or pages) if set to 1 (default: 1)
-				'force_home' 								=> 0,	//forces link to homepage if set to 1 (default: 0)
-				'echo' 											=> 0,	//echoes if set to 1, returns a string if set to 0 (default: 1)
-				'hide_if_no_translation' 		=> 1,	//hides the language if no translation exists if set to 1 (default: 0)
-				'hide_current'							=> 0,	//hides the current language if set to 1 (default: 0)
-				'post_id'										=> get_the_ID(),	//if set, displays links to translations of the post (or page) defined by post_id (default: null)
-				'raw'												=> 0,	//use this to create your own custom language switcher (default:0)
+				'before'                       => "<ul>",
+				'after'                        => "</ul>",
+				'dropdown'                     => 0,				//displays a list if set to 0, a dropdown list if set to 1 (default: 0)
+				'show_names'                   => 1,				//displays language names if set to 1 (default: 1)
+				'display_names_as'             => 'name',	//either ‘name’ or ‘slug’ (default: ‘name’)
+				'show_flags'                   => 0,	//displays flags if set to 1 (default: 0)
+				'hide_if_empty'                => 1,	//hides languages with no posts (or pages) if set to 1 (default: 1)
+				'force_home'                   => 0,	//forces link to homepage if set to 1 (default: 0)
+				'echo'                         => 0,	//echoes if set to 1, returns a string if set to 0 (default: 1)
+				'hide_if_no_translation'       => 1,	//hides the language if no translation exists if set to 1 (default: 0)
+				'hide_current'                 => 0,	//hides the current language if set to 1 (default: 0)
+				'post_id'                      => get_the_ID(),	//if set, displays links to translations of the post (or page) defined by post_id (default: null)
+				'raw'                          => 0,	//use this to create your own custom language switcher (default:0)
 			) );
 			$result = pll_the_languages( $args );
 			return ( empty( trim( $result ) ) ) ? '' : $args[ 'before' ] . $result . $args[ 'after' ];
@@ -345,8 +311,52 @@ if ( ! function_exists( 'the_pstu_languages' ) ) {
 
 
 
+/**
+*	Проверка ассоциативного массива
+*/
+if ( ! function_exists( 'pstu_mods_empty' ) ) {
+	function pstu_mods_empty( $array ) {
+		foreach ( $array as $key => $value )
+			if ( ! empty( $value ) ) return false;
+		return true;
+	}
+}
 
 
 
 
-?>
+/**
+ *	Функция для снятия поста с публикации
+ */
+if ( ! function_exists( 'pstu_next_unpublished_hook' ) ) {
+	function pstu_next_unpublished_hook( $post_id ) {
+		delete_post_meta( $post_id, '_pstu_unpublished' );
+		$result = wp_update_post( wp_slash( array(
+			'ID' => $post_id,
+			'post_status' => 'draft',
+		) ) );
+		if ( is_wp_error( $result ) ) {
+			wp_mail(
+				get_bloginfo( 'admin_email' ),
+				sprintf( '%1$s - %2$s', get_bloginfo( 'name' ), __( 'Снятие с публикации' ) ),
+				sprintf( var_export( $result, true ) )
+			);
+		}
+	}
+}
+
+
+if ( ! function_exists( 'pstu_get_excerpt' ) ) {
+	function pstu_get_excerpt( $entry, $before = '', $after = '' ) {
+		$result = '';
+		if ( empty( trim( $entry->post_excerpt ) ) ) {
+			$result = $entry->post_content;
+			$result = preg_replace( '~\[[^\]]+\]~', '', $result );
+			$result = excerpt_remove_blocks( $result );
+			$result = wp_trim_words( $result, 30, '&hellip;' );
+		} else {
+			$result = $entry->post_excerpt;
+		}
+		return ( empty( $result ) ) ? '' : $before . $result . $after;
+	}
+}

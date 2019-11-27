@@ -1,57 +1,31 @@
-<?php
+<?php get_header(); ?>
 
-get_header();
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 <?php echo ( is_active_sidebar( 'side_right' ) ) ? 'col-md-7 col-lg-8' : 'col-md-12 col-lg-12'; ?>">
+      <div class="main__info info"><img class="lazy qr-code" src="#" data-src="//chart.apis.google.com/chart?choe=UTF-8&amp;chld=L&amp;cht=qr&amp;chs=100x100&amp;chl=<?php echo get_site_url(); ?>">
+        <?php the_archive_title( '<h1 class="title">', '</h1>' ); ?>
+        <?php the_archive_description( '<p class="lead">', '</p>' ); ?>
+        <?php the_breadcrumb(); ?>
+        <div class="info__box box box--share">
+          <div class="heading"><?php _e( 'Поделиться:', 'pstu-next-theme' ); ?></div>
+          <div class="jssocials" id="jssocials"></div>
+        </div>
+      </div>
 
-echo "<div class=\"container\">\r\n";
-echo "  <div class=\"row\">\r\n";
-echo "    <div class=\"col-xs-12 col-sm-12 col-md col-lg\">\r\n";
+      <div class="archive__list list" id="entries-container">
+        <?php get_template_part( 'loops/blog' ); ?>
+      </div>
 
-get_template_part( 'includes/part', 'info' );
+      <?php get_template_part( 'parts/pagination' ); ?>
 
-if ( is_search() ) {
-  echo "<hr>";
-  get_template_part( 'includes/loop', 'search' );
-} else {
+    </div>
+    <?php if ( is_active_sidebar( 'side_right' ) ) : ?>
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+        <?php get_sidebar( 'right' ); ?>
+      </div>
+    <?php endif; ?>
+  </div>
+</div>
 
-  // if ( ( get_theme_mod( 'events_category_flag', false ) ) && ( $events_category_id = get_translate_id( get_theme_mod( 'events_category_id', false ), 'category' ) ) ) {
-  //   if ( is_category( $events_category_id ) ) get_template_part( 'includes/loop', 'events' );
-  // } else {
-  //   get_template_part( 'includes/loop', 'blog' );
-  // }
-
-  // if ( ( get_theme_mod( 'documents_category_flag', false ) ) && ( $documents_category_id = get_translate_id( get_theme_mod( 'documents_category_id', false ), 'category' ) ) ) {
-  //   if ( is_category( $documents_category_id ) ) get_template_part( 'includes/loop', 'documents' );
-  // } else {
-    get_template_part( 'includes/loop', 'blog' );
-  // }
-
-  the_posts_pagination( array(
-    'show_all'        => false, // показаны все страницы участвующие в пагинации
-    'end_size'        => 1,     // количество страниц на концах
-    'mid_size'        => 1,     // количество страниц вокруг текущей
-    'prev_next'       => true,  // выводить ли боковые ссылки "предыдущая/следующая страница".
-    'prev_text'       => '« ' . __( 'Предыдущая страница', 'pstu-next-theme' ),
-    'next_text'       => __( 'Следующая страница', 'pstu-next-theme' ) . ' »',
-    'add_args'        => false, // Массив аргументов (переменных запроса), которые нужно добавить к ссылкам.
-    'add_fragment'    => '',     // Текст который добавиться ко всем ссылкам.
-    'screen_reader_text' => __( 'Навигация по постам', 'pstu-next-theme' ),
-  ) );
-
-}
-
-
-echo "    </div>\r\n";
-
-if ( is_active_sidebar( 'side_right' ) ) {
-	echo "    <div class=\"col-xs-12 col-sm-12 col-md-5 col-lg-4\">\r\n";
-	get_sidebar( 'right' );
-	echo "    </div>\r\n"; // .col-
-}
-echo "  </div>\r\n"; // .row
-echo "</div>\r\n"; // .container
-
-if ( get_theme_mod( 'current_section_flag', false ) ) get_template_part( 'includes/section', 'current' );
-
-get_footer();
-
-?>
+<?php get_footer(); ?>

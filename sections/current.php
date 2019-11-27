@@ -7,86 +7,62 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; };
 
+$current_entries = false;
 
 if ( $current_category_id = get_translate_id( get_theme_mod( 'current_category_id', false ), 'category' ) ) {
-
-  $current_category = get_category( $current_category_id, OBJECT );
-
-  if ( ( $current_category ) && ( ! empty( $current_category ) ) && ( ! is_wp_error( $current_category ) ) ) {
-
-    $current_posts = get_posts( array(
-      'numberposts'       => get_theme_mod( 'current_posts_number', '5' ),
-      'category'          => $current_category->term_id,
-      'orderby'           => 'date',
-      'order'             => 'DESC',
-      'post_type'         => 'post',
-      'suppress_filters'  => false,
-    ) );
-
-    if ( ( $current_posts ) && ( ! empty( $current_posts ) ) && ( ! is_wp_error( $current_posts ) ) ) {
-
-      echo "<section class=\"section current grey flat\" id=\"current\">\r\n";
-      echo "  <div class=\"container\">\r\n";
-      echo "    <div class=\"row\">\r\n";
-      echo "      <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\r\n";
-      if ( get_theme_mod( 'current_heading_flag', true ) ) {
-        echo "        <div class=\"section__heading heading\">\r\n";
-        echo "          <h2 class=\"title\">" . apply_filters( 'the_title', $current_category->name ) . "</h2>\r\n";
-        if ( ! empty( trim( $current_category->description ) ) ) echo "          <div class=\"desctiption\">" . apply_filters( 'the_excerpt', $current_category->description ) . "</div>\r\n";
-        echo "        </div>\r\n"; // .section__heading
-      }
-      echo "        <div class=\"section__body body\">\r\n";
-      echo "          <button class=\"slider-arrow slider-prev\" id=\"current-slider-arrow-prev\" title=\"" . esc_attr__( 'Листать назад', 'patu-next-theme' ) . "\">&larr;</button>\r\n";
-      echo "          <button class=\"slider-arrow slider-next\" id=\"current-slider-arrow-next\" title=\"" . esc_attr__( 'Листать вперёд', 'patu-next-theme' ) . "\">&rarr;</button>\r\n";
-      echo "          <div id=\"current-slider\">\r\n";
-
-      foreach ( $current_posts as $current_post ) {
-        
-        setup_postdata( $current_post );
-        $current_thumbnail_url = get_the_post_thumbnail_url( $current_post->ID, 'medium' );
-        $current_title_attribute = the_title_attribute( array(
-          'before'  => '',
-          'adter'   => '',
-          'echo'    => false,
-          'post'    => $current_post->ID,
-        ) );
-        echo "<a class=\"" . join( ' ', get_post_class( 'current__entry flat__entry entry', $current_post->ID ) ) . "\" href=\"" . get_the_permalink( $current_post->ID ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), $current_title_attribute ) . "\">\r\n";
-        echo "  <img class=\"wp-post-image\" src=\"#\" data-lazy=\"" . ( ( $current_thumbnail_url ) ? $current_thumbnail_url : PSTU_NEXT_THEME_URL . 'images/flat_default_thumbnail.jpg' ) . "\" alt=\"" . $current_title_attribute . "\">\r\n";
-        echo "  <div class=\"title\"><h3>" . apply_filters( 'the_title', $current_post->post_title ) . "</h3></div>\r\n";
-        if ( has_excerpt( $current_post->ID ) ) echo "  <div class=\"excerpt\">" . apply_filters( 'the_excerpt', $current_post->post_excerpt ) . "</div>\r\n";
-        echo "</a>\r\n";
-
-      } // foreach
-
-      wp_reset_postdata();
-
-      echo "          </div>\r\n"; // #current-slider
-      echo "        </div>\r\n"; // .section__body
-      echo "        <div class=\"section__basement basement\">\r\n";
-      echo "          <p class=\"text-center\">\r\n";
-      echo "            <a class=\"small\" href=\"" . get_category_link( $current_category->term_id ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), esc_attr( $current_category->name ) ) . "\">" . __( 'Смотреть ещё', 'pstu-next-theme' ) . "</a>\r\n";
-      echo "          </p>\r\n";
-      echo "        </div>\r\n"; // .section__basement
-      echo "      </div>\r\n"; // .col-
-      echo "    </div>\r\n"; // .row
-      echo "  </div>\r\n"; // .container
-      echo "</section>\r\n";
-
-      unset( $current_post );
-      unset( $current_thumbnail_url );
-      unset( $current_title_attribute );
-
-    } // if $current_posts
-
-    unset( $current_posts );
-
-  } // if $current_category
-
-  unset( $current_category );
-
-} // if $current_category_id
-
-unset( $current_category_id );
-
+  $current_entries = get_posts( array(
+    'numberposts'       => get_theme_mod( 'current_posts_number', '5' ),
+    'category'          => $current_category_id,
+    'orderby'           => 'date',
+    'order'             => 'DESC',
+    'post_type'         => 'post',
+    'suppress_filters'  => false,
+    'meta_query'        => array(
+      'relation'          => 'OR',
+      array(
+        'key'               => '_pstu_relevance_end',
+        'type'              => 'DATE',
+        'value'             => date( 'Y-m-d' ),
+        'compare'           => '>',
+      ),
+      array(
+        'key'               => '_pstu_relevance_end',
+        'compare'           => 'NOT EXISTS',
+      ),
+      array(
+        'key'               => '_pstu_relevance_end',
+        'value'             => '',
+        'compare'           => '=',
+      ),
+    ),
+  ) );
+}
 
 ?>
+
+
+<?php if ( ( $current_entries ) && ( ! empty( $current_entries ) ) && ( ! is_wp_error( $current_entries ) ) ) : ?>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg">
+    <section class="section section--small current flat" id="current">
+      <div class="section__heading heading">
+        <h2 class="title">
+          <a class="more" href="<?php echo get_category_link( $current_category_id ); ?>"><span class="sr-only"><?php _e( 'Просмотр категории', 'pstu-next-theme' ); ?></span></a>
+          <?php echo get_cat_name( $current_category_id ); ?>
+        </h2>
+      </div>
+      <div class="section__body body">
+        <div class="row center-xs">
+          <?php foreach ( $current_entries as $entry ) : setup_postdata( $entry ); ?>
+            <div class="col-xs-12 col-sm-10 col-md-4 col-lg-12">
+              <a class="current__entry flat__entry entry" href="<?php the_permalink( $entry->ID ); ?>" title="<?php echo esc_attr( $entry->post_title ); ?>">
+                <img class="wp-post-image lazy" src="#" data-src="<?php echo ( has_post_thumbnail( $entry->ID ) ) ? get_the_post_thumbnail_url( $entry->ID, 'thumbnail-3x2' ) : get_rand_img_src(); ?>" alt="<?php echo esc_attr( $entry->post_title ); ?>">
+                <h3 class="title"><?php echo apply_filters( 'the_title', $entry->post_title ); ?></h3>
+                <?php echo pstu_get_excerpt( $entry, '<div class="excerpt">', '</div>' ); ?>
+              </a>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </section>
+  </div>
+<?php endif; ?>

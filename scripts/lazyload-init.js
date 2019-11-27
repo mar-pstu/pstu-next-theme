@@ -1,3 +1,5 @@
-jQuery( document ).ready( function () {
-	jQuery( ".lazy" ).lazy();
+jQuery( ".lazy" ).lazy( {
+  effect: 'fadeIn',
+  effectTime: 1500,
+  threshold: 0
 } );

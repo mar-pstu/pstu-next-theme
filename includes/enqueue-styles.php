@@ -11,21 +11,23 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
  *	Добавление "критикал" стилей и скриптов для оптимизации загрузки страницы
  */
 add_action( 'wp_head', function () {
-	echo "<style type=\"text/css\">" . file_get_contents( PSTU_NEXT_THEME_DIR . 'styles/critical.min.css' ) . "</style>\r\n";	
+	$suffix = ( get_theme_mod( 'minify_css', true ) ) ? '.min' : '';
+	echo "<style type=\"text/css\">" . file_get_contents( PSTU_NEXT_THEME_DIR . "styles/critical{$suffix}.css" ) . "</style>\r\n";
 } );
 
 
 
-
-/**
- *	Подключение стилей к редактору
- */
-if ( is_admin() ) add_action( 'current_screen', function () {
-	add_editor_style( PSTU_NEXT_THEME_URL . 'styles/critical' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' );
-	add_editor_style( PSTU_NEXT_THEME_URL . 'styles/main' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' );
-	add_editor_style( PSTU_NEXT_THEME_URL . 'style.css' );
+add_action( 'wp_print_styles', function () {
+	wp_deregister_style( 'fancybox' );
+	wp_dequeue_style( 'contact-form-7' );
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'pstu-contacts-frontend' );
+	wp_dequeue_style( 'pstu-misspellings-frontend' );
+	wp_dequeue_style( 'shortcodes-css' );
+	wp_dequeue_style( 'wpemfb-lightbox' );
+	wp_dequeue_style( 'tablepress-default' );
+	wp_dequeue_style( 'shortcodes' );
 } );
-
 
 
 
@@ -33,60 +35,53 @@ if ( is_admin() ) add_action( 'current_screen', function () {
 /**
  *	Загрузка остальных стилей
  */
-add_action( 'wp_enqueue_scripts', function () {
-
-	wp_register_style(
+add_action( 'get_footer', function () {
+	$suffix = ( get_theme_mod( 'minify_css', true ) ) ? '.min' : '';
+	wp_enqueue_style(
 		'jssocials',
-		PSTU_NEXT_THEME_URL . 'styles/jssocials.min.css',
+		PSTU_NEXT_THEME_URL . "styles/jssocials{$suffix}.css",
 		array(),
-		filemtime( PSTU_NEXT_THEME_DIR . 'styles/jssocials' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
+		'1.4.0'
 	);
-	wp_register_style(
+	wp_enqueue_style(
 		'jssocials-theme-flat',
-		PSTU_NEXT_THEME_URL . 'styles/jssocials-theme-flat.css',
+		PSTU_NEXT_THEME_URL . "styles/jssocials-theme-flat{$suffix}.css",
 		array( 'jssocials' ),
-		filemtime( PSTU_NEXT_THEME_DIR . 'styles/jssocials-theme-flat' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
+		'1.4.0'
 	);
-	wp_register_style(
+	wp_enqueue_style(
 		'fancybox',
-		PSTU_NEXT_THEME_URL . 'styles/fancybox.min.css',
+		PSTU_NEXT_THEME_URL . "styles/fancybox{$suffix}.css",
 		array(),
-		filemtime( PSTU_NEXT_THEME_DIR . 'styles/fancybox' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
+		'3.3.5'
 	);
-
 	// wp стили темы
 	wp_enqueue_style(
-		'pstu-profcom-theme-wp',
+		'pstu-next-theme-wp',
 		PSTU_NEXT_THEME_URL . 'style.css',
 		array(),
 		filemtime( PSTU_NEXT_THEME_DIR . 'style.css' )
 	);
-
 	// основные стили темы
 	wp_enqueue_style(
-		'pstu-profcom-theme-main',
-		PSTU_NEXT_THEME_URL . 'styles/main.min.css',
+		'pstu-next-theme-main',
+		PSTU_NEXT_THEME_URL . "styles/main{$suffix}.css",
 		array(),
-		filemtime( PSTU_NEXT_THEME_DIR . 'styles/main' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
+		filemtime( PSTU_NEXT_THEME_DIR . "styles/main{$suffix}.css" )
 	);
-
-	// стили блока "поделиться"
-	if ( get_theme_mod( 'share_section_flag', false ) ) {
-		wp_enqueue_style( 'jssocials' );
-		wp_enqueue_style( 'jssocials-theme-flat' );
-	}
-
-	if ( get_theme_mod( 'img_fancybox_flag', false ) ) wp_enqueue_style( 'fancybox' );
-	if ( ! empty( trim( get_theme_mod( 'header_help_content', '' ) ) ) ) wp_enqueue_style( 'fancybox' );
-
-	
-	
 	// стили слайдера slick
 	wp_enqueue_style(
 		'slick',
-		PSTU_NEXT_THEME_URL . 'styles/slick' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css',
+		PSTU_NEXT_THEME_URL . "styles/slick{$suffix}.css",
 		array(),
-		filemtime( PSTU_NEXT_THEME_DIR . 'styles/slick' . PSTU_NEXT_THEME_MINIFY_STYLES_SLUG . '.css' )
+		'1.9.0'
 	);
-
+	wp_enqueue_style( 'contact-form-7' );
+	wp_enqueue_style( 'wp-block-library' );
+	wp_enqueue_style( 'pstu-contacts-frontend' );
+	wp_enqueue_style( 'pstu-misspellings-frontend' );
+	wp_enqueue_style( 'shortcodes-css' );
+	wp_enqueue_style( 'wpemfb-lightbox' );
+	wp_enqueue_style( 'tablepress-default' );
+	wp_enqueue_style( 'shortcodes' );
 } );

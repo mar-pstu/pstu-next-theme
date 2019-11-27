@@ -124,8 +124,8 @@
   -webkit-transform: rotate(360deg);
   -ms-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-       transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
   -webkit-transition: background 200ms ease-in-out, border-color 200ms ease-in-out;
   -o-transition: background 200ms ease-in-out, border-color 200ms ease-in-out;
   -moz-transition: background 200ms ease-in-out, border-color 200ms ease-in-out;
@@ -134,5 +134,7 @@
 .jssocials-share-count-box .jssocials-share-count {
   line-height: 2.5em;
   color: #444; }
+
+/*# sourceMappingURL=jssocials-theme-flat.css.map */
 
 /*# sourceMappingURL=jssocials-theme-flat.css.map */

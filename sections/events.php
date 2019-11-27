@@ -4,63 +4,80 @@
  *  Секция "Анонсы" главной страницы
  */
 
+if ( ! defined( 'ABSPATH' ) ) { exit; };
+
+$events_entries = false;
 
 if ( $events_category_id = get_translate_id( get_theme_mod( 'events_category_id', false ), 'category' ) ) {
 
-  $events_entryes = get_posts( array(
+  $events_entries = get_posts( array(
     'numberposts'       => get_theme_mod( 'events_entry_number', 5 ),
     'category'          => $events_category_id,
-    'orderby'           => 'post_title',
-    'order'             => 'DESC',
     'post_type'         => 'post',
     'suppress_filters'  => false,
+    'meta_query'        => array(
+      'relation'          => 'AND',
+      array(
+        'relation'          => 'AND',
+        array(
+          'key'               => '_pstu_relevance_start',
+          'compare'           => 'EXISTS',
+        ),
+        array(
+          'key'               => '_pstu_relevance_start',
+          'value'             => '',
+          'compare'           => '!=',
+        ),
+      ),
+      array(
+        'relation'          => 'OR',
+        array(
+          'key'               => '_pstu_relevance_start',
+          'value'             => date( 'Y-m-d' ),
+          'type'              => 'DATE',
+          'compare'           => '>='
+        ),
+        array(
+          'key'               => '_pstu_relevance_end',
+          'value'             => date( 'Y-m-d' ),
+          'type'              => 'DATE',
+          'compare'           => '>='
+        ),
+      ),
+    ),
+    'meta_key'          => '_pstu_relevance_start',
+    'orderby'           => 'meta_value',
+    'order'             => 'ASC',
   ) );
-
-
-  if ( ( $events_entryes ) && ( ! empty( $events_entryes ) ) && ( ! is_wp_error( $events_entryes ) ) ) {
-
-    $result = array();
-
-    foreach ( $events_entryes as $events_entry ) {
-
-      setup_postdata( $events_entry );
-
-      $events_entry_date = pstu_next_get_event_date( $events_entry->post_title );
-
-      if ( $events_entry_date[ 'date' ] < time() ) continue;
-
-      $result[] = "<div class=\"col-xs-12 col-sm-6 col-md-12 col-lg-12\">";
-      $result[] = "  <a class=\"events__entry entry\" href=\"" . get_the_permalink( $events_entry->ID ) . "\" title=\"" . sprintf( "%s - %s", __( 'Подробней', 'pstu-next-theme' ), esc_attr( $events_entry->post_title ) ) . "\">";
-      $result[] = pstu_next_get_date_box( $events_entry_date );
-      $result[] = "    <h3 class=\"title\">" . apply_filters( 'the_title', ( ( preg_match( PSTU_NEXT_EVENTS_DATE_REG, $events_entry->post_title ) ) ? substr( trim( $events_entry->post_title ), 10 ) : $events_entry->post_title ) ) . "</h3>";
-      $result[] = "  </a>";
-      $result[] = "</div>"; // .col-
-
-    } // foreach
-
-    wp_reset_postdata();
-
-    if ( ! empty( $result ) ) {
-      if ( ! empty( $events_category_link = get_category_link( $events_category_id ) ) ) {
-        $result[] = "<div class=\"col-xs-12 col-sm-3 col-md-12 col-lg-12\">";
-        $result[] = "  <p class=\"text-center small\">";
-        $result[] = "    <a href=\"" . $events_category_link . "\">" . __( 'Смотреть ещё', 'pstu-next-theme' ) . "</a>";
-        $result[] = "  </p>";
-        $result[] = "</div>"; // .col-
-      }
-      echo "<div class=\"col-xs-12 col-sm-12 col-md-5 col-lg-4\"><section class=\"events\" id=\"events\"><div class=\"row\">" .  implode( "\r\n" , $result ) . "</div></section></div>";
-    }
-
-    unset( $result );
-    unset( $events_entryes );
-    unset( $events_entry_date );
-    unset( $events_category_id );
-    unset( $events_category_link );
-
-  } // if $events_entryes
 
 }
 
-
-
 ?>
+
+
+
+
+<?php if ( ( $events_entries ) && ( ! empty( $events_entries ) ) && ( ! is_wp_error( $events_entries ) ) ) : ?>
+  <div class="col-xs-12 col-sm col-md col-lg">
+    <section class="section section--small events text-left" id="events">
+      <div class="section__heading heading">
+        <h2 class="title">
+          <a class="more" href="<?php echo get_category_link( $events_category_id ); ?>" title="<?php esc_attr__( 'Просмотр категории', 'pstu-next-theme' ); ?>"><span class="sr-only"><?php _e( 'Просмотр категории', 'pstu-next-theme' ); ?></span></a>
+          <?php echo get_cat_name( $events_category_id ); ?> 
+        </h2>
+      </div>
+      <div class="section__body body">
+        <?php foreach ( $events_entries as $entry ) : setup_postdata( $entry ); ?>
+          <a class="events__entry entry" href="<?php echo get_permalink( $entry->ID ); ?>">
+            <h3 class="title"><?php echo apply_filters( 'the_title', $entry->post_title ); ?></h3>
+            <?php echo pstu_get_excerpt( $entry, '<p class="excerpt">', '</p>' ); ?>
+            <div class="datetime">
+              <?php echo get_post_meta( $entry->ID, '_pstu_relevance_start', true ); ?>
+              <?php if ( ! empty( $end = get_post_meta( $entry->ID, '_pstu_relevance_end', true ) ) ) echo '- ' . $end; ?>
+            </div>
+          </a>
+        <?php endforeach; wp_reset_postdata(); ?>
+      </div>
+    </section>
+  </div>
+<?php endif; ?>

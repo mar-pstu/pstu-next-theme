@@ -68,6 +68,10 @@
 .slick-slide img {
   display: block; }
 
+.slick-slide img[src=""],
+.slick-slide img[src="#"] {
+  display: none; }
+
 .slick-slide.slick-loading img {
   display: none; }
 

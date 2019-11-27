@@ -32,7 +32,7 @@ if ( get_theme_mod( 'partners_section_flag', false ) ) get_template_part( 'secti
 echo "      <footer class=\"footer wrapper__item\" id=\"footer\">\r\n";
 echo "        <div class=\"container\">\r\n";
 echo "          <div class=\"row\">\r\n";
-echo "            <div class=\"col-xs-12 first-sm col-sm-3 col-md-4 col-lg-4\">\r\n";
+echo "            <div class=\"col-xs-12 first-sm col-sm-6 col-md-4 col-lg-4\">\r\n";
 printf(
 	"<p class=\"copyright\">%d &copy; <a href=\"//pstu.edu\" title=\"%s\">%s</a></p>\r\n",
 	date( 'Y' ),
@@ -40,12 +40,8 @@ printf(
 	__( 'ГВУЗ ПГТУ', 'pstu-next-theme' )
 );
 echo "            </div>\r\n";
-if ( get_theme_mod( 'socials_flag', false ) ) {
-	echo "            <div class=\"col-xs-12 first-xs col-sm-6 col-md-4 col-lg-4\">\r\n";
-	get_template_part( 'includes/part', 'social' );
-	echo "            </div>\r\n"; // .col-
-}
-echo "            <div class=\"col-xs-12 col-sm-3 col-md col-lg\">\r\n";
+
+echo "            <div class=\"col-xs-12 col-sm-6 col-md col-lg\">\r\n";
 printf(
 	"<p class=\"developer\">%s: <a href=\"//cct.pstu.edu\" title=\"%s\">%s</a></p>\r\n",
 	__( 'Разработка', 'pstu-next-theme' ),
