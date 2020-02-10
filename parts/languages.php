@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; };
 
 
 
-if ( ( function_exists( 'pll_the_languages' ) ) && ( function_exists( 'pll_current_language' ) ) && ( function_exists( 'pll_home_url' ) ) ) {
+if ( ( function_exists( 'pll_the_languages' ) ) && ( function_exists( 'pll_current_language' ) ) && ( function_exists( 'pll_home_url' ) ) && ( function_exists( 'pll_get_term' ) ) ) {
 	$result = array();
 	$current = pll_current_language( 'slug' );
 	$result[] = sprintf(
@@ -35,9 +35,14 @@ if ( ( function_exists( 'pll_the_languages' ) ) && ( function_exists( 'pll_curre
 		$result[] = '<ul class="other">';
 		foreach ( $languages_list as $language ) {
 			if ( $current != $language ) {
+				if ( is_front_page() || is_search() || is_404() ) {
+					$link = pll_home_url( $language );
+				} else {
+					$link = $function_to_permalink_name( $function_to_translate_name( $object_id, $language ) );
+				}
 				$result[] = sprintf(
 					'<li><a href="%1$s">%2$s</a></li>',
-					( is_front_page() || is_search() || is_404() ) ? pll_home_url( $language ) : $function_to_permalink_name( $function_to_translate_name( $object_id, $language ) ),
+					( is_wp_error( $link ) ) ? pll_home_url( $language ) : $link,
 					$language
 				);
 			}
