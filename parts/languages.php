@@ -32,6 +32,9 @@ if ( ( function_exists( 'pll_the_languages' ) ) && ( function_exists( 'pll_curre
 			$object_id = get_queried_object_id();
 			$function_to_permalink_name = 'get_term_link';
 		}
+		// echo "<pre>";
+		// var_dump( $function_to_permalink_name( $function_to_translate_name( $object_id, 'uk' ) ) );
+		// echo "</pre>";
 		$result[] = '<ul class="other">';
 		foreach ( $languages_list as $language ) {
 			if ( $current != $language ) {

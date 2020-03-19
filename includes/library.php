@@ -26,15 +26,15 @@ if ( ! function_exists( 'pstu_get_cat_description' ) ) {
  */
 if ( ! function_exists( 'get_category_array' ) ) {
 	function get_category_array() {
-		$ppl_lang = ( function_exists( 'pll_get_post_language' ) ) ? pll_current_language() : false;
+		$pll_lang = ( function_exists( 'pll_get_post_language' ) ) ? pll_current_language() : false;
 		$categories_args = array(
 			'hide_empty'        =>  false,
 		);
 		$categories = get_categories( $categories_args );
 		$array = array( '' => '' );
 		foreach ($categories as $item) {
-			if ( $ppl_lang ) {
-				if ( $ppl_lang == pll_get_term_language( $item->term_id ) ) {
+			if ( $pll_lang ) {
+				if ( $pll_lang == pll_get_term_language( $item->term_id ) ) {
 					$array[$item->term_id] = $item->name;
 				}
 			} else {

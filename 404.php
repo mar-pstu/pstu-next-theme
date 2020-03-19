@@ -5,9 +5,9 @@ get_header();
 $error404_title = get_theme_mod( 'error404_title', 'Ошибка 404' );
 $error404_subtitle = get_theme_mod( 'error404_subtitle', '' );
 
-if ( function_exists( 'ppl__' ) ) {
-  $error404_title = ppl__( $error404_title );
-  $error404_subtitle = ppl__( $error404_subtitle );
+if ( function_exists( 'pll__' ) ) {
+  $error404_title = pll__( $error404_title );
+  $error404_subtitle = pll__( $error404_subtitle );
 }
 
 

@@ -15,6 +15,11 @@ get_template_part( 'includes/class', 'gallery' );
 get_template_part( 'includes/gutenberg' );
 
 
+if ( function_exists( 'pll_register_string' ) ) {
+	include get_theme_file_path( 'includes/register-strings.php' );
+}
+
+
 
 require_once PSTU_NEXT_THEME_DIR . 'shortcodes/class-accordio-list.php';
 new pstuAccordioListClass();
@@ -139,35 +144,6 @@ add_action( 'after_setup_theme', function () {
 		'menu_action'        => __( 'Реклама (главная страница)', 'pstu-next-theme' ),
 		'menu_footer'        => __( 'Меню подвала', 'pstu-next-theme' ),
 	) );
-
-
-	/**
-	 *	Регистрация переводов строк
-	 */
-	if ( function_exists( 'pll_register_string' ) ) {
-
-		// блок ссылок на контакты и социальные сети ( part-social.php )
-		foreach ( get_theme_mod( 'socials', array( '' ) ) as $slug => $value ) {
-			if ( empty( $value ) ) continue;
-			pll_register_string( 'social_' . $slug, $value, 'pstu-next-theme', false );
-	  }
-
-	  // 
-	  foreach ( array(
-		'action_section_title',
-		'action_section_subtitle',
-		'error404_title',
-		'error404_subtitle',
-		'similar_heading_title',
-		'news_section_badge',
-		'sticky_badge_text'
-	  ) as $slug ) {
-		$value = wp_strip_all_tags( get_theme_mod( $slug, '' ) );
-		if ( empty( $value ) ) continue;
-		pll_register_string( $slug, $value, 'pstu-next-theme', false );
-	  }  
-
-	} // if function_exists 'pll_register_string'
 
 } ); // after_setup_theme
 

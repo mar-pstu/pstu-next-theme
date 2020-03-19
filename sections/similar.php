@@ -54,7 +54,7 @@ if ( ( $similar_entryes ) && ( ! empty( $similar_entryes ) ) && ( ! is_wp_error(
   if ( get_theme_mod( 'similar_heading_flag', true ) ) {
     $similar_heading_title = get_theme_mod( 'similar_heading_title', __( 'Похожие записи', 'pstu-next-theme' ) );
     echo "  <div class=\"section__heading heading\">\r\n";
-    echo "    <h2>" . ( ( function_exists( 'ppl__' ) ) ? ppl__( $similar_heading_title ) : $similar_heading_title ) . "</h2>\r\n";
+    echo "    <h2>" . ( ( function_exists( 'pll__' ) ) ? pll__( $similar_heading_title ) : $similar_heading_title ) . "</h2>\r\n";
     echo "  </div>\r\n";
   }
   echo "  <div class=\"section__body body\">\r\n";

@@ -66,7 +66,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 small top-xs">
               <?php if ( ( $address = get_theme_mod( 'pstu_next_address', false ) ) && ( ! pstu_mods_empty( $address ) ) ) : ?>
-                <?php if ( function_exists( 'ppl_' ) ) ?>
+                <?php if ( function_exists( 'pll__' ) ) $address[ 'title' ] = pll__( $address[ 'title' ] ); ?>
                 <a class="header__address address fancybox-frame" id="header-address" href="<?php echo $address[ 'map_url' ]; ?>"><?= $address[ 'title' ]; ?></a>
               <?php endif; ?>
               <?php if ( ( $socials = get_theme_mod( 'pstu_next_socials', false ) ) && ( ! pstu_mods_empty( $socials ) ) ) : ?>
