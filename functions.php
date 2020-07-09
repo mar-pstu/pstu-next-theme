@@ -43,6 +43,60 @@ if ( is_admin() ) {
 }
 
 
+/**
+ * Шорткод для создания списка редиректов с русской версии на укр
+ */
+// add_shortcode( 'ru_to_uk_redirect', function () {
+// 	$result = [];
+// 	switch_to_locale( 'uk' );
+// 	foreach ( get_post_types( [
+// 		'public'   => true,
+// 	], 'names', 'and' ) as $post_type ) {
+// 		if ( pll_is_translated_post_type( $post_type ) ) {
+// 			$posts = get_posts( [
+// 				'numberposts' => -1,
+// 				'post_type'   => $post_type,
+// 			] );
+// 			if ( is_array( $posts ) && ! empty( $posts ) ) {
+// 				foreach ( $posts as $post ) {
+// 					$ru_post_id = pll_get_post( $post->ID, 'ru_RU');
+// 					if ( $ru_post_id ) {
+// 						$result[] = sprintf(
+// 							'Redirect 301 %1$s %2$s',
+// 							parse_url( get_permalink( $ru_post_id, false ) )[ 'path' ],
+// 							get_permalink( $post->ID, false )
+// 						);
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// 	foreach ( get_taxonomies( [
+// 		'public'   => true,
+// 	], 'names', 'AND' ) as $taxonomy ) {
+// 		if ( pll_is_translated_taxonomy( $taxonomy ) ) {
+// 			$terms = get_terms( [
+// 				'taxonomy'   => $taxonomy,
+// 				'hide_empty' => false,
+// 			] );
+// 			if ( is_array( $terms ) && ! empty( $term ) ) {
+// 				foreach ( $posts as $post ) {
+// 					$ru_term_id = pll_get_term( $term->term_id, 'ru_RU');
+// 					if ( $ru_term_id ) {
+// 						$result[] = sprintf(
+// 							'Redirect 301 %1$s %2$s',
+// 							parse_url( get_term_link( $ru_term_id, $taxonomy ) )[ 'path' ],
+// 							get_term_link( $term->term_id, $taxonomy )
+// 						);
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// 	return '<div style="overflow-x: scroll; font-size: 75%; white-space: pre;">' . implode( "\r\n", $result ) . '</div>';
+// } );
+
+
 if ( is_customize_preview() ) {
 	add_action( 'customize_register', function ( $wp_customize ) {
 		$wp_customize->add_panel(
